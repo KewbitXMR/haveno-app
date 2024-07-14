@@ -1,0 +1,10 @@
+[
+    {
+        "code": "BTC",
+        "label": "Bitcoin"
+    },
+    {
+        "code": "LTC",
+        "label": "Litecoin"
+    }
+]

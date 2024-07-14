@@ -1,0 +1,1101 @@
+/*
+ * This file is part of Bisq.
+ *
+ * Bisq is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or (at
+ * your option) any later version.
+ *
+ * Bisq is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with Bisq. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/*
+ * This file is part of Haveno.
+ *
+ * Haveno is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or (at
+ * your option) any later version.
+ *
+ * Haveno is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with Haveno. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+syntax = "proto3";
+package io.haveno.protobuffer;
+
+import "pb.proto";
+
+option java_package = "haveno.proto.grpc";
+option java_multiple_files = true;
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Help
+///////////////////////////////////////////////////////////////////////////////////////////
+
+service Help {
+    rpc GetMethodHelp (GetMethodHelpRequest) returns (GetMethodHelpReply) {
+    }
+}
+
+message GetMethodHelpRequest {
+    string method_name = 1;
+}
+
+message GetMethodHelpReply {
+    string method_help = 1;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Version
+///////////////////////////////////////////////////////////////////////////////////////////
+
+service GetVersion {
+    rpc GetVersion (GetVersionRequest) returns (GetVersionReply) {
+    }
+}
+
+message GetVersionRequest {
+}
+
+message GetVersionReply {
+    string version = 1;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Account
+///////////////////////////////////////////////////////////////////////////////////////////
+
+service Account {
+    rpc AccountExists (AccountExistsRequest) returns (AccountExistsReply) {
+    }
+    rpc IsAccountOpen (IsAccountOpenRequest) returns (IsAccountOpenReply) {
+    }
+    rpc CreateAccount (CreateAccountRequest) returns (CreateAccountReply) {
+    }
+    rpc OpenAccount (OpenAccountRequest) returns (OpenAccountReply) {
+    }
+    rpc IsAppInitialized (IsAppInitializedRequest) returns (IsAppInitializedReply) {
+    }
+    rpc ChangePassword (ChangePasswordRequest) returns (ChangePasswordReply) {
+    }
+    rpc CloseAccount (CloseAccountRequest) returns (CloseAccountReply) {
+    }
+    rpc DeleteAccount (DeleteAccountRequest) returns (DeleteAccountReply) {
+    }
+    rpc BackupAccount (BackupAccountRequest) returns (stream BackupAccountReply) {
+    }
+    rpc RestoreAccount (RestoreAccountRequest) returns (RestoreAccountReply) {
+    }
+}
+
+message AccountExistsRequest {
+}
+
+message AccountExistsReply {
+    bool account_exists = 1;
+}
+
+message IsAccountOpenRequest {
+}
+
+message IsAccountOpenReply {
+    bool is_account_open = 1;
+}
+
+message CreateAccountRequest {
+    string password = 1;
+}
+
+message CreateAccountReply {
+}
+
+message OpenAccountRequest {
+    string password = 1;
+}
+
+message OpenAccountReply {
+}
+
+message IsAppInitializedRequest {
+}
+
+message IsAppInitializedReply {
+    bool is_app_initialized = 1;
+}
+
+message ChangePasswordRequest {
+    string old_password = 1;
+    string new_password = 2;
+}
+
+message ChangePasswordReply {
+}
+
+message CloseAccountRequest {
+}
+
+message CloseAccountReply {
+}
+
+message DeleteAccountRequest {
+}
+
+message DeleteAccountReply {
+}
+
+message BackupAccountRequest {
+}
+
+message BackupAccountReply {
+    bytes zip_bytes = 1;
+}
+
+message RestoreAccountRequest {
+    bytes zip_bytes = 1;
+    uint64 offset = 2;
+    uint64 total_length = 3;
+    bool has_more = 4;
+}
+
+message RestoreAccountReply {
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Disputes
+///////////////////////////////////////////////////////////////////////////////////////////
+
+service Disputes {
+    rpc GetDispute (GetDisputeRequest) returns (GetDisputeReply) {
+    }
+    rpc GetDisputes (GetDisputesRequest) returns (GetDisputesReply) {
+    }
+    rpc OpenDispute (OpenDisputeRequest) returns (OpenDisputeReply) {
+    }
+    rpc ResolveDispute (ResolveDisputeRequest) returns (ResolveDisputeReply) {
+    }
+    rpc SendDisputeChatMessage (SendDisputeChatMessageRequest) returns (SendDisputeChatMessageReply) {
+    }
+}
+
+message GetDisputesRequest {
+}
+
+message GetDisputesReply {
+    repeated Dispute disputes = 1; // pb.proto
+}
+
+message GetDisputeRequest {
+    string trade_id = 1;
+}
+
+message GetDisputeReply {
+    Dispute dispute = 1; // pb.proto
+}
+
+message OpenDisputeRequest {
+    string trade_id = 1;
+}
+
+message OpenDisputeReply {
+}
+
+message ResolveDisputeReply {
+}
+
+message ResolveDisputeRequest {
+    string trade_id = 1;
+    DisputeResult.Winner winner = 2;
+    DisputeResult.Reason reason = 3;
+    string summary_notes = 4;
+    uint64 custom_payout_amount = 5 [jstype = JS_STRING];
+}
+
+message SendDisputeChatMessageRequest {
+    string dispute_id = 1;
+    string message = 2;
+    repeated Attachment attachments = 3; // pb.proto
+}
+
+message SendDisputeChatMessageReply {
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// DisputeAgents
+///////////////////////////////////////////////////////////////////////////////////////////
+
+service DisputeAgents {
+    rpc RegisterDisputeAgent (RegisterDisputeAgentRequest) returns (RegisterDisputeAgentReply) {
+    }
+    rpc UnregisterDisputeAgent (UnregisterDisputeAgentRequest) returns (UnregisterDisputeAgentReply) {
+    }
+}
+
+message RegisterDisputeAgentRequest {
+    string dispute_agent_type = 1;
+    string registration_key = 2;
+}
+
+message RegisterDisputeAgentReply {
+}
+
+message UnregisterDisputeAgentRequest {
+    string dispute_agent_type = 1;
+}
+
+message UnregisterDisputeAgentReply {
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Notifications
+///////////////////////////////////////////////////////////////////////////////////////////
+
+service Notifications {
+    rpc RegisterNotificationListener (RegisterNotificationListenerRequest) returns (stream NotificationMessage) {
+    }
+    rpc SendNotification (SendNotificationRequest) returns (SendNotificationReply) { // only used for testing
+    }
+}
+
+message RegisterNotificationListenerRequest {
+}
+
+message NotificationMessage {
+    enum NotificationType {
+        ERROR = 0;
+        APP_INITIALIZED = 1;
+        KEEP_ALIVE = 2;
+        TRADE_UPDATE = 3;
+        CHAT_MESSAGE = 4;
+    }
+
+    string id = 1;
+    NotificationType type = 2;
+    int64 timestamp = 3;
+    string title = 4;
+    string message = 5;
+    TradeInfo trade = 6;
+    ChatMessage chat_message = 7;
+}
+
+message SendNotificationRequest {
+    NotificationMessage notification = 1;
+}
+
+message SendNotificationReply {
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// XmrConnections
+///////////////////////////////////////////////////////////////////////////////////////////
+
+service XmrConnections {
+    rpc AddConnection (AddConnectionRequest) returns (AddConnectionReply) {
+    }
+    rpc RemoveConnection(RemoveConnectionRequest) returns (RemoveConnectionReply) {
+    }
+    rpc GetConnection(GetConnectionRequest) returns (GetConnectionReply) {
+    }
+    rpc GetConnections(GetConnectionsRequest) returns (GetConnectionsReply) {
+    }
+    rpc SetConnection(SetConnectionRequest) returns (SetConnectionReply) {
+    }
+    rpc CheckConnection(CheckConnectionRequest) returns (CheckConnectionReply) {
+    }
+    rpc CheckConnections(CheckConnectionsRequest) returns (CheckConnectionsReply) {
+    }
+    rpc StartCheckingConnection(StartCheckingConnectionRequest) returns (StartCheckingConnectionReply) {
+    }
+    rpc StopCheckingConnection(StopCheckingConnectionRequest) returns (StopCheckingConnectionReply) {
+    }
+    rpc GetBestAvailableConnection(GetBestAvailableConnectionRequest) returns (GetBestAvailableConnectionReply) {
+    }
+    rpc SetAutoSwitch(SetAutoSwitchRequest) returns (SetAutoSwitchReply) {
+    }
+}
+
+message UrlConnection {
+    enum OnlineStatus {
+        UNKNOWN = 0;
+        ONLINE = 1;
+        OFFLINE = 2;
+    }
+    enum AuthenticationStatus {
+        NO_AUTHENTICATION = 0;
+        AUTHENTICATED = 1;
+        NOT_AUTHENTICATED = 2;
+    }
+
+    string url = 1;
+    string username = 2; // request only
+    string password = 3; // request only
+    int32 priority = 4;
+    OnlineStatus online_status = 5; // reply only
+    AuthenticationStatus authentication_status = 6; // reply only
+}
+
+message AddConnectionRequest {
+    UrlConnection connection = 1;
+}
+
+message AddConnectionReply {}
+
+message RemoveConnectionRequest {
+    string url = 1;
+}
+
+message RemoveConnectionReply {}
+
+message GetConnectionRequest {}
+
+message GetConnectionReply {
+    UrlConnection connection = 1;
+}
+
+message GetConnectionsRequest {}
+
+message GetConnectionsReply {
+    repeated UrlConnection connections = 1;
+}
+
+message SetConnectionRequest {
+    string url = 1;
+    UrlConnection connection = 2;
+}
+
+message SetConnectionReply {}
+
+message CheckConnectionRequest {}
+
+message CheckConnectionReply {
+    UrlConnection connection = 1;
+}
+
+message CheckConnectionsRequest {}
+
+message CheckConnectionsReply {
+    repeated UrlConnection connections = 1;
+}
+
+message StartCheckingConnectionRequest {
+    int32 refresh_period = 1; // milliseconds
+}
+
+message StartCheckingConnectionReply {}
+
+message StopCheckingConnectionRequest {}
+
+message StopCheckingConnectionReply {}
+
+message GetBestAvailableConnectionRequest {}
+
+message GetBestAvailableConnectionReply {
+    UrlConnection connection = 1;
+}
+
+message SetAutoSwitchRequest {
+    bool auto_switch = 1;
+}
+
+message SetAutoSwitchReply {}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// XmrNode
+///////////////////////////////////////////////////////////////////////////////////////////
+
+service XmrNode {
+    rpc IsXmrNodeOnline (IsXmrNodeOnlineRequest) returns (IsXmrNodeOnlineReply) {
+    }
+    rpc GetXmrNodeSettings (GetXmrNodeSettingsRequest) returns (GetXmrNodeSettingsReply) {
+    }
+    rpc StartXmrNode (StartXmrNodeRequest) returns (StartXmrNodeReply) {
+    }
+    rpc StopXmrNode (StopXmrNodeRequest) returns (StopXmrNodeReply) {
+    }
+}
+
+message IsXmrNodeOnlineRequest {
+}
+
+message IsXmrNodeOnlineReply {
+    bool is_running = 1;
+}
+
+message GetXmrNodeSettingsRequest {
+}
+
+message GetXmrNodeSettingsReply {
+    XmrNodeSettings settings = 1; // pb.proto
+}
+
+message StartXmrNodeRequest {
+    XmrNodeSettings settings = 1;
+}
+
+message StartXmrNodeReply {
+}
+
+message StopXmrNodeRequest {
+}
+
+message StopXmrNodeReply {
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Offers
+///////////////////////////////////////////////////////////////////////////////////////////
+
+service Offers {
+    rpc GetOffer (GetOfferRequest) returns (GetOfferReply) {
+    }
+    rpc GetMyOffer (GetMyOfferRequest) returns (GetMyOfferReply) {
+    }
+    rpc GetOffers (GetOffersRequest) returns (GetOffersReply) {
+    }
+    rpc GetMyOffers (GetMyOffersRequest) returns (GetMyOffersReply) {
+    }
+    rpc PostOffer (PostOfferRequest) returns (PostOfferReply) {
+    }
+    rpc CancelOffer (CancelOfferRequest) returns (CancelOfferReply) {
+    }
+}
+
+message GetOfferRequest {
+    string id = 1;
+}
+
+message GetOfferReply {
+    OfferInfo offer = 1;
+}
+
+message GetMyOfferRequest {
+    string id = 1;
+}
+
+message GetMyOfferReply {
+    OfferInfo offer = 1;
+}
+
+message GetOffersRequest {
+    string direction = 1;
+    string currency_code = 2;
+}
+
+message GetOffersReply {
+    repeated OfferInfo offers = 1;
+}
+
+message GetMyOffersRequest {
+    string direction = 1;
+    string currency_code = 2;
+}
+
+message GetMyOffersReply {
+    repeated OfferInfo offers = 1;
+}
+
+message PostOfferRequest {
+    string currency_code = 1;
+    string direction = 2;
+    string price = 3;
+    bool use_market_based_price = 4;
+    double market_price_margin_pct = 5;
+    uint64 amount = 6 [jstype = JS_STRING];
+    uint64 min_amount = 7 [jstype = JS_STRING];
+    double buyer_security_deposit_pct = 8;
+    string trigger_price = 9;
+    bool reserve_exact_amount = 10;
+    string payment_account_id = 11;
+}
+
+message PostOfferReply {
+    OfferInfo offer = 1;
+}
+
+message CancelOfferRequest {
+    string id = 1;
+}
+
+message CancelOfferReply {
+}
+
+message OfferInfo {
+    string id = 1;
+    string direction = 2;
+    string price = 3;
+    bool use_market_based_price = 4;
+    double market_price_margin_pct = 5;
+    uint64 amount = 6 [jstype = JS_STRING];
+    uint64 min_amount = 7 [jstype = JS_STRING];
+    double maker_fee_pct = 8;
+    double taker_fee_pct = 9;
+    double penalty_fee_pct = 10;
+    double buyer_security_deposit_pct = 11;
+    double seller_security_deposit_pct = 12;
+    string volume = 13;
+    string min_volume = 14;
+    string trigger_price = 15;
+    string payment_account_id = 16;
+    string payment_method_id = 17;
+    string payment_method_short_name = 18;
+    string base_currency_code = 19;
+    string counter_currency_code = 20;
+    uint64 date = 21;
+    string state = 22;
+    bool is_activated = 23;
+    bool is_my_offer = 24;
+    string owner_node_address = 25;
+    string pub_key_ring = 26;
+    string version_nr = 27;
+    int32 protocol_version = 28;
+    string arbitrator_signer = 29;
+    string split_output_tx_hash = 30;
+    uint64 split_output_tx_fee = 31 [jstype = JS_STRING];
+}
+
+message AvailabilityResultWithDescription {
+    AvailabilityResult availability_result = 1;
+    string description = 2;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// PaymentAccounts
+///////////////////////////////////////////////////////////////////////////////////////////
+
+service PaymentAccounts {
+    rpc CreatePaymentAccount (CreatePaymentAccountRequest) returns (CreatePaymentAccountReply) {
+    }
+    rpc GetPaymentAccounts (GetPaymentAccountsRequest) returns (GetPaymentAccountsReply) {
+    }
+    rpc GetPaymentMethods (GetPaymentMethodsRequest) returns (GetPaymentMethodsReply) {
+    }
+    rpc GetPaymentAccountForm (GetPaymentAccountFormRequest) returns (GetPaymentAccountFormReply) {
+    }
+    rpc GetPaymentAccountFormAsJson (GetPaymentAccountFormAsJsonRequest) returns (GetPaymentAccountFormAsJsonReply) {
+    }
+    rpc CreateCryptoCurrencyPaymentAccount (CreateCryptoCurrencyPaymentAccountRequest) returns (CreateCryptoCurrencyPaymentAccountReply) {
+    }
+    rpc GetCryptoCurrencyPaymentMethods (GetCryptoCurrencyPaymentMethodsRequest) returns (GetCryptoCurrencyPaymentMethodsReply) {
+    }
+    rpc ValidateFormField (ValidateFormFieldRequest) returns (ValidateFormFieldReply) {
+    }
+}
+
+message CreatePaymentAccountRequest {
+    PaymentAccountForm payment_account_form = 1;
+    string payment_account_form_as_json = 2;
+}
+
+message CreatePaymentAccountReply {
+    PaymentAccount payment_account = 1;
+}
+
+message GetPaymentAccountsRequest {
+}
+
+message GetPaymentAccountsReply {
+    repeated PaymentAccount payment_accounts = 1;
+}
+
+message GetPaymentMethodsRequest {
+}
+
+message GetPaymentMethodsReply {
+    repeated PaymentMethod payment_methods = 1;
+}
+
+message GetPaymentAccountFormRequest {
+    string payment_method_id = 1;
+    PaymentAccountPayload payment_account_payload = 2;
+}
+
+message GetPaymentAccountFormReply {
+    PaymentAccountForm payment_account_form = 1;
+}
+
+message GetPaymentAccountFormAsJsonRequest {
+    string payment_method_id = 1;
+}
+
+message GetPaymentAccountFormAsJsonReply {
+    string payment_account_form_as_json = 1;
+}
+
+message CreateCryptoCurrencyPaymentAccountRequest {
+    string account_name = 1;
+    string currency_code = 2;
+    string address = 3;
+    bool trade_instant = 4;
+}
+
+message CreateCryptoCurrencyPaymentAccountReply {
+    PaymentAccount payment_account = 1;
+}
+
+message GetCryptoCurrencyPaymentMethodsRequest {
+}
+
+message GetCryptoCurrencyPaymentMethodsReply {
+    repeated PaymentMethod payment_methods = 1;
+}
+
+message ValidateFormFieldRequest {
+    PaymentAccountForm form = 1;
+    PaymentAccountFormField.FieldId field_id = 2;
+    string value = 3;
+}
+
+message ValidateFormFieldReply {
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Price
+///////////////////////////////////////////////////////////////////////////////////////////
+
+service Price {
+    rpc GetMarketPrice (MarketPriceRequest) returns (MarketPriceReply) {
+    }
+    rpc GetMarketPrices (MarketPricesRequest) returns (MarketPricesReply) {
+    }
+    rpc GetMarketDepth (MarketDepthRequest) returns (MarketDepthReply) {
+    }
+}
+
+message MarketPriceRequest {
+    string currency_code = 1;
+}
+
+message MarketPriceReply {
+    double price = 1;
+}
+
+message MarketPricesRequest {
+}
+
+message MarketPricesReply {
+    repeated MarketPriceInfo market_price = 1;
+}
+
+message MarketPriceInfo {
+    string currency_code = 1;
+    double price = 2;
+}
+
+message MarketDepthRequest {
+    string currency_code = 1;
+}
+
+message MarketDepthReply {
+    MarketDepthInfo market_depth = 1;
+}
+
+message MarketDepthInfo {
+    string currency_code = 1;
+    repeated double buy_prices = 2;
+    repeated double buy_depth = 3;
+    repeated double sell_prices = 4;
+    repeated double sell_depth = 5;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// GetTradeStatistics
+///////////////////////////////////////////////////////////////////////////////////////////
+
+service GetTradeStatistics {
+    rpc GetTradeStatistics (GetTradeStatisticsRequest) returns (GetTradeStatisticsReply) {
+    }
+}
+
+message GetTradeStatisticsRequest {
+}
+
+message GetTradeStatisticsReply {
+    repeated TradeStatistics3 trade_statistics = 1;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Shutdown
+///////////////////////////////////////////////////////////////////////////////////////////
+
+service ShutdownServer {
+    rpc Stop (StopRequest) returns (StopReply) {
+    }
+}
+
+message StopRequest {
+}
+
+message StopReply {
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Trades
+///////////////////////////////////////////////////////////////////////////////////////////
+
+service Trades {
+    rpc GetTrade (GetTradeRequest) returns (GetTradeReply) {
+    }
+    rpc GetTrades (GetTradesRequest) returns (GetTradesReply) {
+    }
+    rpc TakeOffer (TakeOfferRequest) returns (TakeOfferReply) {
+    }
+    rpc ConfirmPaymentSent (ConfirmPaymentSentRequest) returns (ConfirmPaymentSentReply) {
+    }
+    rpc ConfirmPaymentReceived (ConfirmPaymentReceivedRequest) returns (ConfirmPaymentReceivedReply) {
+    }
+    rpc CompleteTrade (CompleteTradeRequest) returns (CompleteTradeReply) {
+    }
+    rpc WithdrawFunds (WithdrawFundsRequest) returns (WithdrawFundsReply) {
+    }
+    rpc GetChatMessages (GetChatMessagesRequest) returns (GetChatMessagesReply) {
+    }
+    rpc SendChatMessage (SendChatMessageRequest) returns (SendChatMessageReply) {
+    }
+}
+
+message TakeOfferRequest {
+    string offer_id = 1;
+    string payment_account_id = 2;
+    uint64 amount = 3 [jstype = JS_STRING];
+}
+
+message TakeOfferReply {
+    TradeInfo trade = 1;
+    AvailabilityResultWithDescription failure_reason = 2;
+}
+
+message ConfirmPaymentSentRequest {
+    string trade_id = 1;
+}
+
+message ConfirmPaymentSentReply {
+}
+
+message ConfirmPaymentReceivedRequest {
+    string trade_id = 1;
+}
+
+message ConfirmPaymentReceivedReply {
+}
+
+message GetTradeRequest {
+    string trade_id = 1;
+}
+
+message GetTradeReply {
+    TradeInfo trade = 1;
+}
+
+message GetTradesRequest {
+    // Rpc method GetTrades parameter determining what category of trade list is is being requested.
+    enum Category {
+        OPEN = 0;       // Get all currently open trades.
+        CLOSED = 1;     // Get all completed trades.
+        FAILED = 2;     // Get all failed trades.
+    }
+    Category category = 1;
+}
+
+message GetTradesReply {
+    repeated TradeInfo trades = 1;
+}
+
+message CompleteTradeRequest {
+    string trade_id = 1;
+}
+
+message CompleteTradeReply {
+}
+
+message WithdrawFundsRequest {
+    string trade_id = 1;
+    string address = 2;
+    string memo = 3;
+}
+
+message WithdrawFundsReply {
+}
+
+message GetChatMessagesRequest {
+    string trade_id = 1;
+}
+
+message GetChatMessagesReply {
+    repeated ChatMessage message = 1;
+}
+
+message SendChatMessageRequest {
+    string trade_id = 1;
+    string message = 2;
+}
+
+message SendChatMessageReply {
+}
+
+message TradeInfo {
+    OfferInfo offer = 1;
+    string trade_id = 2;
+    string short_id = 3;
+    uint64 date = 4;
+    string role = 5;
+    uint64 amount = 6 [jstype = JS_STRING];
+    uint64 maker_fee = 7 [jstype = JS_STRING];
+    uint64 taker_fee = 8 [jstype = JS_STRING];
+    uint64 buyer_security_deposit = 9 [jstype = JS_STRING];
+    uint64 seller_security_deposit = 10 [jstype = JS_STRING];
+    uint64 buyer_deposit_tx_fee = 11 [jstype = JS_STRING];
+    uint64 seller_deposit_tx_fee = 12 [jstype = JS_STRING];
+    uint64 buyer_payout_tx_fee = 13 [jstype = JS_STRING];
+    uint64 seller_payout_tx_fee = 14 [jstype = JS_STRING];
+    uint64 buyer_payout_amount = 15 [jstype = JS_STRING];
+    uint64 seller_payout_amount = 16 [jstype = JS_STRING];
+    string price = 17;
+    string arbitrator_node_address = 18;
+    string trade_peer_node_address = 19;
+    string state = 20;
+    string phase = 21;
+    string period_state = 22;
+    string payout_state = 23;
+    string dispute_state = 24;
+    bool is_deposits_published = 25;
+    bool is_deposits_confirmed = 26;
+    bool is_deposits_unlocked = 27;
+    bool is_payment_sent = 28;
+    bool is_payment_received = 29;
+    bool is_payout_published = 30;
+    bool is_payout_confirmed = 31;
+    bool is_payout_unlocked = 32;
+    bool is_completed = 33;
+    string contract_as_json = 34;
+    ContractInfo contract = 35;
+    string trade_volume = 36;
+    string maker_deposit_tx_id = 37;
+    string taker_deposit_tx_id = 38;
+    string payout_tx_id = 39;
+}
+
+message ContractInfo {
+    string buyer_node_address = 1;
+    string seller_node_address = 2;
+    string arbitrator_node_address = 3;
+    reserved 4; // was mediator_node_address
+    reserved 5; // was refund_agent_node_address
+    bool is_buyer_maker_and_seller_taker = 6;
+    string maker_account_id = 7;
+    string taker_account_id = 8;
+    PaymentAccountPayload maker_payment_account_payload = 9;
+    PaymentAccountPayload taker_payment_account_payload = 10;
+    string maker_payout_address_string = 11;
+    string taker_payout_address_string = 12;
+    uint64 lock_time = 13;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Wallets
+///////////////////////////////////////////////////////////////////////////////////////////
+
+service Wallets {
+    rpc GetBalances (GetBalancesRequest) returns (GetBalancesReply) {
+    }
+    rpc GetXmrSeed (GetXmrSeedRequest) returns (GetXmrSeedReply) {
+    }
+    rpc GetXmrPrimaryAddress (GetXmrPrimaryAddressRequest) returns (GetXmrPrimaryAddressReply) {
+    }
+    rpc GetXmrNewSubaddress (GetXmrNewSubaddressRequest) returns (GetXmrNewSubaddressReply) {
+    }
+    rpc GetXmrTxs (GetXmrTxsRequest) returns (GetXmrTxsReply) {
+    }
+    rpc CreateXmrTx (CreateXmrTxRequest) returns (CreateXmrTxReply) {
+    }
+    rpc relayXmrTx (RelayXmrTxRequest) returns (RelayXmrTxReply) {
+    }
+    rpc GetAddressBalance (GetAddressBalanceRequest) returns (GetAddressBalanceReply) {
+    }
+    rpc GetFundingAddresses (GetFundingAddressesRequest) returns (GetFundingAddressesReply) {
+    }
+    rpc SetWalletPassword (SetWalletPasswordRequest) returns (SetWalletPasswordReply) {
+    }
+    rpc RemoveWalletPassword (RemoveWalletPasswordRequest) returns (RemoveWalletPasswordReply) {
+    }
+    rpc LockWallet (LockWalletRequest) returns (LockWalletReply) {
+    }
+    rpc UnlockWallet (UnlockWalletRequest) returns (UnlockWalletReply) {
+    }
+}
+
+message GetBalancesRequest {
+    string currency_code = 1;
+}
+
+message GetBalancesReply {
+    BalancesInfo balances = 1;
+}
+
+message GetXmrSeedRequest {
+}
+
+message GetXmrSeedReply {
+    string seed = 1;
+}
+
+message GetXmrPrimaryAddressRequest {
+}
+
+message GetXmrPrimaryAddressReply {
+    string primary_address = 1;
+}
+
+message GetXmrNewSubaddressRequest {
+}
+
+message GetXmrNewSubaddressReply {
+    string subaddress = 1;
+}
+
+message GetXmrTxsRequest {
+}
+
+message GetXmrTxsReply {
+    repeated XmrTx txs = 1;
+}
+
+message XmrTx {
+    string hash = 1;
+    string fee = 2;
+    bool is_confirmed = 3;
+    bool is_locked = 4;
+    uint64 height = 5;
+    uint64 timestamp = 6;
+    repeated XmrIncomingTransfer incoming_transfers = 7;
+    XmrOutgoingTransfer outgoing_transfer = 8;
+    string metadata = 9;
+}
+
+message XmrDestination {
+    string address = 1;
+    string amount = 2;
+}
+
+message XmrIncomingTransfer {
+    string amount = 1;
+    int32 account_index = 2;
+    int32 subaddress_index = 3;
+    string address = 4;
+    uint64 num_suggested_confirmations = 5;
+}
+
+message XmrOutgoingTransfer {
+    string amount = 1;
+    int32 account_index = 2;
+    repeated int32 subaddress_indices = 3;
+    repeated XmrDestination destinations = 4;
+}
+
+message CreateXmrTxRequest {
+    repeated XmrDestination destinations = 1;
+}
+
+message CreateXmrTxReply {
+    XmrTx tx = 1;
+}
+
+message RelayXmrTxRequest {
+    string metadata = 1;
+}
+
+message RelayXmrTxReply {
+    string hash = 1;
+}
+
+message GetAddressBalanceRequest {
+    string address = 1;
+}
+
+message GetAddressBalanceReply {
+    AddressBalanceInfo address_balance_info = 1;
+}
+
+message SendBtcRequest {
+    string address = 1;
+    string amount = 2;
+    string tx_fee_rate = 3;
+    string memo = 4;
+}
+
+message GetFundingAddressesRequest {
+}
+
+message GetFundingAddressesReply {
+    repeated AddressBalanceInfo address_balance_info = 1;
+}
+
+message SetWalletPasswordRequest {
+    string password = 1;
+    string new_password = 2;
+}
+
+message SetWalletPasswordReply {
+}
+
+message RemoveWalletPasswordRequest {
+    string password = 1;
+}
+
+message RemoveWalletPasswordReply {
+}
+
+message LockWalletRequest {
+}
+
+message LockWalletReply {
+}
+
+message UnlockWalletRequest {
+    string password = 1;
+    uint64 timeout = 2;
+}
+
+message UnlockWalletReply {
+}
+
+message BalancesInfo {
+    // Field names are shortened for readability's sake, i.e.,
+    // balancesInfo.getBtc().getAvailableBalance() is cleaner than
+    // balancesInfo.getBtcBalanceInfo().getAvailableBalance().
+    BtcBalanceInfo btc = 1;
+    XmrBalanceInfo xmr = 2;
+}
+
+message BtcBalanceInfo {
+    uint64 available_balance = 1;
+    uint64 reserved_balance = 2;
+    uint64 total_available_balance = 3;
+    uint64 locked_balance = 4;
+}
+
+message XmrBalanceInfo {
+    uint64 balance = 1 [jstype = JS_STRING];
+    uint64 available_balance = 2 [jstype = JS_STRING];
+    uint64 pending_balance = 3 [jstype = JS_STRING];
+    uint64 reserved_offer_balance = 4 [jstype = JS_STRING];
+    uint64 reserved_trade_balance = 5 [jstype = JS_STRING];
+}
+
+message AddressBalanceInfo {
+    string address = 1;
+    int64 balance = 2;
+    int64 num_confirmations = 3;
+    bool is_address_unused = 4;
+}

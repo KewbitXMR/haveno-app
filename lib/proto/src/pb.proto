@@ -1,0 +1,1965 @@
+syntax = "proto3";
+package io.haveno.protobuffer;
+
+//
+// Protobuffer v3 definitions of network messages and persisted objects.
+//
+
+
+option java_package = "protobuf";
+option java_multiple_files = true;
+///////////////////////////////////////////////////////////////////////////////////////////
+// Network messages
+///////////////////////////////////////////////////////////////////////////////////////////
+
+// Those are messages sent over wire
+message NetworkEnvelope {
+    string message_version = 1;
+    oneof message {
+        PreliminaryGetDataRequest preliminary_get_data_request = 2;
+        GetDataResponse get_data_response = 3;
+        GetUpdatedDataRequest get_updated_data_request = 4;
+
+        GetPeersRequest get_peers_request = 5;
+        GetPeersResponse get_peers_response = 6;
+        Ping ping = 7;
+        Pong pong = 8;
+
+        OfferAvailabilityRequest offer_availability_request = 9;
+        OfferAvailabilityResponse offer_availability_response = 10;
+        RefreshOfferMessage refresh_offer_message = 11;
+
+        AddDataMessage add_data_message = 12;
+        RemoveDataMessage remove_data_message = 13;
+        RemoveMailboxDataMessage remove_mailbox_data_message = 14;
+
+        CloseConnectionMessage close_connection_message = 15;
+        PrefixedSealedAndSignedMessage prefixed_sealed_and_signed_message = 16;
+
+        PrivateNotificationMessage private_notification_message = 17;
+
+        AddPersistableNetworkPayloadMessage add_persistable_network_payload_message = 18;
+        AckMessage ack_message = 19;
+
+        BundleOfEnvelopes bundle_of_envelopes = 20;
+
+        GetInventoryRequest get_inventory_request = 21;
+        GetInventoryResponse get_inventory_response = 22;
+
+        SignOfferRequest sign_offer_request = 23;
+        SignOfferResponse sign_offer_response = 24;
+        InitTradeRequest init_trade_request = 25;
+        InitMultisigRequest init_multisig_request = 26;
+        SignContractRequest sign_contract_request = 27;
+        SignContractResponse sign_contract_response = 28;
+        DepositRequest deposit_request = 29;
+        DepositResponse deposit_response = 30;
+        DepositsConfirmedMessage deposits_confirmed_message = 31;
+        PaymentSentMessage payment_sent_message = 32;
+        PaymentReceivedMessage payment_received_message = 33;
+
+        DisputeOpenedMessage dispute_opened_message = 34;
+        DisputeClosedMessage dispute_closed_message = 35;
+        ChatMessage chat_message = 36;
+
+        MediatedPayoutTxSignatureMessage mediated_payout_tx_signature_message = 37;
+        MediatedPayoutTxPublishedMessage mediated_payout_tx_published_message = 38;
+
+        FileTransferPart file_transfer_part = 39;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Implementations of NetworkEnvelope
+///////////////////////////////////////////////////////////////////////////////////////////
+
+message BundleOfEnvelopes {
+    repeated NetworkEnvelope envelopes = 1;
+}
+
+// get data
+
+message PreliminaryGetDataRequest {
+    int32 nonce = 21; // This was set to 21 instead of 1 in some old commit so we cannot change it.
+    repeated bytes excluded_keys = 2;
+    repeated int32 supported_capabilities = 3;
+    string version = 4;
+}
+
+message GetDataResponse {
+    int32 request_nonce = 1;
+    bool is_get_updated_data_response = 2;
+    repeated StorageEntryWrapper data_set = 3;
+    repeated int32 supported_capabilities = 4;
+    repeated PersistableNetworkPayload persistable_network_payload_items = 5;
+    bool was_truncated = 6;
+}
+
+message GetUpdatedDataRequest {
+    NodeAddress sender_node_address = 1;
+    int32 nonce = 2;
+    repeated bytes excluded_keys = 3;
+    string version = 4;
+}
+
+message FileTransferPart {
+    NodeAddress sender_node_address = 1;
+    string uid = 2;
+    string trade_id = 3;
+    int32 trader_id = 4;
+    int64 seq_num_or_file_length = 5;
+    bytes message_data = 6;
+}
+
+message GetPeersRequest {
+    NodeAddress sender_node_address = 1;
+    int32 nonce = 2;
+    repeated int32 supported_capabilities = 3;
+    repeated Peer reported_peers = 4;
+}
+
+message GetPeersResponse {
+    int32 request_nonce = 1;
+    repeated Peer reported_peers = 2;
+    repeated int32 supported_capabilities = 3;
+}
+
+message Ping {
+    int32 nonce = 1;
+    int32 last_round_trip_time = 2;
+}
+
+message Pong {
+    int32 request_nonce = 1;
+}
+
+message GetInventoryRequest {
+    string version = 1;
+}
+
+message GetInventoryResponse {
+    map<string, string> inventory = 1;
+}
+
+message SignOfferRequest {
+    string offer_id = 1;
+    NodeAddress sender_node_address = 2;
+    PubKeyRing pub_key_ring = 3;
+    string sender_account_id = 4;
+    OfferPayload offer_payload = 5;
+    string uid = 6;
+    int64 current_date = 7;
+    string reserve_tx_hash = 8;
+    string reserve_tx_hex = 9;
+    string reserve_tx_key = 10;
+    repeated string reserve_tx_key_images = 11;
+    string payout_address = 12;
+}
+
+message SignOfferResponse {
+    string offer_id = 1;
+    string uid = 2;
+    OfferPayload signed_offer_payload = 3;
+}
+
+message OfferAvailabilityRequest {
+    string offer_id = 1;
+    PubKeyRing pub_key_ring = 2;
+    int64 takers_trade_price = 3;
+    repeated int32 supported_capabilities = 4;
+    string uid = 5;
+    bool is_taker_api_user = 6;
+    InitTradeRequest trade_request = 7;
+}
+
+message OfferAvailabilityResponse {
+    string offer_id = 1;
+    AvailabilityResult availability_result = 2;
+    repeated int32 supported_capabilities = 3;
+    string uid = 4;
+    bytes maker_signature = 5;
+}
+
+message RefreshOfferMessage {
+    bytes hash_of_data_and_seq_nr = 1;
+    bytes signature = 2;
+    bytes hash_of_payload = 3;
+    int32 sequence_number = 4;
+}
+
+message AddDataMessage {
+    StorageEntryWrapper entry = 1;
+}
+
+message RemoveDataMessage {
+    ProtectedStorageEntry protected_storage_entry = 1;
+}
+
+message RemoveMailboxDataMessage {
+    ProtectedMailboxStorageEntry protected_storage_entry = 1;
+}
+
+message AddPersistableNetworkPayloadMessage {
+    PersistableNetworkPayload payload = 1;
+}
+
+message CloseConnectionMessage {
+    string reason = 1;
+}
+
+message AckMessage {
+    string uid = 1;
+    NodeAddress sender_node_address = 2;
+    string source_type = 3; // enum name. e.g.  TradeMessage, DisputeMessage,...
+    string source_msg_class_name = 4;
+    string source_uid = 5; // uid of source (TradeMessage)
+    string source_id = 6; // id of source (tradeId, disputeId)
+    bool success = 7; // true if source message was processed successfully
+    string error_message = 8; // optional error message if source message processing failed
+}
+
+message PrefixedSealedAndSignedMessage {
+    NodeAddress node_address = 1;
+    SealedAndSigned sealed_and_signed = 2;
+    bytes address_prefix_hash = 3;
+    string uid = 4;
+}
+
+enum TradeProtocolVersion {
+    MULTISIG_2_3 = 0;
+}
+
+message InitTradeRequest {
+    TradeProtocolVersion trade_protocol_version = 1;
+    string offer_id = 2;
+    int64 trade_amount = 3;
+    int64 trade_price = 4;
+    string payment_method_id = 5;
+    string maker_account_id = 6;
+    string taker_account_id = 7;
+    string maker_payment_account_id = 8;
+    string taker_payment_account_id = 9;
+    PubKeyRing taker_pub_key_ring = 10;
+    string uid = 11;
+    bytes account_age_witness_signature_of_offer_id = 12;
+    int64 current_date = 13;
+    NodeAddress maker_node_address = 14;
+    NodeAddress taker_node_address = 15;
+    NodeAddress arbitrator_node_address = 16;
+    string reserve_tx_hash = 17;
+    string reserve_tx_hex = 18;
+    string reserve_tx_key = 19;
+    string payout_address = 20;
+}
+
+message InitMultisigRequest {
+    string trade_id = 1;
+    string uid = 2;
+    int64 current_date = 3;
+    string prepared_multisig_hex = 4;
+    string made_multisig_hex = 5;
+    string exchanged_multisig_hex = 6;
+    string trade_fee_address = 7;
+}
+
+message SignContractRequest {
+    string trade_id = 1;
+    string uid = 2;
+    int64 current_date = 3;
+    string account_id = 4;
+    bytes payment_account_payload_hash = 5;
+    string payout_address = 6;
+    string deposit_tx_hash = 7;
+    bytes account_age_witness_signature_of_deposit_hash = 8;
+}
+
+message SignContractResponse {
+    string trade_id = 1;
+    string uid = 2;
+    int64 current_date = 3;
+    string contract_as_json = 4;
+    bytes contract_signature = 5;
+    bytes encrypted_payment_account_payload = 6;
+}
+
+message DepositRequest {
+    string trade_id = 1;
+    string uid = 2;
+    int64 current_date = 3;
+    bytes contract_signature = 4;
+    string deposit_tx_hex = 5;
+    string deposit_tx_key = 6;
+    bytes payment_account_key = 7;
+}
+
+message DepositResponse {
+    string trade_id = 1;
+    string uid = 2;
+    int64 current_date = 3;
+    string error_message = 4;
+    int64 buyerSecurityDeposit = 5;
+    int64 sellerSecurityDeposit = 6;
+}
+
+message DepositsConfirmedMessage {
+    string trade_id = 1;
+    NodeAddress sender_node_address = 2;
+    PubKeyRing pub_key_ring = 3;
+    string uid = 4;
+    bytes seller_payment_account_key = 5;
+    string updated_multisig_hex = 6;
+}
+
+message PaymentSentMessage {
+    string trade_id = 1;
+    NodeAddress sender_node_address = 2;
+    string counter_currency_tx_id = 3;
+    string uid = 4;
+    string counter_currency_extra_data = 5;
+    string payout_tx_hex = 6;
+    string updated_multisig_hex = 7;
+    bytes payment_account_key = 8;
+    AccountAgeWitness seller_account_age_witness = 9;
+    bytes buyer_signature = 10;
+}
+
+message PaymentReceivedMessage {
+    string trade_id = 1;
+    NodeAddress sender_node_address = 2;
+    string uid = 3;
+    string unsigned_payout_tx_hex = 4;
+    string signed_payout_tx_hex = 5;
+    string updated_multisig_hex = 6;
+    bool defer_publish_payout = 7;
+    AccountAgeWitness buyer_account_age_witness = 8;
+    SignedWitness buyer_signed_witness = 9;
+    PaymentSentMessage payment_sent_message = 10;
+    bytes seller_signature = 11;
+}
+
+message MediatedPayoutTxPublishedMessage {
+    string trade_id = 1;
+    bytes payout_tx = 2;
+    NodeAddress sender_node_address = 3;
+    string uid = 4;
+}
+
+message MediatedPayoutTxSignatureMessage {
+    string uid = 1;
+    string trade_id = 3;
+    bytes tx_signature = 2;
+    NodeAddress sender_node_address = 4;
+}
+
+message ChatMessage {
+    int64 date = 1;
+    string trade_id = 2;
+    int32 trader_id = 3;
+    bool sender_is_trader = 4;
+    string message = 5;
+    repeated Attachment attachments = 6;
+    bool arrived = 7;
+    bool stored_in_mailbox = 8;
+    bool is_system_message = 9;
+    NodeAddress sender_node_address = 10;
+    string uid = 11;
+    string send_message_error = 12;
+    bool acknowledged = 13;
+    string ack_error = 14;
+    SupportType type = 15;
+    bool was_displayed = 16;
+}
+
+// dispute
+
+enum SupportType {
+    ARBITRATION = 0;
+    MEDIATION = 1;
+    TRADE = 2;
+    REFUND = 3;
+}
+
+message DisputeOpenedMessage {
+    Dispute dispute = 1;
+    NodeAddress sender_node_address = 2;
+    string uid = 3;
+    SupportType type = 4;
+    string updated_multisig_hex = 5;
+    PaymentSentMessage payment_sent_message = 6;
+}
+
+message DisputeClosedMessage {
+    string uid = 1;
+    DisputeResult dispute_result = 2;
+    NodeAddress sender_node_address = 3;
+    SupportType type = 4;
+    string updated_multisig_hex = 5;
+    string unsigned_payout_tx_hex = 6;
+    bool defer_publish_payout = 7;
+}
+
+message PrivateNotificationMessage {
+    string uid = 1;
+    NodeAddress sender_node_address = 2;
+    PrivateNotificationPayload private_notification_payload = 3;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Payload
+///////////////////////////////////////////////////////////////////////////////////////////
+
+// core
+
+message NodeAddress {
+    string host_name = 1;
+    int32 port = 2;
+}
+
+message Peer {
+    NodeAddress node_address = 1;
+    int64 date = 2;
+    repeated int32 supported_capabilities = 3;
+}
+
+message PubKeyRing {
+    bytes signature_pub_key_bytes = 1;
+    bytes encryption_pub_key_bytes = 2;
+}
+
+message SealedAndSigned {
+    bytes encrypted_secret_key = 1;
+    bytes encrypted_payload_with_hmac = 2;
+    bytes signature = 3;
+    bytes sig_public_key_bytes = 4;
+}
+
+// storage
+
+message StoragePayload {
+    oneof message {
+        Alert alert = 1;
+        Arbitrator arbitrator = 2;
+        Mediator mediator = 3;
+        Filter filter = 4;
+        MailboxStoragePayload mailbox_storage_payload = 5;
+        OfferPayload offer_payload = 6;
+        RefundAgent refund_agent = 7;
+    }
+}
+
+message PersistableNetworkPayload {
+    oneof message {
+        AccountAgeWitness account_age_witness = 1;
+        SignedWitness signed_witness = 2;
+        TradeStatistics3 trade_statistics3 = 3;
+    }
+}
+
+message ProtectedStorageEntry {
+    StoragePayload storagePayload = 1;
+    bytes owner_pub_key_bytes = 2;
+    int32 sequence_number = 3;
+    bytes signature = 4;
+    int64 creation_time_stamp = 5;
+}
+
+// mailbox
+
+message StorageEntryWrapper {
+    oneof message {
+        ProtectedStorageEntry protected_storage_entry = 1;
+        ProtectedMailboxStorageEntry protected_mailbox_storage_entry = 2;
+    }
+}
+
+message ProtectedMailboxStorageEntry {
+    ProtectedStorageEntry entry = 1;
+    bytes receivers_pub_key_bytes = 2;
+}
+
+message DataAndSeqNrPair {
+    StoragePayload payload = 1;
+    int32 sequence_number = 2;
+}
+
+message MailboxMessageList {
+    repeated MailboxItem mailbox_item = 1;
+}
+
+message RemovedPayloadsMap {
+    map<string, uint64> date_by_hashes = 1;
+}
+
+message IgnoredMailboxMap {
+    map<string, uint64> data = 1;
+}
+
+message MailboxItem {
+    ProtectedMailboxStorageEntry protected_mailbox_storage_entry = 1;
+    DecryptedMessageWithPubKey decrypted_message_with_pub_key = 2;
+}
+
+message DecryptedMessageWithPubKey {
+    NetworkEnvelope network_envelope = 1;
+    bytes signature_pub_key_bytes = 2;
+}
+
+// misc
+
+message PrivateNotificationPayload {
+    string message = 1;
+    string signature_as_base64 = 2;
+    bytes sig_public_key_bytes = 3;
+}
+
+message PaymentAccountFilter {
+    string payment_method_id = 1;
+    string get_method_name = 2;
+    string value = 3;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Storage payload
+///////////////////////////////////////////////////////////////////////////////////////////
+
+message Alert {
+    string message = 1;
+    string version = 2;
+    bool is_update_info = 3;
+    string signature_as_base64 = 4;
+    bytes owner_pub_key_bytes = 5;
+    map<string, string> extra_data = 6;
+    bool is_pre_release_info = 7;
+}
+
+message Arbitrator {
+    NodeAddress node_address = 1;
+    repeated string language_codes = 2;
+    int64 registration_date = 3;
+    string registration_signature = 4;
+    bytes registration_pub_key = 5;
+    PubKeyRing pub_key_ring = 6;
+    string email_address = 7;
+    string info = 8;
+    map<string, string> extra_data = 9;
+}
+
+message Mediator {
+    NodeAddress node_address = 1;
+    repeated string language_codes = 2;
+    int64 registration_date = 3;
+    string registration_signature = 4;
+    bytes registration_pub_key = 5;
+    PubKeyRing pub_key_ring = 6;
+    string email_address = 7;
+    string info = 8;
+    map<string, string> extra_data = 9;
+}
+
+message RefundAgent {
+    NodeAddress node_address = 1;
+    repeated string language_codes = 2;
+    int64 registration_date = 3;
+    string registration_signature = 4;
+    bytes registration_pub_key = 5;
+    PubKeyRing pub_key_ring = 6;
+    string email_address = 7;
+    string info = 8;
+    map<string, string> extra_data = 9;
+}
+
+message Filter {
+    repeated string node_addresses_banned_from_trading = 1;
+    repeated string banned_offer_ids = 2;
+    repeated PaymentAccountFilter banned_payment_accounts = 3;
+    string signature_as_base64 = 4;
+    bytes owner_pub_key_bytes = 5;
+    map<string, string> extra_data = 6;
+    repeated string banned_currencies = 7;
+    repeated string banned_payment_methods = 8;
+    repeated string arbitrators = 9;
+    repeated string seed_nodes = 10;
+    repeated string price_relay_nodes = 11;
+    bool prevent_public_xmr_network = 12;
+    repeated string xmr_nodes = 13;
+    string disable_trade_below_version = 14;
+    repeated string mediators = 15;
+    repeated string refundAgents = 16;
+    repeated string bannedSignerPubKeys = 17;
+    repeated string xmr_fee_receiver_addresses = 18;
+    int64 creation_date = 19;
+    string signer_pub_key_as_hex = 20;
+    repeated string bannedPrivilegedDevPubKeys = 21;
+    bool disable_auto_conf = 22;
+    repeated string banned_auto_conf_explorers = 23;
+    repeated string node_addresses_banned_from_network = 24;
+    bool disable_api = 25;
+    bool disable_mempool_validation = 26;
+}
+
+message TradeStatistics3 {
+    string currency = 1;
+    int64 price = 2;
+    int64 amount = 3;
+    string payment_method = 4;
+    int64 date = 5;
+    string arbitrator = 6;
+    bytes hash = 7;
+    string maker_deposit_tx_id = 8;
+    string taker_deposit_tx_id = 9;
+    map<string, string> extra_data = 10;
+}
+
+message MailboxStoragePayload {
+    PrefixedSealedAndSignedMessage prefixed_sealed_and_signed_message = 1;
+    bytes sender_pub_key_for_add_operation_bytes = 2;
+    bytes owner_pub_key_bytes = 3;
+    map<string, string> extra_data = 4;
+}
+
+message OfferPayload {
+    string id = 1;
+    int64 date = 2;
+    NodeAddress owner_node_address = 3;
+    PubKeyRing pub_key_ring = 4;
+    OfferDirection direction = 5;
+    int64 price = 6;
+    double market_price_margin_pct = 7;
+    bool use_market_based_price = 8;
+    int64 amount = 9;
+    int64 min_amount = 10;
+    double maker_fee_pct = 11;
+    double taker_fee_pct = 12;
+    double penalty_fee_pct = 13;
+    double buyer_security_deposit_pct = 14;
+    double seller_security_deposit_pct = 15;
+    string base_currency_code = 16;
+    string counter_currency_code = 17;
+    string payment_method_id = 18;
+    string maker_payment_account_id = 19;
+    string country_code = 20;
+    repeated string accepted_country_codes = 21;
+    string bank_id = 22;
+    repeated string accepted_bank_ids = 23;
+    string version_nr = 24;
+    int64 block_height_at_offer_creation = 25;
+    int64 max_trade_limit = 26;
+    int64 max_trade_period = 27;
+    bool use_auto_close = 28;
+    bool use_re_open_after_auto_close = 29;
+    int64 lower_close_price = 30;
+    int64 upper_close_price = 31;
+    bool is_private_offer = 32;
+    string hash_of_challenge = 33;
+    map<string, string> extra_data = 34;
+    int32 protocol_version = 35;
+    NodeAddress arbitrator_signer = 36;
+    bytes arbitrator_signature = 37;
+    repeated string reserve_tx_key_images = 38;
+}
+
+enum OfferDirection {
+    OFFER_DIRECTION_UNDEFINED = 0;
+    BUY = 1;
+    SELL = 2;
+}
+
+message AccountAgeWitness {
+    bytes hash = 1;
+    int64 date = 2;
+}
+
+message SignedWitness {
+    enum VerificationMethod {
+        PB_ERROR = 0;
+        ARBITRATOR = 1;
+        TRADE = 2;
+    }
+
+    VerificationMethod verification_method = 1;
+    bytes account_age_witness_hash = 2;
+    bytes signature = 3;
+    bytes signer_pub_key = 4;
+    bytes witness_owner_pub_key = 5;
+    int64 date = 6;
+    int64 trade_amount = 7;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Dispute payload
+///////////////////////////////////////////////////////////////////////////////////////////
+
+
+message Dispute {
+    enum State {
+        NEEDS_UPGRADE = 0;
+        NEW = 1;
+        OPEN = 2;
+        REOPENED = 3;
+        CLOSED = 4;
+    }
+    string trade_id = 1;
+    string id = 2;
+    int32 trader_id = 3;
+    bool is_opener = 4;
+    bool dispute_opener_is_buyer = 5;
+    bool dispute_opener_is_maker = 6;
+    int64 opening_date = 7;
+    PubKeyRing trader_pub_key_ring = 8;
+    int64 trade_date = 9;
+    Contract contract = 10;
+    bytes contract_hash = 11;
+    bytes payout_tx_serialized = 12;
+    string payout_tx_id = 13;
+    string contract_as_json = 14;
+    bytes maker_contract_signature = 15;
+    bytes taker_contract_signature = 16;
+    PaymentAccountPayload maker_payment_account_payload = 17;
+    PaymentAccountPayload taker_payment_account_payload = 18;
+    PubKeyRing agent_pub_key_ring = 19;
+    bool is_support_ticket = 20;
+    repeated ChatMessage chat_message = 21;
+    bool is_closed = 22;
+    DisputeResult dispute_result = 23;
+    string dispute_payout_tx_id = 24;
+    SupportType support_type = 25;
+    string mediators_dispute_result = 26;
+    string delayed_payout_tx_id = 27;
+    string donation_address_of_delayed_payout_tx = 28;
+    State state = 29;
+    int64 trade_period_end = 30;
+    map<string, string> extra_data = 31;
+}
+
+message Attachment {
+    string file_name = 1;
+    bytes bytes = 2;
+}
+
+message DisputeResult {
+    enum Winner {
+        PB_ERROR_WINNER = 0;
+        BUYER = 1;
+        SELLER = 2;
+    }
+
+    enum Reason {
+        PB_ERROR_REASON = 0;
+        OTHER = 1;
+        BUG = 2;
+        USABILITY = 3;
+        SCAM = 4;
+        PROTOCOL_VIOLATION = 5;
+        NO_REPLY = 6;
+        BANK_PROBLEMS = 7;
+        OPTION_TRADE = 8;
+        SELLER_NOT_RESPONDING = 9;
+        WRONG_SENDER_ACCOUNT = 10;
+        TRADE_ALREADY_SETTLED = 11;
+        PEER_WAS_LATE = 12;
+    }
+
+    enum SubtractFeeFrom {
+        BUYER_ONLY = 0;
+        SELLER_ONLY = 1;
+        BUYER_AND_SELLER = 2;
+    }
+
+    string trade_id = 1;
+    int32 trader_id = 2;
+    Winner winner = 3;
+    int32 reason_ordinal = 4;
+    bool tamper_proof_evidence = 5;
+    bool id_verification = 6;
+    bool screen_cast = 7;
+    string summary_notes = 8;
+    ChatMessage chat_message = 9;
+    bytes arbitrator_signature = 10;
+    int64 buyer_payout_amount_before_cost = 11;
+    int64 seller_payout_amount_before_cost = 12;
+    SubtractFeeFrom subtract_fee_from = 13;
+    bytes arbitrator_pub_key = 14;
+    int64 close_date = 15;
+    bool is_loser_publisher = 16;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Trade payload
+///////////////////////////////////////////////////////////////////////////////////////////
+
+message Contract {
+    OfferPayload offer_payload = 1;
+    int64 trade_amount = 2;
+    int64 trade_price = 3;
+    NodeAddress arbitrator_node_address = 4;
+    bool is_buyer_maker_and_seller_taker = 5;
+    string maker_account_id = 6;
+    string taker_account_id = 7;
+    string maker_payment_method_id = 8;
+    string taker_payment_method_id = 9;
+    bytes maker_payment_account_payload_hash = 10;
+    bytes taker_payment_account_payload_hash = 11;
+    PubKeyRing maker_pub_key_ring = 12;
+    PubKeyRing taker_pub_key_ring = 13;
+    NodeAddress buyer_node_address = 14;
+    NodeAddress seller_node_address = 15;
+    string maker_payout_address_string = 16;
+    string taker_payout_address_string = 17;
+    string maker_deposit_tx_hash = 18;
+    string taker_deposit_tx_hash = 19;
+}
+
+message RawTransactionInput {
+    int64 index = 1;
+    bytes parent_transaction = 2;
+    int64 value = 3;
+}
+
+enum AvailabilityResult {
+    PB_ERROR = 0;
+    UNKNOWN_FAILURE = 1;
+    AVAILABLE = 2;
+    OFFER_TAKEN = 3;
+    PRICE_OUT_OF_TOLERANCE = 4;
+    MARKET_PRICE_NOT_AVAILABLE = 5;
+    NO_ARBITRATORS = 6;
+    NO_MEDIATORS = 7;
+    USER_IGNORED = 8;
+    MISSING_MANDATORY_CAPABILITY = 9;
+    NO_REFUND_AGENTS = 10;
+    UNCONF_TX_LIMIT_HIT = 11;
+    MAKER_DENIED_API_USER = 12;
+    PRICE_CHECK_FAILED = 13;
+    MAKER_DENIED_TAKER = 14;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// PaymentAccount payload
+///////////////////////////////////////////////////////////////////////////////////////////
+
+
+message PaymentAccountPayload {
+    string id = 1;
+    string payment_method_id = 2;
+    int64 max_trade_period = 3; // not used
+    map<string, string> exclude_from_json_data = 4;
+    oneof message {
+        AliPayAccountPayload ali_pay_account_payload = 5;
+        ChaseQuickPayAccountPayload chase_quick_pay_account_payload = 6;
+        ZelleAccountPayload zelle_account_payload = 7;
+        CountryBasedPaymentAccountPayload country_based_payment_account_payload = 8;
+        CryptoCurrencyAccountPayload crypto_currency_account_payload = 9;
+        FasterPaymentsAccountPayload faster_payments_account_payload = 10;
+        InteracETransferAccountPayload interac_e_transfer_account_payload = 11;
+        OKPayAccountPayload o_k_pay_account_payload = 12 [deprecated = true];
+        PerfectMoneyAccountPayload perfect_money_account_payload = 13;
+        SwishAccountPayload swish_account_payload = 14;
+        USPostalMoneyOrderAccountPayload u_s_postal_money_order_account_payload = 15;
+        UpholdAccountPayload uphold_account_payload = 16;
+        CashAppAccountPayload cash_app_account_payload = 17;
+        MoneyBeamAccountPayload money_beam_account_payload = 18;
+        VenmoAccountPayload venmo_account_payload = 19;
+        PopmoneyAccountPayload popmoney_account_payload = 20;
+        RevolutAccountPayload revolut_account_payload = 21;
+        WeChatPayAccountPayload we_chat_pay_account_payload = 22;
+        MoneyGramAccountPayload money_gram_account_payload = 23;
+        HalCashAccountPayload hal_cash_account_payload = 24;
+        PromptPayAccountPayload prompt_pay_account_payload = 25;
+        AdvancedCashAccountPayload advanced_cash_account_payload = 26;
+        InstantCryptoCurrencyAccountPayload instant_crypto_currency_account_payload = 27;
+        JapanBankAccountPayload japan_bank_account_payload = 28;
+        TransferwiseAccountPayload Transferwise_account_payload = 29;
+        AustraliaPayidPayload australia_payid_payload = 30;
+        AmazonGiftCardAccountPayload amazon_gift_card_account_payload = 31;
+        PayByMailAccountPayload pay_by_mail_account_payload = 32;
+        CapitualAccountPayload capitual_account_payload = 33;
+        PayseraAccountPayload Paysera_account_payload = 34;
+        PaxumAccountPayload Paxum_account_payload = 35;
+        SwiftAccountPayload swift_account_payload = 36;
+        CelPayAccountPayload cel_pay_account_payload = 37;
+        MoneseAccountPayload monese_account_payload = 38;
+        VerseAccountPayload verse_account_payload = 39;
+        CashAtAtmAccountPayload cash_at_atm_account_payload = 40;
+        PayPalAccountPayload paypal_account_payload = 41;
+    }
+}
+
+message AliPayAccountPayload {
+    string account_nr = 1;
+}
+
+message WeChatPayAccountPayload {
+    string account_nr = 1;
+}
+
+message ChaseQuickPayAccountPayload {
+    string email = 1;
+    string holder_name = 2;
+}
+
+message ZelleAccountPayload {
+    string holder_name = 1;
+    string email_or_mobile_nr = 2;
+}
+
+message CountryBasedPaymentAccountPayload {
+    string country_code = 1;
+    repeated string accepted_country_codes = 2;
+    oneof message {
+        BankAccountPayload bank_account_payload = 3;
+        CashDepositAccountPayload cash_deposit_account_payload = 4;
+        SepaAccountPayload sepa_account_payload = 5;
+        WesternUnionAccountPayload western_union_account_payload = 6;
+        SepaInstantAccountPayload sepa_instant_account_payload = 7;
+        F2FAccountPayload f2f_account_payload = 8;
+        UpiAccountPayload upi_account_payload = 9;
+        PaytmAccountPayload paytm_account_payload = 10;
+        IfscBasedAccountPayload ifsc_based_account_payload = 11;
+        NequiAccountPayload nequi_account_payload = 12;
+        BizumAccountPayload bizum_account_payload = 13;
+        PixAccountPayload pix_account_payload = 14;
+        SatispayAccountPayload satispay_account_payload = 15;
+        StrikeAccountPayload strike_account_payload = 16;
+        TikkieAccountPayload tikkie_account_payload = 17;
+        TransferwiseUsdAccountPayload transferwise_usd_account_payload = 18;
+        SwiftAccountPayload swift_account_payload = 19;
+    }
+}
+
+message BankAccountPayload {
+    string holder_name = 1;
+    string bank_name = 2;
+    string bank_id = 3;
+    string branch_id = 4;
+    string account_nr = 5;
+    string account_type = 6;
+    string holder_tax_id = 7;
+    string email = 8 [deprecated = true];
+    oneof message {
+        NationalBankAccountPayload national_bank_account_payload = 9;
+        SameBankAccountPayload same_bank_accont_payload = 10;
+        SpecificBanksAccountPayload specific_banks_account_payload = 11;
+        AchTransferAccountPayload ach_transfer_account_payload = 13;
+        DomesticWireTransferAccountPayload domestic_wire_transfer_account_payload = 14;
+    }
+    string national_account_id = 12;
+}
+
+message AchTransferAccountPayload {
+    string holder_address = 1;
+}
+
+message DomesticWireTransferAccountPayload {
+    string holder_address = 1;
+}
+
+message NationalBankAccountPayload {
+}
+
+message SameBankAccountPayload {
+}
+
+message JapanBankAccountPayload {
+    string bank_name = 1;
+    string bank_code = 2;
+    string bank_branch_name = 3;
+    string bank_branch_code = 4;
+    string bank_account_type = 5;
+    string bank_account_name = 6;
+    string bank_account_number = 7;
+}
+
+message AustraliaPayidPayload {
+    string bank_account_name = 1;
+    string payid = 2;
+    string extra_info = 3;
+}
+
+message SpecificBanksAccountPayload {
+    repeated string accepted_banks = 1;
+}
+
+message CashDepositAccountPayload {
+    string holder_name = 1;
+    string holder_email = 2;
+    string bank_name = 3;
+    string bank_id = 4;
+    string branch_id = 5;
+    string account_nr = 6;
+    string account_type = 7;
+    string requirements = 8;
+    string holder_tax_id = 9;
+    string national_account_id = 10;
+}
+
+message MoneyGramAccountPayload {
+    string holder_name = 1;
+    string country_code = 2;
+    string state = 3;
+    string email = 4;
+}
+
+message HalCashAccountPayload {
+    string mobile_nr = 1;
+}
+
+message WesternUnionAccountPayload {
+    string holder_name = 1;
+    string city = 2;
+    string state = 3;
+    string email = 4;
+}
+
+message AmazonGiftCardAccountPayload {
+    string email_or_mobile_nr = 1;
+    string country_code = 2;
+}
+
+message SepaAccountPayload {
+    string holder_name = 1;
+    string iban = 2;
+    string bic = 3;
+    string email = 4 [deprecated = true];
+}
+
+message SepaInstantAccountPayload {
+    string holder_name = 1;
+    string iban = 2;
+    string bic = 3;
+}
+
+message CryptoCurrencyAccountPayload {
+    string address = 1;
+}
+
+message InstantCryptoCurrencyAccountPayload {
+    string address = 1;
+}
+
+message FasterPaymentsAccountPayload {
+    string holder_name = 1;
+    string sort_code = 2;
+    string account_nr = 3;
+}
+
+message InteracETransferAccountPayload {
+    string email = 1;
+    string holder_name = 2;
+    string question = 3;
+    string answer = 4;
+}
+
+// Deprecated, not used anymore
+message OKPayAccountPayload {
+    string account_nr = 1;
+}
+
+message UpholdAccountPayload {
+    string account_id = 1;
+    string account_owner = 2;
+}
+
+message CashAppAccountPayload {
+    string email_or_mobile_nr_or_cashtag = 1;
+}
+
+message MoneyBeamAccountPayload {
+    string account_id = 1;
+}
+
+message VenmoAccountPayload {
+    string email_or_mobile_nr_or_username = 1;
+}
+message PayPalAccountPayload {
+    string email_or_mobile_nr_or_username = 1;
+}
+
+message PopmoneyAccountPayload {
+    string account_id = 1;
+    string holder_name = 2;
+}
+
+message RevolutAccountPayload {
+    string username = 1;
+}
+
+message PerfectMoneyAccountPayload {
+    string account_nr = 1;
+}
+
+message SwishAccountPayload {
+    string mobile_nr = 1;
+    string holder_name = 2;
+}
+
+message USPostalMoneyOrderAccountPayload {
+    string postal_address = 1;
+    string holder_name = 2;
+}
+
+message F2FAccountPayload {
+    string contact = 1;
+    string city = 2;
+    string extra_info = 3;
+}
+
+message IfscBasedAccountPayload {
+    string holder_name = 1;
+    string account_nr = 2;
+    string ifsc = 3;
+    oneof message {
+        NeftAccountPayload neft_account_payload = 4;
+        RtgsAccountPayload rtgs_account_payload = 5;
+        ImpsAccountPayload imps_account_payload = 6;
+    }
+}
+
+message NeftAccountPayload {
+}
+
+message RtgsAccountPayload {
+}
+
+message ImpsAccountPayload {
+}
+
+message UpiAccountPayload {
+    string virtual_payment_address = 1;
+}
+
+message PaytmAccountPayload {
+    string email_or_mobile_nr = 1;
+}
+
+message PayByMailAccountPayload {
+    string postal_address = 1;
+    string contact = 2;
+    string extra_info = 3;
+}
+
+message CashAtAtmAccountPayload {
+    string extra_info = 1;
+}
+
+message PromptPayAccountPayload {
+    string prompt_pay_id = 1;
+}
+
+message AdvancedCashAccountPayload {
+    string account_nr = 1;
+}
+
+message TransferwiseAccountPayload {
+    string email = 1;
+}
+
+message TransferwiseUsdAccountPayload {
+    string email = 1;
+    string holder_name = 2;
+    string beneficiary_address = 3;
+}
+
+message PayseraAccountPayload {
+    string email = 1;
+}
+
+message PaxumAccountPayload {
+    string email = 1;
+}
+
+message CapitualAccountPayload {
+    string account_nr = 1;
+}
+
+message CelPayAccountPayload {
+    string email = 1;
+}
+
+message NequiAccountPayload {
+    string mobile_nr = 1;
+}
+
+message BizumAccountPayload {
+    string mobile_nr = 1;
+}
+
+message PixAccountPayload {
+    string pix_key = 1;
+}
+
+message MoneseAccountPayload {
+    string mobile_nr = 1;
+    string holder_name = 2;
+}
+
+message SatispayAccountPayload {
+    string mobile_nr = 1;
+    string holder_name = 2;
+}
+
+message StrikeAccountPayload {
+    string holder_name = 1;
+}
+
+message TikkieAccountPayload {
+    string iban = 1;
+}
+
+message VerseAccountPayload {
+    string holder_name = 1;
+}
+
+message SwiftAccountPayload {
+    string beneficiary_name = 1;
+    string beneficiary_account_nr = 2;
+    string beneficiary_address = 3;
+    string beneficiary_city = 4;
+    string beneficiary_phone = 5;
+    string special_instructions = 6;
+
+    string bank_swift_code = 7;
+    string bank_country_code = 8;
+    string bank_name = 9;
+    string bank_branch = 10;
+    string bank_address = 11;
+
+    string intermediary_swift_code = 12;
+    string intermediary_country_code = 13;
+    string intermediary_name = 14;
+    string intermediary_branch = 15;
+    string intermediary_address = 16;
+}
+
+message PersistableEnvelope {
+    oneof message {
+        SequenceNumberMap sequence_number_map = 1;
+        PeerList peer_list = 2;
+        AddressEntryList address_entry_list = 3;
+        NavigationPath navigation_path = 4;
+
+        TradableList tradable_list = 5;
+
+        ArbitrationDisputeList arbitration_dispute_list = 6;
+
+        PreferencesPayload preferences_payload = 7;
+        UserPayload user_payload = 8;
+        PaymentAccountList payment_account_list = 9;
+
+        AccountAgeWitnessStore account_age_witness_store = 10;
+
+        SignedWitnessStore signed_witness_store = 11;
+        MediationDisputeList mediation_dispute_list = 12;
+        RefundDisputeList refund_dispute_list = 13;
+        TradeStatistics3Store trade_statistics3_store = 14;
+        MailboxMessageList mailbox_message_list = 15;
+        IgnoredMailboxMap ignored_mailbox_map = 16;
+        RemovedPayloadsMap removed_payloads_map = 17;
+
+        XmrAddressEntryList xmr_address_entry_list = 18;
+        SignedOfferList signed_offer_list = 19;
+        EncryptedConnectionList encrypted_connection_list = 20;
+    }
+}
+
+message SequenceNumberMap {
+    repeated SequenceNumberEntry sequence_number_entries = 1;
+}
+
+message SequenceNumberEntry {
+    ByteArray bytes = 1;
+    MapValue map_value = 2;
+}
+
+message ByteArray {
+    bytes bytes = 1;
+}
+
+message MapValue {
+    int32 sequence_nr = 1;
+    int64 time_stamp = 2;
+}
+
+// We use a list not a hash map to save disc space. The hash can be calculated from the payload anyway
+message AccountAgeWitnessStore {
+    repeated AccountAgeWitness items = 1;
+}
+
+message SignedWitnessStore {
+    repeated SignedWitness items = 1;
+}
+
+message TradeStatistics3Store {
+    repeated TradeStatistics3 items = 1;
+}
+
+message PeerList {
+    repeated Peer peer = 1;
+}
+
+message AddressEntryList {
+    repeated AddressEntry address_entry = 1;
+}
+
+message AddressEntry {
+    enum Context {
+        PB_ERROR = 0;
+        ARBITRATOR = 1;
+        AVAILABLE = 2;
+        OFFER_FUNDING = 3;
+        RESERVED_FOR_TRADE = 4;
+        MULTI_SIG = 5;
+        TRADE_PAYOUT = 6;
+    }
+
+    string offer_id = 7;
+    Context context = 8;
+    bytes pub_key = 9;
+    bytes pub_key_hash = 10;
+    int64 coin_locked_in_multi_sig = 11;
+    bool segwit = 12;
+}
+
+message XmrAddressEntryList {
+    repeated XmrAddressEntry xmr_address_entry = 1;
+}
+
+message XmrAddressEntry {
+    enum Context {
+        PB_ERROR = 0;
+        ARBITRATOR = 1;
+        BASE_ADDRESS = 2;
+        AVAILABLE = 3;
+        OFFER_FUNDING = 4;
+        TRADE_PAYOUT = 5;
+    }
+
+    int32 subaddress_index = 7;
+    string address_string = 8;
+    string offer_id = 9;
+    Context context = 10;
+    int64 coin_locked_in_multi_sig = 11;
+}
+
+message NavigationPath {
+    repeated string path = 1;
+}
+
+message PaymentAccountList {
+    repeated PaymentAccount payment_account = 1;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Offer/Trade
+///////////////////////////////////////////////////////////////////////////////////////////
+
+message TradableList {
+    repeated Tradable tradable = 1;
+}
+
+message Offer {
+    enum State {
+        PB_ERROR = 0;
+        UNKNOWN = 1;
+        OFFER_FEE_RESERVED = 2;
+        AVAILABLE = 3;
+        NOT_AVAILABLE = 4;
+        REMOVED = 5;
+        MAKER_OFFLINE = 6;
+        INVALID = 7;
+    }
+
+    OfferPayload offer_payload = 1;
+}
+
+message SignedOfferList {
+    repeated SignedOffer signed_offer = 1;
+}
+
+message SignedOffer {
+    int64 time_stamp = 1;
+    int32 trader_id = 2;
+    string offer_id = 3;
+    uint64 trade_amount = 4;
+    uint64 penalty_amount = 5;
+    string reserve_tx_hash = 6;
+    string reserve_tx_hex = 7;
+    repeated string reserve_tx_key_images = 8;
+    uint64 reserve_tx_miner_fee = 9;
+    bytes arbitrator_signature = 10;
+}
+
+message OpenOffer {
+    enum State {
+        PB_ERROR = 0;
+        SCHEDULED = 1;
+        AVAILABLE = 2;
+        RESERVED = 3;
+        CLOSED = 4;
+        CANCELED = 5;
+        DEACTIVATED = 6;
+    }
+
+    Offer offer = 1;
+    State state = 2;
+    int64 trigger_price = 3;
+    bool reserve_exact_amount = 4;
+    string split_output_tx_hash = 5;
+    int64 split_output_tx_fee = 6;
+    repeated string scheduled_tx_hashes = 7;
+    string scheduled_amount = 8; // BigInteger
+    string reserve_tx_hash = 9;
+    string reserve_tx_hex = 10;
+    string reserve_tx_key = 11;
+}
+
+message Tradable {
+    oneof message {
+        OpenOffer open_offer = 1;
+        SignedOffer signed_offer = 2;
+        BuyerAsMakerTrade buyer_as_maker_trade = 3;
+        BuyerAsTakerTrade buyer_as_taker_trade = 4;
+        SellerAsMakerTrade seller_as_maker_trade = 5;
+        SellerAsTakerTrade seller_as_taker_trade = 6;
+        ArbitratorTrade arbitrator_trade = 7;
+    }
+}
+
+message Trade {
+    enum State {
+        PB_ERROR_STATE = 0;
+        PREPARATION = 1;
+        MULTISIG_PREPARED = 2;
+        MULTISIG_MADE = 3;
+        MULTISIG_EXCHANGED = 4;
+        MULTISIG_COMPLETED = 5;
+        CONTRACT_SIGNATURE_REQUESTED = 6;
+        CONTRACT_SIGNED = 7;
+        SENT_PUBLISH_DEPOSIT_TX_REQUEST = 8;
+        SEND_FAILED_PUBLISH_DEPOSIT_TX_REQUEST = 9;
+        SAW_ARRIVED_PUBLISH_DEPOSIT_TX_REQUEST = 10;
+        PUBLISH_DEPOSIT_TX_REQUEST_FAILED = 11;
+        ARBITRATOR_PUBLISHED_DEPOSIT_TXS = 12;
+        DEPOSIT_TXS_SEEN_IN_NETWORK = 13;
+        DEPOSIT_TXS_CONFIRMED_IN_BLOCKCHAIN = 14;
+        DEPOSIT_TXS_UNLOCKED_IN_BLOCKCHAIN = 15;
+        BUYER_CONFIRMED_PAYMENT_SENT = 16;
+        BUYER_SENT_PAYMENT_SENT_MSG = 17;
+        BUYER_SEND_FAILED_PAYMENT_SENT_MSG = 18;
+        BUYER_STORED_IN_MAILBOX_PAYMENT_SENT_MSG = 19;
+        BUYER_SAW_ARRIVED_PAYMENT_SENT_MSG = 20;
+        SELLER_RECEIVED_PAYMENT_SENT_MSG = 21;
+        SELLER_CONFIRMED_PAYMENT_RECEIPT = 22;
+        SELLER_SENT_PAYMENT_RECEIVED_MSG = 23;
+        SELLER_SEND_FAILED_PAYMENT_RECEIVED_MSG = 24;
+        SELLER_STORED_IN_MAILBOX_PAYMENT_RECEIVED_MSG = 25;
+        SELLER_SAW_ARRIVED_PAYMENT_RECEIVED_MSG = 26;
+    }
+
+    enum Phase {
+        PB_ERROR_PHASE = 0;
+        INIT = 1;
+        DEPOSIT_REQUESTED = 2;
+        DEPOSITS_PUBLISHED = 3;
+        DEPOSITS_CONFIRMED = 4;
+        DEPOSITS_UNLOCKED = 5;
+        PAYMENT_SENT = 6;
+        PAYMENT_RECEIVED = 7;
+    }
+
+    enum PayoutState {
+        PAYOUT_UNPUBLISHED = 0;
+        PAYOUT_PUBLISHED = 1;
+        PAYOUT_CONFIRMED = 2;
+        PAYOUT_UNLOCKED = 3;
+    }
+
+    enum DisputeState {
+        PB_ERROR_DISPUTE_STATE = 0;
+        NO_DISPUTE = 1;
+        DISPUTE_REQUESTED = 2;
+        DISPUTE_OPENED = 3;
+        ARBITRATOR_SENT_DISPUTE_CLOSED_MSG = 4;
+        ARBITRATOR_SEND_FAILED_DISPUTE_CLOSED_MSG = 5;
+        ARBITRATOR_STORED_IN_MAILBOX_DISPUTE_CLOSED_MSG = 6;
+        ARBITRATOR_SAW_ARRIVED_DISPUTE_CLOSED_MSG = 7;
+        DISPUTE_CLOSED = 8;
+        MEDIATION_REQUESTED = 9;
+        MEDIATION_STARTED_BY_PEER = 10;
+        MEDIATION_CLOSED = 11;
+        REFUND_REQUESTED = 12;
+        REFUND_REQUEST_STARTED_BY_PEER = 13;
+        REFUND_REQUEST_CLOSED = 14;
+    }
+
+    enum TradePeriodState {
+        PB_ERROR_TRADE_PERIOD_STATE = 0;
+        FIRST_HALF = 1;
+        SECOND_HALF = 2;
+        TRADE_PERIOD_OVER = 3;
+    }
+
+    Offer offer = 1;
+    ProcessModel process_model = 2;
+    string payout_tx_id = 3;
+    string payout_tx_hex = 4;
+    string payout_tx_key = 5;
+    int64 amount = 6;
+    int64 take_offer_date = 7;
+    int64 price = 8;
+    State state = 9;
+    PayoutState payout_state = 10;
+    DisputeState dispute_state = 11;
+    TradePeriodState period_state = 12;
+    Contract contract = 13;
+    string contract_as_json = 14;
+    bytes contract_hash = 15;
+    NodeAddress arbitrator_node_address = 16;
+    NodeAddress mediator_node_address = 17;
+    string error_message = 18;
+    string counter_currency_tx_id = 19;
+    repeated ChatMessage chat_message = 20;
+    MediationResultState mediation_result_state = 21;
+    int64 lock_time = 22;
+    int64 start_time = 23;
+    NodeAddress refund_agent_node_address = 24;
+    RefundResultState refund_result_state = 25;
+    string counter_currency_extra_data = 26;
+    string uid = 27;
+    bool is_completed = 28;
+}
+
+message BuyerAsMakerTrade {
+    Trade trade = 1;
+}
+
+message BuyerAsTakerTrade {
+    Trade trade = 1;
+}
+
+message SellerAsMakerTrade {
+    Trade trade = 1;
+}
+
+message SellerAsTakerTrade {
+    Trade trade = 1;
+}
+
+message ArbitratorTrade {
+    Trade trade = 1;
+}
+
+message ProcessModel {
+    string offer_id = 1;
+    string account_id = 2;
+    PubKeyRing pub_key_ring = 3;
+    bytes payout_tx_signature = 4;
+    bool use_savings_wallet = 5;
+    int64 funds_needed_for_trade = 6;
+    string payment_sent_message_state = 7;
+    string payment_sent_message_state_arbitrator = 8;
+    bytes maker_signature = 9;
+    TradePeer maker = 10;
+    TradePeer taker = 11;
+    TradePeer arbitrator = 12;
+    NodeAddress temp_trade_peer_node_address = 13;
+    string multisig_address = 14;
+    bytes mediated_payout_tx_signature = 15; // placeholder if mediation used in future
+    int64 buyer_payout_amount_from_mediation = 16;
+    int64 seller_payout_amount_from_mediation = 17;
+    int64 trade_protocol_error_height = 18;
+    string trade_fee_address = 19;
+}
+
+message TradePeer {
+    NodeAddress node_address = 1;
+    PubKeyRing pub_key_ring = 2;
+    string account_id = 3;
+    string payment_account_id = 4;
+    string payment_method_id = 5;
+    bytes payment_account_payload_hash = 6;
+    bytes encrypted_payment_account_payload = 7;
+    bytes payment_account_key = 8;
+    PaymentAccountPayload payment_account_payload = 9;
+    string payout_address_string = 10;
+    string contract_as_json = 11;
+    bytes contract_signature = 12;
+    bytes account_age_witness_nonce = 18;
+    bytes account_age_witness_signature = 19;
+    AccountAgeWitness account_age_witness = 20;
+    int64 current_date = 21;
+    bytes mediated_payout_tx_signature = 22;
+    PaymentSentMessage payment_sent_message = 23;
+    PaymentReceivedMessage payment_received_message = 24;
+    DisputeClosedMessage dispute_closed_message = 25;
+    string reserve_tx_hash = 26;
+    string reserve_tx_hex = 27;
+    string reserve_tx_key = 28;
+    repeated string reserve_tx_key_images = 29;
+    string prepared_multisig_hex = 30;
+    string made_multisig_hex = 31;
+    string exchanged_multisig_hex = 32;
+    string updated_multisig_hex = 33;
+    bool deposits_confirmed_message_acked = 34;
+    string deposit_tx_hash = 35;
+    string deposit_tx_hex = 36;
+    string deposit_tx_key = 37;
+    int64 deposit_tx_fee = 38;
+    int64 security_deposit = 39;
+    string unsigned_payout_tx_hex = 40;
+    int64 payout_tx_fee = 41;
+    int64 payout_amount = 42;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Connections
+///////////////////////////////////////////////////////////////////////////////////////////
+
+message EncryptedConnection {
+    string url = 1;
+    string username = 2;
+    bytes encrypted_password = 3;
+    bytes encryption_salt = 4;
+    int32 priority = 5;
+}
+
+message EncryptedConnectionList {
+    bytes salt = 1;
+    repeated EncryptedConnection items = 2;
+    string current_connection_url = 3;
+    int64 refresh_period = 4; // negative: no automated refresh is activated, zero: automated refresh with default period, positive: automated refresh with configured period (value)
+    bool auto_switch = 5;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Dispute
+///////////////////////////////////////////////////////////////////////////////////////////
+
+message ArbitrationDisputeList {
+    repeated Dispute dispute = 1;
+}
+
+message MediationDisputeList {
+    repeated Dispute dispute = 1;
+}
+
+message RefundDisputeList {
+    repeated Dispute dispute = 1;
+}
+
+enum MediationResultState {
+    PB_ERROR_MEDIATION_RESULT = 0;
+    UNDEFINED_MEDIATION_RESULT = 1;
+    MEDIATION_RESULT_ACCEPTED = 2;
+    MEDIATION_RESULT_REJECTED = 3;
+    SIG_MSG_SENT = 4;
+    SIG_MSG_ARRIVED = 5;
+    SIG_MSG_IN_MAILBOX = 6;
+    SIG_MSG_SEND_FAILED = 7;
+    RECEIVED_SIG_MSG = 8;
+    PAYOUT_TX_PUBLISHED = 9;
+    PAYOUT_TX_PUBLISHED_MSG_SENT = 10;
+    PAYOUT_TX_PUBLISHED_MSG_ARRIVED = 11;
+    PAYOUT_TX_PUBLISHED_MSG_IN_MAILBOX = 12;
+    PAYOUT_TX_PUBLISHED_MSG_SEND_FAILED = 13;
+    RECEIVED_PAYOUT_TX_PUBLISHED_MSG = 14;
+    PAYOUT_TX_SEEN_IN_NETWORK = 15;
+}
+
+//todo
+enum RefundResultState {
+    PB_ERROR_REFUND_RESULT = 0;
+    UNDEFINED_REFUND_RESULT = 1;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Preferences
+///////////////////////////////////////////////////////////////////////////////////////////
+
+message PreferencesPayload {
+    string user_language = 1;
+    Country user_country = 2;
+    repeated TradeCurrency traditional_currencies = 3;
+    repeated TradeCurrency crypto_currencies = 4;
+    BlockChainExplorer block_chain_explorer_main_net = 5;
+    BlockChainExplorer block_chain_explorer_test_net = 6;
+    string backup_directory = 7;
+    bool auto_select_arbitrators = 8;
+    map<string, bool> dont_show_again_map = 9;
+    bool tac_accepted = 10;
+    int32 use_tor_for_xmr_ordinal = 11;
+    bool show_own_offers_in_offer_book = 12;
+    TradeCurrency preferred_trade_currency = 13;
+    int64 withdrawal_tx_fee_in_vbytes = 14;
+    bool use_custom_withdrawal_tx_fee = 15;
+    double max_price_distance_in_percent = 16;
+    string offer_book_chart_screen_currency_code = 17;
+    string trade_charts_screen_currency_code = 18;
+    string buy_screen_currency_code = 19;
+    string sell_screen_currency_code = 20;
+    int32 trade_statistics_tick_unit_index = 21;
+    bool resync_spv_requested = 22;
+    bool sort_market_currencies_numerically = 23;
+    bool use_percentage_based_price = 24;
+    map<string, string> peer_tag_map = 25;
+    string monero_nodes = 26;
+    repeated string ignore_traders_list = 27;
+    string directory_chooser_path = 28;
+    bool use_animations = 29;
+    PaymentAccount selectedPayment_account_for_createOffer = 30;
+    repeated string bridge_addresses = 31;
+    int32 bridge_option_ordinal = 32;
+    int32 tor_transport_ordinal = 33;
+    string custom_bridges = 34;
+    int32 monero_nodes_option_ordinal = 35;
+    string referral_id = 36;
+    string phone_key_and_token = 37;
+    bool use_sound_for_mobile_notifications = 38;
+    bool use_trade_notifications = 39;
+    bool use_market_notifications = 40;
+    bool use_price_notifications = 41;
+    bool use_standby_mode = 42;
+    string rpc_user = 43;
+    string rpc_pw = 44;
+    string take_offer_selected_payment_account_id = 45;
+    double buyer_security_deposit_as_percent = 46;
+    int32 ignore_dust_threshold = 47;
+    double buyer_security_deposit_as_percent_for_crypto = 48;
+    int32 block_notify_port = 49;
+    int32 css_theme = 50;
+    bool tac_accepted_v120 = 51;
+    repeated AutoConfirmSettings auto_confirm_settings = 52;
+    double bsq_average_trim_threshold = 53;
+    bool hide_non_account_payment_methods = 54;
+    bool show_offers_matching_my_accounts = 55;
+    bool deny_api_taker = 56;
+    bool notify_on_pre_release = 57;
+    XmrNodeSettings xmr_node_settings = 58;
+    int32 clear_data_after_days = 59;
+    string buy_screen_crypto_currency_code = 60;
+    string sell_screen_crypto_currency_code = 61;
+    bool split_offer_output = 62;
+}
+
+message AutoConfirmSettings {
+    bool enabled = 1;
+    int32 required_confirmations = 2;
+    int64 trade_limit = 3;
+    repeated string service_addresses = 4;
+    string currency_code = 5;
+}
+
+message XmrNodeSettings {
+    string blockchain_path = 1;
+    string bootstrap_url = 2;
+    repeated string startup_flags = 3;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// UserPayload
+///////////////////////////////////////////////////////////////////////////////////////////
+
+message UserPayload {
+    string account_id = 1;
+    repeated PaymentAccount payment_accounts = 2;
+    PaymentAccount current_payment_account = 3;
+    repeated string accepted_language_locale_codes = 4;
+    Alert developers_alert = 5;
+    Alert displayed_alert = 6;
+    Filter developers_filter = 7;
+    repeated Arbitrator accepted_arbitrators = 8;
+    repeated Mediator accepted_mediators = 9;
+    Arbitrator registered_arbitrator = 10;
+    Mediator registered_mediator = 11;
+    PriceAlertFilter price_alert_filter = 12;
+    repeated MarketAlertFilter market_alert_filters = 13;
+    repeated RefundAgent accepted_refund_agents = 14;
+    RefundAgent registered_refund_agent = 15;
+    map<string, string> cookie = 16;
+    int64 wallet_creation_date = 17;
+}
+
+message BlockChainExplorer {
+    string name = 1;
+    string tx_url = 2;
+}
+
+message PaymentAccount {
+    string id = 1;
+    int64 creation_date = 2 [jstype = JS_STRING];
+    PaymentMethod payment_method = 3;
+    string account_name = 4;
+    repeated TradeCurrency trade_currencies = 5;
+    TradeCurrency selected_trade_currency = 6;
+    PaymentAccountPayload payment_account_payload = 7;
+}
+
+message PaymentMethod {
+    string id = 1;
+    int64 max_trade_period = 2 [jstype = JS_STRING];
+    int64 max_trade_limit = 3 [jstype = JS_STRING];
+    repeated string supported_asset_codes = 4;
+}
+
+message Currency {
+    string currency_code = 1;
+}
+
+message TradeCurrency {
+    string code = 1;
+    string name = 2;
+    oneof message {
+        CryptoCurrency crypto_currency = 3;
+        TraditionalCurrency traditional_currency = 4;
+    }
+}
+
+message CryptoCurrency {
+    bool is_asset = 1;
+}
+
+message TraditionalCurrency {
+}
+
+message Country {
+    string code = 1;
+    string name = 2;
+    Region region = 3;
+}
+
+message Region {
+    string code = 1;
+    string name = 2;
+}
+
+message PriceAlertFilter {
+    string currencyCode = 1;
+    int64 high = 2;
+    int64 low = 3;
+}
+
+message MarketAlertFilter {
+    PaymentAccount payment_account = 1;
+    int32 trigger_value = 2;
+    bool is_buy_offer = 3;
+    repeated string alert_ids = 4;
+}
+
+message MockMailboxPayload {
+    string message = 1;
+    NodeAddress sender_node_address = 2;
+    string uid = 3;
+}
+
+message MockPayload {
+    string message_version = 1;
+    string message = 2;
+}
+
+message PaymentAccountForm {
+    enum FormId {
+        BLOCK_CHAINS = 0;
+        REVOLUT = 1;
+        SEPA = 2;
+        SEPA_INSTANT = 3;
+        TRANSFERWISE = 4;
+        ZELLE = 5;
+        SWIFT = 6;
+        F2F = 7;
+        STRIKE = 8;
+        MONEY_GRAM = 9;
+        FASTER_PAYMENTS = 10;
+        UPHOLD = 11;
+        PAXUM = 12;
+        PAY_BY_MAIL = 13;
+        CASH_AT_ATM = 14;
+        AUSTRALIA_PAYID = 15;
+        CASH_APP = 16;
+        PAYPAL = 17;
+        VENMO = 18;
+    }
+    FormId id = 1;
+    repeated PaymentAccountFormField fields = 2;
+}
+
+message PaymentAccountFormField {
+    enum FieldId {
+        ADDRESS = 0;
+        ACCEPTED_COUNTRY_CODES = 1;
+        ACCOUNT_ID = 2;
+        ACCOUNT_NAME = 3;
+        ACCOUNT_NR = 4;
+        ACCOUNT_OWNER = 5;
+        ACCOUNT_TYPE = 6;
+        ANSWER = 7;
+        BANK_ACCOUNT_NAME = 8;
+        BANK_ACCOUNT_NUMBER = 9;
+        BANK_ACCOUNT_TYPE = 10;
+        BANK_ADDRESS = 11;
+        BANK_BRANCH = 12;
+        BANK_BRANCH_CODE = 13;
+        BANK_BRANCH_NAME = 14;
+        BANK_CODE = 15;
+        BANK_COUNTRY_CODE = 16;
+        BANK_ID = 17;
+        BANK_NAME = 18;
+        BANK_SWIFT_CODE = 19;
+        BENEFICIARY_ACCOUNT_NR = 20;
+        BENEFICIARY_ADDRESS = 21;
+        BENEFICIARY_CITY = 22;
+        BENEFICIARY_NAME = 23;
+        BENEFICIARY_PHONE = 24;
+        BIC = 25;
+        BRANCH_ID = 26;
+        CITY = 27;
+        CONTACT = 28;
+        COUNTRY = 29;
+        EMAIL = 30;
+        EMAIL_OR_MOBILE_NR = 31;
+        EXTRA_INFO = 32;
+        HOLDER_ADDRESS = 33;
+        HOLDER_EMAIL = 34;
+        HOLDER_NAME = 35;
+        HOLDER_TAX_ID = 36;
+        IBAN = 37;
+        IFSC = 38;
+        INTERMEDIARY_ADDRESS = 39;
+        INTERMEDIARY_BRANCH = 40;
+        INTERMEDIARY_COUNTRY_CODE = 41;
+        INTERMEDIARY_NAME = 42;
+        INTERMEDIARY_SWIFT_CODE = 43;
+        MOBILE_NR = 44;
+        NATIONAL_ACCOUNT_ID = 45;
+        PAYID = 46;
+        PIX_KEY = 47;
+        POSTAL_ADDRESS = 48;
+        PROMPT_PAY_ID = 49;
+        QUESTION = 50;
+        REQUIREMENTS = 51;
+        SALT = 52;
+        SORT_CODE = 53;
+        SPECIAL_INSTRUCTIONS = 54;
+        STATE = 55;
+        TRADE_CURRENCIES = 56;
+        USERNAME = 57;
+        EMAIL_OR_MOBILE_NR_OR_USERNAME = 58;
+        EMAIL_OR_MOBILE_NR_OR_CASHTAG = 59;
+    }
+    enum Component {
+        TEXT = 0;
+        TEXTAREA = 1;
+        SELECT_ONE = 2;
+        SELECT_MULTIPLE = 3;
+    }
+    FieldId id = 1;
+    Component component = 2;
+    string type = 3;
+    string label = 4;
+    string value = 5;
+    uint32 minLength = 6;
+    uint32 maxLength = 7;
+    repeated TradeCurrency supported_currencies = 8;
+    repeated Country supported_countries = 9;
+    repeated Country supported_sepa_euro_countries = 10;
+    repeated Country supported_sepa_non_euro_countries = 11;
+    repeated string required_for_countries = 12;
+}
