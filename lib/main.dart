@@ -6,22 +6,23 @@ import 'package:haveno_flutter_app/providers/payment_accounts_provider.dart';
 import 'package:haveno_flutter_app/providers/prices_provider.dart';
 import 'package:haveno_flutter_app/providers/trades_provider.dart';
 import 'package:haveno_flutter_app/providers/wallets_provider.dart';
-import 'package:haveno_flutter_app/screens/accounts_screen.dart';
-import 'package:haveno_flutter_app/screens/settings_screen.dart';
+import 'package:haveno_flutter_app/screens/drawer/payment_accounts_screen.dart';
+import 'package:haveno_flutter_app/screens/drawer/settings_screen.dart';
 import 'package:haveno_flutter_app/tabs/trades_tab.dart';
 import 'package:haveno_flutter_app/tabs/buy_tab.dart';
 import 'package:haveno_flutter_app/tabs/sell_tab.dart';
-import 'package:haveno_flutter_app/screens/wallet_screen.dart';
+import 'package:haveno_flutter_app/screens/drawer/wallet_screen.dart';
 import 'package:logging/logging.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:haveno_flutter_app/services/haveno_service.dart';
 import 'package:haveno_flutter_app/services/http_service.dart';
 import 'package:haveno_flutter_app/services/monero_service.dart';
-import 'package:haveno_flutter_app/services/tor_service.dart';
+//import 'package:haveno_flutter_app/services/tor_service.dart';
 import 'package:haveno_flutter_app/providers/get_version_provider.dart';
 import 'package:haveno_flutter_app/providers/account_provider.dart';
 import 'dart:async';
+import 'package:badges/badges.dart' as badges; // Import the badges package
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,18 +31,18 @@ void main() async {
   _setupLogging();
 
   // Initialize services
-  final torService = TorService();
-  await torService.initializeTor();
+  //final torService = TorService();
+  //await torService.initializeTor();
 
   final httpService = HttpService();
   final moneroService = MoneroService();
 
-  final havenoService = HavenoService('192.168.0.18', 3201, 'apitest');
+  final havenoService = HavenoService('127.0.0.1', 3201, 'apitest');
 
   runApp(
     MultiProvider(
       providers: [
-        Provider(create: (_) => torService),
+        //Provider(create: (_) => torService),
         Provider(create: (_) => httpService),
         Provider(create: (_) => moneroService),
         Provider(create: (_) => havenoService),
@@ -95,6 +96,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
@@ -104,13 +106,13 @@ class MyApp extends StatelessWidget {
           // Ensures dark mode with light text
         ),
         scaffoldBackgroundColor: Color(0xFF303030),
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           backgroundColor: Color(0xFF303030),
         ),
-        drawerTheme: DrawerThemeData(
+        drawerTheme: const DrawerThemeData(
           backgroundColor: Color(0xFF303030),
         ),
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: Color(0xFF303030),
           selectedItemColor: Color(0xFFF4511E),
           unselectedItemColor: Colors.white,
@@ -124,7 +126,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        cardTheme: CardTheme(
+        cardTheme: const CardTheme(
           color: Color(0xFF424242), // Card background color
         ),
       ),
@@ -142,6 +144,7 @@ class _HomeScreenState extends State<HomeScreen> {
   String _statusMessage = "Connecting to Tor...";
   Timer? _timer;
   int _selectedIndex = 0;
+  int _notificationCount = 5; // Mock notification count
 
   static final List<Widget> _widgetOptions = <Widget>[
     BuyTab(),
@@ -152,17 +155,17 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    final torService = context.read<TorService>();
-    torService.statusStream.listen((String status) {
-      print(status);
-      setState(() {
-        if (status.contains("started")) {
-          _statusMessage = "Connecting to the Monero network...";
-        } else {
-          _statusMessage = status;
-        }
-      });
-    });
+//    final torService = context.read<TorService>();
+//    torService.statusStream.listen((String status) {
+//      print(status);
+//      setState(() {
+//        if (status.contains("started")) {
+//          _statusMessage = "Connecting to the Monero network...";
+//        } else {
+//          _statusMessage = status;
+//        }
+//      });
+//    });
 
     _initializeServices();
   }
@@ -201,7 +204,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void dispose() {
-    context.read<TorService>().dispose();
+    //context.read<TorService>().dispose();
     context.read<HttpService>().close();
     context.read<MoneroService>().close();
     _timer?.cancel();
@@ -213,7 +216,25 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        title: Text('Haveno'),
+        title: const Text('Haveno'),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 15.0), // Adjust padding to move the bell and badge
+            child: badges.Badge(
+              position: badges.BadgePosition.topEnd(top: 5, end: 5),
+              badgeContent: Text(
+                '$_notificationCount',
+                style: TextStyle(color: Colors.white, fontSize: 10),
+              ),
+              child: IconButton(
+                icon: Icon(Icons.notifications),
+                onPressed: () {
+                  // Handle notification bell tap
+                },
+              ),
+            ),
+          ),
+        ],
       ),
       drawer: _buildDrawer(context),
       body: Center(
@@ -275,7 +296,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Navigator.pop(context);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => AccountsScreen()),
+                MaterialPageRoute(builder: (context) => PaymentAccountsScreen()),
               );
             },
           ),

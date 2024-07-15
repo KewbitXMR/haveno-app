@@ -14,6 +14,7 @@ class PaymentAccountsProvider with ChangeNotifier {
   final Logger _logger = Logger('PaymentAccountsProvider');
   final HavenoService _havenoService;
   List<PaymentMethod>? _paymentMethods;
+  List<PaymentMethod>? _cryptoCurrencyPaymentMethods;
   List<PaymentAccount>? _paymentAccounts;
   PaymentAccountForm _paymentAccountForm = PaymentAccountForm();
   bool _isLoadingPaymentMethods = false;
@@ -62,6 +63,7 @@ class PaymentAccountsProvider with ChangeNotifier {
   }
 
   List<PaymentMethod>? get paymentMethods => _paymentMethods;
+  List<PaymentMethod>? get cryptoCurrencyPaymentMethods => _cryptoCurrencyPaymentMethods;
   List<PaymentAccount>? get paymentAccounts => _paymentAccounts;
   PaymentAccountForm get paymentAccountForm => _paymentAccountForm;
   bool get isLoadingPaymentMethods => _isLoadingPaymentMethods;
@@ -76,6 +78,9 @@ class PaymentAccountsProvider with ChangeNotifier {
       final getPaymentMethodsReply = await _havenoService.paymentAccountsClient
           .getPaymentMethods(GetPaymentMethodsRequest());
       _paymentMethods = getPaymentMethodsReply.paymentMethods;
+//      _paymentMethods?.forEach((method) {
+//      debugPrint("Payment Method: ${jsonEncode(method.toProto3Json())}");
+//      });
     } catch (e) {
       print("Failed to get payment methods: $e");
     } finally {
@@ -92,9 +97,9 @@ class PaymentAccountsProvider with ChangeNotifier {
       final getPaymentAccountsReply = await _havenoService.paymentAccountsClient
           .getPaymentAccounts(GetPaymentAccountsRequest());
       _paymentAccounts = getPaymentAccountsReply.paymentAccounts;
-      _paymentAccounts?.forEach((account) {
-        debugPrint(jsonEncode(account.toProto3Json()));
-      });
+//      _paymentAccounts?.forEach((account) {
+//        debugPrint(jsonEncode(account.toProto3Json()));
+//      });
     } catch (e) {
       print("Failed to get payment accounts: $e");
     } finally {
@@ -102,6 +107,24 @@ class PaymentAccountsProvider with ChangeNotifier {
       notifyListeners();
     }
     return paymentAccounts;
+  }
+
+  Future<List<PaymentMethod>?> getCryptoCurrencyPaymentMethods() async {
+    _isLoadingPaymentAccounts = true;
+    notifyListeners();
+    try {
+      final getCryptoCurrencyPaymentMethodsReply = await _havenoService.paymentAccountsClient.getCryptoCurrencyPaymentMethods(GetCryptoCurrencyPaymentMethodsRequest());
+      _cryptoCurrencyPaymentMethods = getCryptoCurrencyPaymentMethodsReply.paymentMethods;
+ //     _cryptoCurrencyPaymentMethods?.forEach((method) {
+  //      debugPrint("Crypto Method: ${jsonEncode(method.toProto3Json())}");
+  //    });
+    } catch (e) {
+      print("Failed to get payment accounts: $e");
+    } finally {
+      _isLoadingPaymentAccounts = false;
+      notifyListeners();
+    }
+    return paymentMethods;
   }
 
   Future<PaymentAccountForm> getPaymentAcountForm(

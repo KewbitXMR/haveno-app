@@ -202,7 +202,7 @@ class _OfferDetailScreenState extends State<OfferDetailScreen> {
                               ),
                             ),
                           ),
-                          SizedBox(height: 16.0),
+                          SizedBox(height: 10.0),
                           Card(
                             child: Padding(
                               padding: const EdgeInsets.all(16.0),
@@ -241,7 +241,7 @@ class _OfferDetailScreenState extends State<OfferDetailScreen> {
                               ),
                             ),
                           ),
-                          SizedBox(height: 16.0),
+                          SizedBox(height: 10.0),
                           Card(
                             child: Padding(
                               padding: const EdgeInsets.all(16.0),

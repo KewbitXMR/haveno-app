@@ -59,8 +59,10 @@ class _WalletsScreenState extends State<WalletScreen> {
                 children: [
                   if (balances.hasXmr())
                     _buildXmrBalanceCard(
-                        'XMR', balances.xmr, walletsProvider.xmrPrimaryAddress),
-                  const SizedBox(height: 16.0),
+                        'XMR', balances.xmr),
+                  const SizedBox(height: 10.0),
+                  _buildXmrAddressCard(walletsProvider.xmrPrimaryAddress),
+                  const SizedBox(height: 10.0),
                   _buildXmrTransactionsList(walletsProvider.xmrTxs),
                 ],
               );
@@ -72,52 +74,75 @@ class _WalletsScreenState extends State<WalletScreen> {
   }
 
   Widget _buildXmrBalanceCard(
-      String coin, XmrBalanceInfo balance, String? primaryAddress) {
+        String coin, XmrBalanceInfo balance) {
+      return Card(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Balances',
+                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10.0),
+              Text(
+                  'Available Balance: ${_formatXmr(balance.availableBalance)} XMR'),
+              Text('Pending Balance: ${_formatXmr(balance.pendingBalance)} XMR'),
+              const SizedBox(height: 10.0),
+              Text(
+                  'Reserved Offer Balance: ${_formatXmr(balance.reservedOfferBalance)} XMR'),
+              Text(
+                  'Reserved Trade Balance: ${_formatXmr(balance.reservedTradeBalance)} XMR'),
+              const SizedBox(height: 16.0),
+              ElevatedButton(
+                onPressed: () {
+                  // handle withdraw balance logic here
+                },
+                child: Text('Withdraw Balance'),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+  Widget _buildXmrAddressCard(String? xmrAddress) {
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Text(
-              'Monero',
-              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 10.0),
-            Text(
-                'Available Balance: ${_formatXmr(balance.availableBalance)} XMR'),
-            Text('Pending Balance: ${_formatXmr(balance.pendingBalance)} XMR'),
-            const SizedBox(height: 10.0),
-            Text(
-                'Reserved Offer Balance: ${_formatXmr(balance.reservedOfferBalance)} XMR'),
-            Text(
-                'Reserved Trade Balance: ${_formatXmr(balance.reservedTradeBalance)} XMR'),
-            const SizedBox(height: 16.0),
-            if (primaryAddress != null)
-              Column(
+        child: xmrAddress != null
+            ? Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    primaryAddress,
-                    textAlign: TextAlign.center,
+                  const Text(
+                    'Addresses',
+                    style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 8.0),
+                  const SizedBox(height: 10.0),
+                  Text(xmrAddress),
+                ],
+              )
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'You currently don\'t have an XMR address',
+                    style: TextStyle(fontSize: 16.0),
+                  ),
+                  SizedBox(height: 10.0),
                   ElevatedButton(
                     onPressed: () {
-                      Clipboard.setData(ClipboardData(text: primaryAddress));
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                            content: Text('Address copied to clipboard')),
-                      );
+                      // request a new XMR address here
                     },
-                    child: const Text('Copy Address'),
+                    child: Text('Request a new address'),
                   ),
                 ],
               ),
-          ],
-        ),
       ),
     );
   }
+
 
   Widget _buildXmrTransactionsList(List<XmrTx>? transactions) {
     if (transactions != null) {

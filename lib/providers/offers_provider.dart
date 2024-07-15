@@ -54,11 +54,11 @@ class OffersProvider with ChangeNotifier {
     required String direction,
     required String price,
     required bool useMarketBasedPrice,
-    required double marketPriceMarginPct,
+    double? marketPriceMarginPct,
     required fixnum.Int64 amount,
     required fixnum.Int64 minAmount,
     required double buyerSecurityDepositPct,
-    required String triggerPrice,
+    String? triggerPrice,
     required bool reserveExactAmount,
     required String paymentAccountId,
   }) async {

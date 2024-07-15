@@ -8,10 +8,12 @@ import 'dart:convert'; // Import the dart:convert library
 class NewTradeOfferForm extends StatefulWidget {
   final GlobalKey<FormState> formKey;
   final List<PaymentAccount> paymentAccounts;
+  final String direction; // New argument for direction ('BUY' or 'SELL')
 
   const NewTradeOfferForm({
     required this.formKey,
     required this.paymentAccounts,
+    required this.direction,
   });
 
   @override
@@ -22,6 +24,7 @@ class __NewTradeOfferFormState extends State<NewTradeOfferForm> {
   PaymentAccount? _selectedPaymentAccount;
   TradeCurrency? _selectedTradeCurrency;
   int _selectedPricingTypeIndex = 0; // 0 for Fixed, 1 for Dynamic
+  bool _reserveExactAmount = false;
 
   final TextEditingController _priceController = TextEditingController();
   final TextEditingController _depositController =
@@ -34,6 +37,8 @@ class __NewTradeOfferFormState extends State<NewTradeOfferForm> {
 
   @override
   Widget build(BuildContext context) {
+    final isBuy = widget.direction == 'BUY';
+
     return Padding(
       padding: MediaQuery.of(context).viewInsets,
       child: Container(
@@ -44,7 +49,10 @@ class __NewTradeOfferFormState extends State<NewTradeOfferForm> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                const Text('Open a New Offer', style: TextStyle(fontSize: 18)),
+                Text(
+                  'Open a New XMR ${isBuy ? 'Buy' : 'Sell'} Offer',
+                  style: const TextStyle(fontSize: 18),
+                ),
                 const SizedBox(height: 16.0),
                 ToggleButtons(
                   isSelected: [
@@ -70,7 +78,7 @@ class __NewTradeOfferFormState extends State<NewTradeOfferForm> {
                 const SizedBox(height: 16.0),
                 DropdownButtonFormField<PaymentAccount>(
                   decoration: const InputDecoration(
-                    labelText: 'Payment Account',
+                    labelText: 'Your Sender Account',
                     border: OutlineInputBorder(),
                   ),
                   value: _selectedPaymentAccount,
@@ -138,9 +146,11 @@ class __NewTradeOfferFormState extends State<NewTradeOfferForm> {
                 if (_selectedPricingTypeIndex == 1)
                   TextFormField(
                     controller: _marginController,
-                    decoration: const InputDecoration(
-                      labelText: 'Market Price Below Margin (%)',
-                      border: OutlineInputBorder(),
+                    decoration: InputDecoration(
+                      labelText: isBuy
+                          ? 'Market Price Below Margin (%)'
+                          : 'Market Price Above Margin (%)',
+                      border: const OutlineInputBorder(),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -156,13 +166,13 @@ class __NewTradeOfferFormState extends State<NewTradeOfferForm> {
                 const SizedBox(height: 16.0),
                 TextFormField(
                   controller: _amountController,
-                  decoration: const InputDecoration(
-                    labelText: 'Amount of XMR',
-                    border: OutlineInputBorder(),
+                  decoration: InputDecoration(
+                    labelText: 'Amount of XMR to ${isBuy ? 'Buy' : 'Sell'}',
+                    border: const OutlineInputBorder(),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter the maximum amount you wish to buy';
+                      return 'Please enter the maximum amount you wish to ${isBuy ? 'buy' : 'sell'}';
                     }
                     return null;
                   },
@@ -171,7 +181,7 @@ class __NewTradeOfferFormState extends State<NewTradeOfferForm> {
                 TextFormField(
                   controller: _minAmountController,
                   decoration: const InputDecoration(
-                    labelText: 'Minimum Transaction Amount (Of XMR)',
+                    labelText: 'Minimum Transaction Amount (XMR)',
                     border: OutlineInputBorder(),
                   ),
                   validator: (value) {
@@ -185,12 +195,12 @@ class __NewTradeOfferFormState extends State<NewTradeOfferForm> {
                 TextFormField(
                   controller: _depositController,
                   decoration: const InputDecoration(
-                    labelText: 'Buyer Security Deposit (%)',
+                    labelText: 'Mutual Security Deposit (%)',
                     border: OutlineInputBorder(),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter the buyer security deposit';
+                      return 'Please enter the mutual security deposit';
                     }
                     final deposit = double.tryParse(value);
                     if (deposit == null || deposit < 0 || deposit > 50) {
@@ -204,9 +214,10 @@ class __NewTradeOfferFormState extends State<NewTradeOfferForm> {
                 if (_selectedPricingTypeIndex == 1)
                   TextFormField(
                     controller: _triggerPriceController,
-                    decoration: const InputDecoration(
-                      labelText: 'Stop Trigger Price',
-                      border: OutlineInputBorder(),
+                    decoration: InputDecoration(
+                      labelText:
+                          'Delist If Market Price Goes Above (${_selectedTradeCurrency?.code ?? ''})',
+                      border: const OutlineInputBorder(),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -216,13 +227,43 @@ class __NewTradeOfferFormState extends State<NewTradeOfferForm> {
                     },
                   ),
                 const SizedBox(height: 16.0),
+                Row(
+                  children: [
+                    Expanded(
+                      child: CheckboxListTile(
+                        title: const Row(
+                          children: [
+                            Text('Reserve only the funds needed'),
+                            SizedBox(width: 4),
+                            Tooltip(
+                              message:
+                                  'If selected, only the exact amount of funds needed for this trade will be reserved. This may also incur a mining fee and will require 10 confirmations therefore it will take ~20 minutes longer to post your trade.',
+                              child: Icon(
+                                Icons.info_outline,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                        value: _reserveExactAmount,
+                        onChanged: (value) {
+                          setState(() {
+                            _reserveExactAmount = value ?? false;
+                          });
+                        },
+                        controlAffinity: ListTileControlAffinity.leading,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 16.0),
                 ElevatedButton(
                   onPressed: () async {
                     if (widget.formKey.currentState?.validate() ?? false) {
                       // Prepare the data to be sent
                       final offerData = {
                         'currencyCode': _selectedTradeCurrency?.code ?? '',
-                        'direction': 'BUY',
+                        'direction': widget.direction,
                         'price': _selectedPricingTypeIndex == 0
                             ? _priceController.text
                             : '',
@@ -248,7 +289,7 @@ class __NewTradeOfferFormState extends State<NewTradeOfferForm> {
                         'triggerPrice': _selectedPricingTypeIndex == 1
                             ? _triggerPriceController.text
                             : '',
-                        'reserveExactAmount': true,
+                        'reserveExactAmount': _reserveExactAmount,
                         'paymentAccountId': _selectedPaymentAccount?.id ?? '',
                       };
 
@@ -261,7 +302,7 @@ class __NewTradeOfferFormState extends State<NewTradeOfferForm> {
                             Provider.of<OffersProvider>(context, listen: false);
                         offersProvider.postOffer(
                           currencyCode: _selectedTradeCurrency?.code ?? '',
-                          direction: 'BUY',
+                          direction: widget.direction,
                           price: _selectedPricingTypeIndex == 0
                               ? _priceController.text
                               : '', // Use the price from the controller
@@ -284,7 +325,7 @@ class __NewTradeOfferFormState extends State<NewTradeOfferForm> {
                           triggerPrice: _selectedPricingTypeIndex == 1
                               ? _triggerPriceController.text
                               : '', // Use the trigger price from the controller
-                          reserveExactAmount: false,
+                          reserveExactAmount: _reserveExactAmount,
                           paymentAccountId: _selectedPaymentAccount?.id ?? '',
                         );
                         Navigator.pop(context);
@@ -307,3 +348,4 @@ class __NewTradeOfferFormState extends State<NewTradeOfferForm> {
     );
   }
 }
+

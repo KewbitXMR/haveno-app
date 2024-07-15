@@ -55,6 +55,7 @@ class _SellTabState extends State<SellTab> with SingleTickerProviderStateMixin {
       isScrollControlled: true,
       builder: (BuildContext context) {
         return NewTradeOfferForm(
+          direction: 'SELL',
           paymentAccounts: _paymentAccounts,
           formKey: _formKey,
         );

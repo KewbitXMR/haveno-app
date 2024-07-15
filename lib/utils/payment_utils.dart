@@ -65,25 +65,6 @@ bool isFiatCurrency(String currencyCode) {
     'IMP', // Isle of Man Pound
     'INR', // Indian Rupee
     'IQD', // Iraqi Dinar
-    'IRR', // Iranian Rial
-    'ISK', // Icelandic Króna
-    'JEP', // Jersey Pound
-    'JMD', // Jamaican Dollar
-    'JOD', // Jordanian Dinar
-    'JPY', // Japanese Yen
-    'KES', // Kenyan Shilling
-    'KGS', // Kyrgyzstani Som
-    'KHR', // Cambodian Riel
-    'KID', // Kiribati Dollar
-    'KMF', // Comorian Franc
-    'KRW', // South Korean Won
-    'KWD', // Kuwaiti Dinar
-    'KYD', // Cayman Islands Dollar
-    'KZT', // Kazakhstani Tenge
-    'LAK', // Lao Kip
-    'LBP', // Lebanese Pound
-    'LKR', // Sri Lankan Rupee
-    'LRD', // Liberian Dollar
     'LSL', // Lesotho Loti
     'LYD', // Libyan Dinar
     'MAD', // Moroccan Dirham
@@ -162,4 +143,66 @@ bool isFiatCurrency(String currencyCode) {
     'ZWL' // Zimbabwean Dollar
   };
   return fiatCurrencies.contains(currencyCode);
+}
+
+bool isCryptoCurrency(String currencyCode) {
+  const cryptoCurrencies = {
+    'BTC', // Bitcoin
+    'BCH', // Bitcoin Cash
+    'LTC', // Litecoin
+    'ETH' // Ethereum
+  };
+  return cryptoCurrencies.contains(currencyCode);
+}
+
+enum PaymentMethodType {
+  CRYPTO,
+  FIAT,
+  UNKNOWN,
+}
+
+// Payment Method Mappings
+const Map<String, String> fiatPaymentMethodLabels = {
+  'AUSTRALIA_PAYID': 'Australia PayID',
+  'CASH_APP': 'Cash App',
+  'CASH_AT_ATM': 'Cash at ATM',
+  'F2F': 'Face to Face',
+  'FASTER_PAYMENTS': 'Faster Payments',
+  'MONEY_GRAM': 'MoneyGram',
+  'PAXUM': 'Paxum',
+  'PAYPAL': 'PayPal',
+  'PAY_BY_MAIL': 'Pay by Mail',
+  'REVOLUT': 'Revolut',
+  'SEPA': 'SEPA',
+  'SEPA_INSTANT': 'SEPA Instant',
+  'STRIKE': 'Strike',
+  'SWIFT': 'SWIFT',
+  'TRANSFERWISE': 'TransferWise',
+  'UPHOLD': 'Uphold',
+  'VENMO': 'Venmo',
+  'ZELLE': 'Zelle',
+};
+
+const Map<String, String> cryptoPaymentMethodLabels = {
+  'BLOCK_CHAINS': 'Blockchains'
+};
+
+// Combine both maps for easy lookup
+const Map<String, String> paymentMethodLabels = {
+  ...fiatPaymentMethodLabels,
+  ...cryptoPaymentMethodLabels,
+};
+
+String getPaymentMethodLabel(String id) {
+  return paymentMethodLabels[id] ?? 'Unknown Payment Method';
+}
+
+PaymentMethodType getPaymentMethodType(String paymentMethodId) {
+  if (cryptoPaymentMethodLabels.containsKey(paymentMethodId)) {
+    return PaymentMethodType.CRYPTO;
+  } else if (fiatPaymentMethodLabels.containsKey(paymentMethodId)) {
+    return PaymentMethodType.FIAT;
+  } else {
+    return PaymentMethodType.UNKNOWN;
+  }
 }

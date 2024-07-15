@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:haveno_flutter_app/utils/payment_utils.dart';
+import 'package:haveno_flutter_app/widgets/add_payment_account_form.dart';
 import 'package:provider/provider.dart';
-import 'package:haveno_flutter_app/providers/payment_accounts_provider.dart';
-import 'package:haveno_flutter_app/proto/compiled/pb.pb.dart';
-import 'payment_account_form.dart';
+import 'package:haveno_flutter_app/providers/payment_accounts_provider.dart';// Import the utils file
 
 class PaymentMethodSelectionForm extends StatefulWidget {
+  final String accountType;
+
+  PaymentMethodSelectionForm({required this.accountType});
+
   @override
   _PaymentMethodSelectionFormState createState() =>
       _PaymentMethodSelectionFormState();
@@ -18,7 +22,9 @@ class _PaymentMethodSelectionFormState
   Widget build(BuildContext context) {
     final paymentAccountsProvider =
         Provider.of<PaymentAccountsProvider>(context);
-    final paymentMethods = paymentAccountsProvider.paymentMethods ?? [];
+    final paymentMethods = widget.accountType == 'FIAT'
+        ? paymentAccountsProvider.paymentMethods
+        : paymentAccountsProvider.cryptoCurrencyPaymentMethods;
 
     return Padding(
       padding: MediaQuery.of(context).viewInsets,
@@ -34,10 +40,10 @@ class _PaymentMethodSelectionFormState
                 labelText: 'Payment Method',
                 border: OutlineInputBorder(),
               ),
-              items: paymentMethods.map((method) {
+              items: paymentMethods?.map((method) {
                 return DropdownMenuItem<String>(
                   value: method.id,
-                  child: Text(method.id),
+                  child: Text(getPaymentMethodLabel(method.id)),
                 );
               }).toList(),
               onChanged: (value) {
@@ -56,7 +62,7 @@ class _PaymentMethodSelectionFormState
                       builder: (BuildContext context) {
                         return DynamicPaymentAccountForm(
                             paymentAccountForm: form,
-                            paymentMethodLabel: value,
+                            paymentMethodLabel: getPaymentMethodLabel(value),
                             paymentMethodId: value);
                       },
                     );

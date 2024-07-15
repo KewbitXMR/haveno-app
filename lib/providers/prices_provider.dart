@@ -4,18 +4,18 @@ import 'package:haveno_flutter_app/services/haveno_service.dart';
 
 class PricesProvider with ChangeNotifier {
   final HavenoService _havenoService;
-  List<MarketPriceInfo>? _marketPrices;
+  List<MarketPriceInfo> _marketPrices = [];
 
   PricesProvider(this._havenoService);
 
-  List<MarketPriceInfo>? get prices => _marketPrices;
+  List<MarketPriceInfo> get prices => _marketPrices;
 
-  Future<void> getPrices() async {
+  Future<void> getXmrMarketPrices() async {
     try {
       final getMarketPricesReply = await _havenoService.priceClient
           .getMarketPrices(MarketPricesRequest());
       _marketPrices = getMarketPricesReply.marketPrice;
-      _marketPrices?.forEach((price) {
+      _marketPrices.forEach((price) {
         print("Price: $price");
       });
       notifyListeners();

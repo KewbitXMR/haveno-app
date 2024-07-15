@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:haveno_flutter_app/utils/payment_utils.dart';
 import 'package:provider/provider.dart';
 import 'package:haveno_flutter_app/proto/compiled/grpc.pbgrpc.dart';
 import 'package:haveno_flutter_app/screens/my_offer_detail_screen.dart';
@@ -43,8 +44,12 @@ class OfferCard extends StatelessWidget {
             }
           },
           child: Card(
-            margin: const EdgeInsets.all(2.0),
+            margin: const EdgeInsets.only(top: 1.0), // 1 pixel margin at the top
             color: Theme.of(context).cardTheme.color,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.zero, // No border radius
+            ),
+            elevation: 0, // No elevation
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -104,7 +109,7 @@ class OfferCard extends StatelessWidget {
                   const SizedBox(height: 10),
                   Center(
                     child: Text(
-                      _isFiatCurrency(offer.counterCurrencyCode)
+                      isFiatCurrency(offer.counterCurrencyCode)
                           ? '${double.parse(offer.price).toStringAsFixed(2)} ${offer.counterCurrencyCode}'
                           : '${offer.price}',
                       style: const TextStyle(
@@ -141,21 +146,5 @@ class OfferCard extends StatelessWidget {
         );
       },
     );
-  }
-
-  bool _isFiatCurrency(String currencyCode) {
-    const fiatCurrencies = {
-      'GBP',
-      'USD',
-      'EUR',
-      'JPY',
-      'AUD',
-      'CAD',
-      'CHF',
-      'CNY',
-      'SEK',
-      'NZD'
-    };
-    return fiatCurrencies.contains(currencyCode);
   }
 }
