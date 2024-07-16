@@ -18,11 +18,12 @@ import 'package:provider/provider.dart';
 import 'package:haveno_flutter_app/services/haveno_service.dart';
 import 'package:haveno_flutter_app/services/http_service.dart';
 import 'package:haveno_flutter_app/services/monero_service.dart';
-//import 'package:haveno_flutter_app/services/tor_service.dart';
+import 'package:haveno_flutter_app/services/tor_service.dart';
 import 'package:haveno_flutter_app/providers/get_version_provider.dart';
 import 'package:haveno_flutter_app/providers/account_provider.dart';
 import 'dart:async';
-import 'package:badges/badges.dart' as badges; // Import the badges package
+import 'package:badges/badges.dart' as badges;
+import 'package:tor/tor.dart'; // Import the badges package
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,10 +32,19 @@ void main() async {
   _setupLogging();
 
   // Initialize services
-  //final torService = TorService();
-  //await torService.initializeTor();
+  Tor tor = Tor(); // Constructing the Tor instance
+  TorService torService = TorService(tor);
+
+  // Strart service and listen
+  torService.startService();
+  //torService.listenToTorServiceEvents();
+  torService.checkControlPort();
+  torService.checkSocks5Port();
+
 
   final httpService = HttpService();
+  final myIP = await httpService.request('GET', 'https://api.ipify.org?format=json');
+  debugPrint(myIP.toString());
   final moneroService = MoneroService();
 
   final havenoService = HavenoService('127.0.0.1', 3201, 'apitest');
