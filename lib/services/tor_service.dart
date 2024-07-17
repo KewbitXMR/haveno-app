@@ -77,6 +77,8 @@ class TorService {
     }
   }
 
+
+
   void listenToTorServiceEvents() {
     _torStatusSubscription = _tor.torServiceEvents.listen((event) {
       _statusController.add("Tor event: $event");

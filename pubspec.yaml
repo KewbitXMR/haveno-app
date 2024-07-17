@@ -25,12 +25,11 @@ dependencies:
   #  timelines_plus: ^1.0.2
   google_fonts: ^6.2.1
 
-
   font_awesome_flutter: ^10.7.0
   timeline_tile: ^2.0.0
   # Add your plugin dependency here
-  tor:
-    path: "../Flutter Plugins/tor"
+  #tor_plugin:
+  #  path: "../Flutter Plugins/tor_plugin"
   protoc_plugin: ^21.1.2
   fixnum: ^1.1.0
   intl: ^0.17.0
