@@ -9,6 +9,7 @@ Subject to the terms and conditions of this License, you are granted a limited, 
 ## Restrictions
 
 You shall not:
+
 - Copy, modify, or create derivative works of the Software;
 - Distribute, sell, lease, or sublicense the Software;
 - Reverse engineer, decompile, or disassemble the Software;
