@@ -6,7 +6,7 @@ Repository for public pre-release builds of the Haveno mobile app for Android.
 
 Before you begin, you must have an Android phone, or you can use an android simulator via [Android Studio](https://studio.android.com) for advanced users, otherwise [BlueStacks](https://www.bluestacks.com/download.html) might be less of a learning curve. There are plenty of guides online for this.
 
-Once you have setup your environment, you can obtain the latest current release from the [Releases](https://github.com/KewbitXMR/haveno-plus/releases) page, where there will likely be daily updates.
+Once you have setup your environment, you can obtain the latest current pre-release from the [Releases](https://github.com/KewbitXMR/haveno-plus/releases) page, where there will likely be daily updates.
 
 ## Roadmap
 
