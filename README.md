@@ -9,10 +9,10 @@ Repository for public pre-release builds of the Haveno mobile app for Android.
 - Windows Desktop Support
 - MacOS Desktop Support
 - Linux Desktop Support
-- Providing the ability for to easy transfer your funds from your daemon to a Cake Wallet or similar.
+- Providing the ability for to easily whitelist and transfer your funds from your daemon to a Cake Wallet or similar.
 - Secure integration with Ledger hardware wallet devices
 - Secure integration with Trezor hardware wallet devices.
-- and much more.
+- Biometric security for mobile devices, for devices that domt have this, a pin or encryption passowrd to unlock the memory store of the app.
 
 ## Status
 The project is currently in public pre-release stage, this is aimed at recieving valuable feedback on improvements to the platform. All pre-release builds are setup on the haveno stagenet and the test daemons are hosted by myself and some members of the community.
