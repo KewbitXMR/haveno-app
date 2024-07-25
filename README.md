@@ -16,13 +16,13 @@ Repository for public pre-release builds of the Haveno mobile app for Android.
 The project is currently in public pre-release stage, this is aimed at recieving valuable feedback on improvements to the platform. All pre-release builds are setup on the haveno stagenet and the test daemons are hosted by myself and some members of the community.
 
 ## Security
-It's important to note that the **pre-release builds are not intended to be used for any kind of financial transactions** at this time, plewse reas the current licence for this project under the LICENSE.md. Additonally, it's recommended to install these builds on disposable phones or Android emulators rather than your main devices, though realistically it should be fine depending on where you live. Please be aware that the application automatically routes all traffic through Tor (see [The Tor Project](https://thetorproject.org)) which may be illegal in certain jurisdications.
+It's important to note that the **pre-release builds are not intended to be used for any kind of financial transactions** at this time, please read the current licence for this project under the LICENSE.md. Additonally, it's recommended to install these builds on disposable phones or Android emulators rather than your main devices, though realistically it should be fine depending on where you live. Please be aware that the application automatically routes all traffic through Tor (see [The Tor Project](https://thetorproject.org)) which may be illegal in certain jurisdications. It is not possible to use a clearnet daemom, for your security.
 
 ### Network Endorsements
-We are not currently endorsing or dencouncing any particular operating networks from the Haveno Plus platform, you'll have the ability to choose your network, upon official release.
+We are not endorsing or dencouncing any particular currently operating networks from the Haveno Plus platform, you'll have the ability to choose your network, upon official release.
 
 ## Project Activity
-I am currently working on this project fulltime and will be for at least the next 2 months, whereby continued support would require sponsorships or support.
+I am currently working on this project fulltime and will be for at least the next 2 months, whereby continued support would require sponsorships or bounties for certain features.
 
 ### Why u no open sawse?
 There are full intentions of open-sourcing this project once it meets sufficent maturity and can demostrate real practical value on the mainnet. For now it will remain this way until a future update. This will largely depend on community consensus and approval.
