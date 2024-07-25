@@ -1,6 +1,9 @@
 # Haveno Plus
 Repository for public pre-release builds of the Haveno mobile app for Android.
 
+## Prerequisites 
+Before you begin, you must have an Android phone, or yoj csn use an android simulator via [Android Studio](https://studio.android.com) for advanced users, otherwise [BlueStacks](https://www.bluestacks.com/download.html] might be less of a learning curve. There are plenty of guides online for this. 
+
 ## Roadmap
 - Complete the full scope of arbitration
 - Make design more consistent
