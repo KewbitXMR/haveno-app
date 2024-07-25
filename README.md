@@ -9,7 +9,9 @@ Repository for public pre-release builds of the Haveno mobile app for Android.
 - Windows Support
 - MacOS Support
 - Linux Support
-- Providing the ability for to easy transfer your funds from your daemon to a Cake Wallet and Ledger or Trezor hardware wallet device via Bluetooth.
+- Providing the ability for to easy transfer your funds from your daemon to a Cake Wallet or similar.
+- Secure integration with Ledger hardware wallet devices
+- Secure integration with Trezor hardware wallet devices.
 - and much more.
 
 ## Status
