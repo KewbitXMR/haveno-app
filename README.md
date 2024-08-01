@@ -8,10 +8,42 @@ Before you begin, you must have an Android phone, or you can use an android simu
 
 Once you have setup your environment, you can obtain the latest current pre-release from the [Releases](https://github.com/KewbitXMR/haveno-plus/releases) page, where there will likely be daily updates.
 
-**Important**: For the Haveno Plus app to function correctly, you must have Orbot installed and activated on your device. Orbot is a free proxy app that empowers other apps to use the internet more securely. Follow these instructions to set up Orbot:
+**Important**: For the Haveno Plus app to function correctly, you must follow the instructions in the guide.
 
-Download Orbot from the [Google Play Store](https://play.google.com/store/apps/details?id=org.torproject.android).
-Open Orbot and follow the on-screen instructions to activate it.
+## Setup your mobile device
+
+### Install Orbot
+
+To ensure all traffic is routed securely through Tor, you must install and activate Orbot on your device:
+
+1. Download Orbot from the [Google Play Store](https://play.google.com/store/apps/details?id=org.torproject.android).
+2. Open Orbot and follow the on-screen instructions to activate it.
+
+### Install Haveno Plus
+
+Currently Haveno Plus client in general is available as alpha pre-release builds which can be downloaded for Android only from the [Releases Download](https://github.com/KewbitXMR/haveno-plus/releases) page.
+
+## Setup your desktop or server
+
+## Install Haveno Plus Desktop
+
+To make the installation process easier, I have created a fork of the original Haveno Daemon, which allows you run an installer to setup the program. Simply run the Haveno Plus installer for your OS distribution, which supports [Windows](https://github.com/KewbitXMR/haveno-plus/releases), [Linux](https://github.com/KewbitXMR/haveno-plus/releases) and [MacOS](https://github.com/KewbitXMR/haveno-plus/releases).
+
+## Status
+
+The project is currently in public pre-release stage, this is aimed at recieving valuable feedback on improvements to the platform. All pre-release builds are setup on the haveno stagenet and the test daemons are hosted by myself and some members of the community.
+
+## Security
+
+It's important to note that the **pre-release builds are not intended to be used for any kind of financial transactions** at this time, please read the current licence for this project under the LICENSE.md. Additonally, it's recommended to install these builds on disposable phones or Android emulators rather than your main devices, though realistically it should be fine depending on where you live. Please be aware that the application automatically routes all traffic through Tor (see [The Tor Project](https://thetorproject.org)) which may be illegal in certain jurisdications. It is not possible to use a clearnet daemon, for your security.
+
+### Network Endorsements
+
+We are not endorsing or dencouncing any particular currently operating networks from the Haveno Plus platform, you'll have the ability to choose your network, upon official release.
+
+## Project Activity
+
+I am currently working on this project fulltime and will be for at least the next 2 months, whereby continued support would require sponsorships or bounties for certain features.
 
 ## Roadmap
 
@@ -27,28 +59,6 @@ Open Orbot and follow the on-screen instructions to activate it.
 - Secure integration with Trezor hardware wallet devices.
 - Biometric security for mobile devices, for devices that domt have this, a pin or encryption passowrd to unlock the memory store of the app.
 
-## Status
-
-The project is currently in public pre-release stage, this is aimed at recieving valuable feedback on improvements to the platform. All pre-release builds are setup on the haveno stagenet and the test daemons are hosted by myself and some members of the community.
-
-## Security
-
-It's important to note that the **pre-release builds are not intended to be used for any kind of financial transactions** at this time, please read the current licence for this project under the LICENSE.md. Additonally, it's recommended to install these builds on disposable phones or Android emulators rather than your main devices, though realistically it should be fine depending on where you live. Please be aware that the application automatically routes all traffic through Tor (see [The Tor Project](https://thetorproject.org)) which may be illegal in certain jurisdications. It is not possible to use a clearnet daemon, for your security.
-
-### Orbot Installation
-
-To ensure all traffic is routed securely through Tor, you must install and activate Orbot on your device:
-
-1. Download Orbot from the [Google Play Store](https://play.google.com/store/apps/details?id=org.torproject.android).
-2. Open Orbot and follow the on-screen instructions to activate it.
-
-### Network Endorsements
-
-We are not endorsing or dencouncing any particular currently operating networks from the Haveno Plus platform, you'll have the ability to choose your network, upon official release.
-
-## Project Activity
-
-I am currently working on this project fulltime and will be for at least the next 2 months, whereby continued support would require sponsorships or bounties for certain features.
 
 ### Why u no open sawse?
 
