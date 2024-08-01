@@ -8,9 +8,9 @@ Before you begin, you must have an Android phone, or you can use an android simu
 
 Once you have setup your environment, you can obtain the latest current pre-release from the [Releases](https://github.com/KewbitXMR/haveno-plus/releases) page, where there will likely be daily updates.
 
-*Important*: For the Haveno Plus app to function correctly, you must have Orbot installed and activated on your device. Orbot is a free proxy app that empowers other apps to use the internet more securely. Follow these instructions to set up Orbot:
+**Important**: For the Haveno Plus app to function correctly, you must have Orbot installed and activated on your device. Orbot is a free proxy app that empowers other apps to use the internet more securely. Follow these instructions to set up Orbot:
 
-Download Orbot from the Google Play Store or F-Droid.
+Download Orbot from the [Google Play Store](https://play.google.com/store/apps/details?id=org.torproject.android).
 Open Orbot and follow the on-screen instructions to activate it.
 
 ## Roadmap
@@ -39,7 +39,7 @@ It's important to note that the **pre-release builds are not intended to be used
 
 To ensure all traffic is routed securely through Tor, you must install and activate Orbot on your device:
 
-1. Download Orbot from the Google Play Store or F-Droid.
+1. Download Orbot from the [Google Play Store](https://play.google.com/store/apps/details?id=org.torproject.android).
 2. Open Orbot and follow the on-screen instructions to activate it.
 
 ### Network Endorsements
