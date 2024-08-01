@@ -8,6 +8,11 @@ Before you begin, you must have an Android phone, or you can use an android simu
 
 Once you have setup your environment, you can obtain the latest current pre-release from the [Releases](https://github.com/KewbitXMR/haveno-plus/releases) page, where there will likely be daily updates.
 
+*Important*: For the Haveno Plus app to function correctly, you must have Orbot installed and activated on your device. Orbot is a free proxy app that empowers other apps to use the internet more securely. Follow these instructions to set up Orbot:
+
+Download Orbot from the Google Play Store or F-Droid.
+Open Orbot and follow the on-screen instructions to activate it.
+
 ## Roadmap
 
 - Complete the full scope of arbitration
@@ -29,6 +34,13 @@ The project is currently in public pre-release stage, this is aimed at recieving
 ## Security
 
 It's important to note that the **pre-release builds are not intended to be used for any kind of financial transactions** at this time, please read the current licence for this project under the LICENSE.md. Additonally, it's recommended to install these builds on disposable phones or Android emulators rather than your main devices, though realistically it should be fine depending on where you live. Please be aware that the application automatically routes all traffic through Tor (see [The Tor Project](https://thetorproject.org)) which may be illegal in certain jurisdications. It is not possible to use a clearnet daemon, for your security.
+
+### Orbot Installation
+
+To ensure all traffic is routed securely through Tor, you must install and activate Orbot on your device:
+
+1. Download Orbot from the Google Play Store or F-Droid.
+2. Open Orbot and follow the on-screen instructions to activate it.
 
 ### Network Endorsements
 
