@@ -29,6 +29,14 @@ Currently Haveno Plus client in general is available as alpha pre-release builds
 
 To make the installation process easier, I have created a fork of the original Haveno Daemon, which allows you run an installer to setup the program. Simply run the Haveno Plus installer for your OS distribution, which supports [Windows](https://github.com/KewbitXMR/haveno-plus/releases), [Linux](https://github.com/KewbitXMR/haveno-plus/releases) and [MacOS](https://github.com/KewbitXMR/haveno-plus/releases).
 
+Step by step instructions:
+1. Run the installer and complete the installation walkthrough.
+2. Navigate to the **Menu**
+3. Click **Link your Mobile Device**
+4. Open the app on your mobile device and scan the QR code to pair.
+
+Pairing is done securely using a Tor onion addres.
+
 ## Status
 
 The project is currently in public pre-release stage, this is aimed at recieving valuable feedback on improvements to the platform. All pre-release builds are setup on the haveno stagenet and the test daemons are hosted by myself and some members of the community.
