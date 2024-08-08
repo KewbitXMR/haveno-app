@@ -59,13 +59,13 @@ I am currently working on this project fulltime and will be for at least the nex
 - Make design more consistent
 - Adding client authentication to onion hosted daemons for additional security
 - iOS Support
-- Windows Desktop Support
 - MacOS Desktop Support
 - Linux Desktop Support
 - Providing the ability for to easily whitelist and transfer your funds from your daemon to a Cake Wallet or similar.
 - Secure integration with Ledger hardware wallet devices
 - Secure integration with Trezor hardware wallet devices.
 - Biometric security for mobile devices, for devices that domt have this, a pin or encryption passowrd to unlock the memory store of the app.
+- Standlone version (not requiring desktop or server)
 
 
 ### Why u no open sawse?
