@@ -55,7 +55,7 @@ Specific measures have been taken to prevent the use of this service on a live n
 
 ### Network Endorsements
 
-We are not endorsing or dencouncing any particular currently operating networks from the Haveno Plus platform, you'll have the ability to choose your network, upon official release.
+We are not endorsing or denouncing any particular currently operating networks from the Haveno Plus platform, you'll have the ability to choose your network, upon official release.
 
 ## Project Activity
 
