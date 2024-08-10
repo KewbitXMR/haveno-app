@@ -12,7 +12,7 @@ Once you have setup your environment, you can obtain the latest current pre-rele
 
 ## Setup your mobile device
 
-### Install VPN Relay
+### Install Tor VPN Relay
 
 To ensure all traffic is routed securely through Tor, you must install and activate an app comfigured to route your traffic through Tor on your mobile device, the repository that's officially supported by The Tor Project is [Orbot](https://play.google.com/store/apps/details?id=org.torproject.android) ([Sourcecode & Releases](https://github.com/guardianproject/orbot/releases/tag/17.3.2-RC-1-tor-0.4.8.12)),  however there are also popular community alternatives such as [InviZible](https://play.google.com/store/apps/details?id=pan.alexander.tordnscrypt.gp) ([Sourcecode & Releases](https://github.com/Gedsh/InviZible/releases/tag/v2.3.0-beta)). It's important to recognise the pros and cons yourself, and make your own decision. For exmaple, InviZible is great for all things android but doesnt support iOS, Orbot supports both platforms. Be sure to read the documentation for both for a comprehensive understanding.
 
