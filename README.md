@@ -22,11 +22,11 @@ To ensure all traffic is routed securely through Tor, you must install and activ
 
 ### Install Haveno Plus
 
-Currently the Haveno Plus App in general is available as alpha pre-release builds which can be downloaded for Android and Windows only from the [Releases Download](https://github.com/KewbitXMR/haveno-plus/releases) page. I have created customer installers and clients which I believe to be intuitive for the average Joe user to be sble to use without any learning curve, my personal experience with the orginal Bisq UI which Haveno inherited is that it could've used some TLC. You are not required to use the Haveno Plus Desktop clients, however for now, its the quickest and easiest way to get setup.
+Currently the Haveno Plus App in general is available as alpha pre-release builds which can be downloaded for Android and Windows only from the [Releases Download](https://github.com/KewbitXMR/haveno-plus/releases) page. I have created custom installers and clients which I believe to be a bit more intuitive and user-friendly for the average Joe, to be able to use without any learning curve. My personal experience with the orginal Bisq UI which Haveno inherited is that it could've used some extra TLC while. You are not required to use the Haveno Plus Desktop clients, however for now, its the quickest and easiest way to get setup.
 
 There are planned works for a proper intragration into the main haveno project, if you'd prefer.
 
-**Note: Haveno Plus is comfigured to use stagenet and will be using stagenet for at least the next 2 months, you will not be able to use this for any real trading in the meantime.**
+**Note: Haveno Plus is comfigured to use stagenet (the network used for testing before release) and will be using stagenet for at __least__ the next 2 months, you will not be permitted to use this for any real-life trading in the meantime.**
 
 ### Setup your desktop or server
 
@@ -75,6 +75,8 @@ I am currently working on this project fulltime and will be for at least the nex
 - Biometric security for mobile devices, and for devices that don't have this, a pin code or encryption passowrd to unlock the memory store of the app.
 - Standlone version (not requiring desktop or server, this involves a considerable amount if work, while I'd love to have the time to do it, something like this may require community support, if this is soemthing that is highly requested)
 
+### Conbributing
+If you are excited about the haveno app, and would like to help out, the very best way you can do that, is fine an old phone or laptop to test out the app, client and the installers, let me know what you think should be worked on the most and give good high quality feedback, this will ne invaluable. I will set up a section for some intitial discussioms which I hope you will comsider taking part in.
 
 ### Why u no open sawse?
 
