@@ -14,25 +14,27 @@ Once you have setup your environment, you can obtain the latest current pre-rele
 
 ### Install VPN Relay
 
-To ensure all traffic is routed securely through Tor, you must install and activate an app comfigured to route your traffic through Tor on your mobile device, the project officially supported by The Tor Project is [Orbot]() ([Sourcecode & Releases](https://github.com/guardianproject/orbot/releases/tag/17.3.2-RC-1-tor-0.4.8.12)), ibut there are also popular community alternatives such as [InviZible](https://play.google.com/store/apps/details?id=pan.alexander.tordnscrypt.gp) ([Sourcecode & Releases](https://github.com/Gedsh/InviZible/releases/tag/v2.3.0-beta)). It's important to recognise the pros and cons yourself, and make your own decision.
+To ensure all traffic is routed securely through Tor, you must install and activate an app comfigured to route your traffic through Tor on your mobile device, the repository that's officially supported by The Tor Project is [Orbot](https://play.google.com/store/apps/details?id=org.torproject.android) ([Sourcecode & Releases](https://github.com/guardianproject/orbot/releases/tag/17.3.2-RC-1-tor-0.4.8.12)),  however there are also popular community alternatives such as [InviZible](https://play.google.com/store/apps/details?id=pan.alexander.tordnscrypt.gp) ([Sourcecode & Releases](https://github.com/Gedsh/InviZible/releases/tag/v2.3.0-beta)). It's important to recognise the pros and cons yourself, and make your own decision. For exmaple, InviZible is great for all things android but doesnt support iOS, Orbot supports both platforms. Be sure to read the documentation for both for a comprehensive understanding.
 
 1. Download [Orbot on Google Play](https://play.google.com/store/apps/details?id=org.torproject.android) or [InviZible on Google Play](https://play.google.com/store/apps/details?id=pan.alexander.tordnscrypt.gp) alternatively you can downlaod [InviZible on F-Droid](https://f-droid.org/packages/pan.alexander.tordnscrypt.stable/).
-3. Open your choiceand follow the on-screen instructions to activate it.
-4. Ensure that VPN relay is comfigured to route your app through Tor, the app will not load if you have not first configured.
+3. Open your choice of app and follow the on-screen instructions to activate it.
+4. Ensure that VPN relay is configured to route your Haveno Plus through Tor, the app will not load if you have not first configured a VPN relay, for your security.
 
 ### Install Haveno Plus
 
-Currently the Haveno Plus App in general is available as alpha pre-release builds which can be downloaded for Android and Windows only from the [Releases Download](https://github.com/KewbitXMR/haveno-plus/releases) page.
+Currently the Haveno Plus App in general is available as alpha pre-release builds which can be downloaded for Android and Windows only from the [Releases Download](https://github.com/KewbitXMR/haveno-plus/releases) page. I have created customer installers and clients which I believe to be intuitive for the average Joe user to be sble to use without any learning curve, my personal experience with the orginal Bisq UI which Haveno inherited is that it could've used some TLC. You are not required to use the Haveno Plus Desktop clients, however for now, its the quickest and easiest way to get setup.
 
-Note: Haveno Plus is comfigured to use stagenet and will be using stagenet for at least the next 2 months, you will not be able to use this for any real trading in the meantime.
+There are planned works for a proper intragration into the main haveno project, if you'd prefer.
+
+**Note: Haveno Plus is comfigured to use stagenet and will be using stagenet for at least the next 2 months, you will not be able to use this for any real trading in the meantime.**
 
 ### Setup your desktop or server
 
 ## Install Haveno Plus Desktop
 
-To make the installation process easier, I have forked of the original Haveno project, and created some realible installers for you to setup the program. Simply run the Haveno Plus installer for your OS distribution, which supports [Windows](https://github.com/KewbitXMR/haveno-plus/releases), [Linux](https://github.com/KewbitXMR/haveno-plus/releases) (Coming soon) and [MacOS](https://github.com/KewbitXMR/haveno-plus/releases) (Coming soon)
+To make the installation process easier, I have forked of the original Haveno project, and created some decently realible installers for you to setup the program. Simply run the Haveno Plus installer for your OS distribution, which supports [Windows](https://github.com/KewbitXMR/haveno-plus/releases), [Linux](https://github.com/KewbitXMR/haveno-plus/releases) (Coming soon) and [MacOS](https://github.com/KewbitXMR/haveno-plus/releases) (Coming soon)
 
-Step by step instructions:
+# Step by step instructions
 1. Run the installer for the OS distribution you wish to help test from and complete the installation walkthrough.
 2. Once the app is installed, run it and give it some time to initialise, you'll see a connection established notice screen which indicated you're ready to go.
 3. Navigate to the **Menu**
@@ -57,7 +59,7 @@ We are not endorsing or dencouncing any particular currently operating networks 
 
 ## Project Activity
 
-I am currently working on this project fulltime and will be for at least the next 2 months, whereby continued support would require sponsorships or bounties for certain features.
+I am currently working on this project fulltime and will be for at least the next 2 months, whereby continued support would likely require sponsorships or bounties for certain features, moving into the future. I am a very big advocate for privacy and have intentions of providing more value to the XMR space / community in geneeal.
 
 ## Roadmap
 
@@ -71,9 +73,10 @@ I am currently working on this project fulltime and will be for at least the nex
 - Secure integration with Ledger hardware wallet devices
 - Secure integration with Trezor hardware wallet devices.
 - Biometric security for mobile devices, and for devices that don't have this, a pin code or encryption passowrd to unlock the memory store of the app.
-- Standlone version (not requiring desktop or server, this may require significant community funding with approximately 4 months of work anticipated. 
+- Standlone version (not requiring desktop or server, this involves a considerable amount if work, while I'd love to have the time to do it, something like this may require community support, if this is soemthing that is highly requested)
 
 
 ### Why u no open sawse?
 
-There are full intentions of open-sourcing this project once it meets sufficent maturity and can demostrate real practical value on the mainnet. For now it will remain this way until a future update. This will largely depend on community consensus and approval.
+There are FULL intentions of open-sourcing this project once it meets sufficent maturity and can demostrate real practical value on the mainnet. For now it will remain pre-release only until a further notice. This will largely depend on community response, consensus and approval, if a considerable amount of people feel they would find these tools
+useful, please make it clear, and I will make it open-source.
