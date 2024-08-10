@@ -14,9 +14,9 @@ Once you have setup your environment, you can obtain the latest current pre-rele
 
 ### Install VPN Relay
 
-To ensure all traffic is routed securely through Tor, you must install and activate an app comfigured to route your traffic through Tor on your device, the version officially supported by The Tor Project, but there are also popular community alternatives such as [InviZible](https://github.com/Gedsh/InviZible). It's important to recognise the pros and cons yourself, and makenyour own decision.
+To ensure all traffic is routed securely through Tor, you must install and activate an app comfigured to route your traffic through Tor on your mobile device, the project officially supported by The Tor Project is [Orbot]() ([Sourcecode & Releases](https://github.com/guardianproject/orbot/releases/tag/17.3.2-RC-1-tor-0.4.8.12)), ibut there are also popular community alternatives such as [InviZible](https://play.google.com/store/apps/details?id=pan.alexander.tordnscrypt.gp) ([Sourcecode & Releases](https://github.com/Gedsh/InviZible/releases/tag/v2.3.0-beta)). It's important to recognise the pros and cons yourself, and make your own decision.
 
-1. Download [Orbot](https://play.google.com/store/apps/details?id=org.torproject.android) / [InviZible](https://github.com/Gedsh/InviZible) from the Google Play Store.
+1. Download [Orbot on Google Play](https://play.google.com/store/apps/details?id=org.torproject.android) or [InviZible on Google Play](https://play.google.com/store/apps/details?id=pan.alexander.tordnscrypt.gp) alternatively you can downlaod [InviZible on F-Droid](https://f-droid.org/packages/pan.alexander.tordnscrypt.stable/).
 3. Open your choiceand follow the on-screen instructions to activate it.
 4. Ensure that VPN relay is comfigured to route your app through Tor, the app will not load if you have not first configured.
 
