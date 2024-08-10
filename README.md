@@ -1,4 +1,4 @@
-# Haveno Plus
+# Haveno Plus (Mobile)
 
 **Repository for public pre-release builds of the Haveno mobile app for Android.**
 
