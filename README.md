@@ -59,8 +59,10 @@ The Haveno Plus app is available as alpha pre-release builds for Android and Win
 To streamline the installation process, a fork of the original Haveno project has been created with reliable installers. Supported OS distributions include:
 
 - **Windows:** [Download Here](https://github.com/KewbitXMR/haveno-plus/releases)
-- **Linux:** (Coming soon)
 - **MacOS:** (Coming soon)
+- **Linux:** (Coming soon)
+- **Docker:** (Coming soon)
+
 
 ### Step-by-Step Instructions
 1. Run the installer for your OS and follow the installation walkthrough.
