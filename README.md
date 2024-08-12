@@ -91,6 +91,7 @@ The project is actively developed full-time for at least the next 2 months. Cont
 
 ## Roadmap
 
+- Beta release
 - Complete full arbitration scope.
 - Improve design consistency.
 - Add client authentication for onion-hosted daemons.
@@ -101,6 +102,7 @@ The project is actively developed full-time for at least the next 2 months. Cont
 - Secure integration with Ledger and Trezor hardware wallets.
 - Biometric security for mobile devices, with PIN or password protection for those without biometric options.
 - Standalone version not requiring desktop or server (considerable work; community support may be needed).
+- Support for Monero Atomic Swaps
 
 ## Contributing
 
