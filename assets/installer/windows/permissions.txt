@@ -1,0 +1,2 @@
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HavenoPlusDaemonService\Parameters [1 5 7]
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HavenoPlusTorService\Parameters [1 5 7]
