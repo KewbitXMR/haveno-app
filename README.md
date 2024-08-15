@@ -56,7 +56,7 @@ The Haveno Plus app is available as alpha pre-release builds for Android and Win
 
 ### Install Haveno Plus Desktop
 
-To streamline the installation process, a fork of the original Haveno project has been created with reliable installers. Supported OS distributions include:
+To streamline the installation process Haveno Daemon is automatically downloaded and installed from the original Haveno project has been created with reliable installers. Supported OS distributions include:
 
 - **Windows:** [Download Here](https://github.com/KewbitXMR/haveno-plus/releases)
 - **MacOS:** (Coming soon)
