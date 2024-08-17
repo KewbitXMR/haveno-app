@@ -2,7 +2,7 @@
 
 **Repository for public pre-release builds of the Haveno mobile app for Android.**
 
-![Haveno Plus Image 1]](https://i.ibb.co/J7J9qV4/Screenshot-20240817-203316.jpg)) ![Alt text](https://i.ibb.co/Btt17Vg/Screenshot-20240817-203341.jpg) ![Alt text]([image_url_or_path "Optional Title"](https://i.ibb.co/1L09NT6/Screenshot-20240817-203431.jpg)) ![Alt text]([image_url_or_path "Optional Title"](https://i.ibb.co/QDPyJp9/Screenshot-20240817-203535.jpg))
+![Haveno Plus Image 1](https://i.ibb.co/J7J9qV4/Screenshot-20240817-203316.jpg | width=100) ![Alt text](https://i.ibb.co/Btt17Vg/Screenshot-20240817-203341.jpg | width=100) ![Alt text]((https://i.ibb.co/1L09NT6/Screenshot-20240817-203431.jpg | width=100) ![Alt text](https://i.ibb.co/QDPyJp9/Screenshot-20240817-203535.jpg | width=100)
 
 ## Table of Contents
 1. [Prerequisites](#prerequisites)
