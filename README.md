@@ -112,4 +112,4 @@ Testing on old phones or laptops and providing high-quality feedback is the best
 
 ## Open Source Plans
 
-The project will be open-sourced once it reaches sufficient maturity and demonstrates practical value on the mainnet. This will depend on community response and approval. If there is significant interest, the project will be made open-source.
+The project will be open-sourced once it reaches sufficient maturity and demonstrates practical value on the mainnet. This will depend on community response and approval. If there is significant interest, the project will be made open-source contigent to community bounty alignments being made on [Official Monero Bounties](https://bounties.monero.social)
