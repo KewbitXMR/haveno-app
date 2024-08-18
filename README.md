@@ -1,6 +1,8 @@
 # Haveno Plus (Mobile)
 
-**Repository for public pre-release builds of the Haveno mobile app for Android.**
+**Repository for public pre-release builds of the Haveno mobile app for Android. This is not a mock, though its currently only on stagenet. This is a bounty-funded project.**
+
+<img src="https://i.ibb.co/J7J9qV4/Screenshot-20240817-203316.jpg" width=150 /> <img src="https://i.ibb.co/Btt17Vg/Screenshot-20240817-203341.jpg" width=150 /> <img src="https://i.ibb.co/1L09NT6/Screenshot-20240817-203431.jpg" width=150 /> <img src="https://i.ibb.co/QDPyJp9/Screenshot-20240817-203535.jpg" width=150 /> <img src="https://i.ibb.co/L011YGW/Screenshot-20240817-203150.jpg" width=150 /> <img src="https://i.ibb.co/64YQR1S/Screenshot-20240817-204709.jpg" width=150 />
 
 ## Table of Contents
 1. [Prerequisites](#prerequisites)
@@ -56,7 +58,7 @@ The Haveno Plus app is available as alpha pre-release builds for Android and Win
 
 ### Install Haveno Plus Desktop
 
-To streamline the installation process, a fork of the original Haveno project has been created with reliable installers. Supported OS distributions include:
+To streamline the installation process Haveno Daemon is automatically downloaded and installed from [this fork](https://github.com/KewbitXMR/haveno.git) of the original Haveno project, and has been created with reliable installers. Supported OS distributions include:
 
 - **Windows:** [Download Here](https://github.com/KewbitXMR/haveno-plus/releases)
 - **MacOS:** (Coming soon)
@@ -110,4 +112,4 @@ Testing on old phones or laptops and providing high-quality feedback is the best
 
 ## Open Source Plans
 
-The project will be open-sourced once it reaches sufficient maturity and demonstrates practical value on the mainnet. This will depend on community response and approval. If there is significant interest, the project will be made open-source.
+The project will be open-sourced once it reaches sufficient maturity and demonstrates practical value on the mainnet. This will depend on community response and approval. If there is significant interest, the project will be made open-source contigent to community bounty alignments being made on the official [Monero Bounties](https://bounties.monero.social) website.
