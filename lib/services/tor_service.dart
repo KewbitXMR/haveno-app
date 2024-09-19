@@ -20,7 +20,7 @@ class TorService {
 
   Future<void> startService() async {
     try {
-      await _tor.startService("ControlPort 9051\nCookieAuthentication 0");
+      //await _tor.startService("ControlPort 9051\nCookieAuthentication 0");
       debugPrint("Tor service started");
       _statusController.add("Tor service started.");
     } catch (e) {
@@ -31,7 +31,7 @@ class TorService {
 
   Future<void> stopService() async {
     try {
-      await _tor.stopService();
+      //await _tor.stopService();
       _statusController.add("Tor service stopped.");
     } catch (e) {
       _statusController.add("Failed to stop Tor: $e");
@@ -40,12 +40,12 @@ class TorService {
 
   Future<void> initializeDaemonHiddenService({required String hostname, required String privateKey}) async {
     try {
-      final hiddenServiceInfo = await _tor.initializeHiddenService(
-        listenPort: 3201,
-        exposePort: 12134,
-        privateKey: privateKey,
-      );
-      _statusController.add("Hidden service initialized: $hiddenServiceInfo");
+      //final hiddenServiceInfo = await _tor.initializeHiddenService(
+      //  listenPort: 3201,
+      //  exposePort: 12134,
+      //  privateKey: privateKey,
+      //);
+      //_statusController.add("Hidden service initialized: $hiddenServiceInfo");
     } catch (e) {
       _statusController.add("Failed to initialize hidden service: $e");
     }
@@ -80,10 +80,10 @@ class TorService {
 
 
   void listenToTorServiceEvents() {
-    _torStatusSubscription = _tor.torServiceEvents.listen((event) {
-      _statusController.add("Tor event: $event");
-      debugPrint(event);
-    });
+    //_torStatusSubscription = _tor.torServiceEvents.listen((event) {
+    //  _statusController.add("Tor event: $event");
+    //  debugPrint(event);
+    //});
   }
 
   void dispose() {
