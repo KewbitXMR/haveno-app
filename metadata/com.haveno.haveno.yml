@@ -19,8 +19,6 @@ Builds:
     output: build/app/outputs/apk/fdroid/release/app-fdroid-release.apk
      srclibs:
       - flutter@stable
-    # Deletes unrelated directories,
-    # remove those not needed from the list.
     rm:
       - ios
       - linux

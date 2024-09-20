@@ -1,4 +1,4 @@
-import 'dart:async';
+/* import 'dart:async';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:tor/tor.dart';
@@ -91,4 +91,4 @@ class TorService {
     _statusController.close();
     _controlPortStatusController.close();
   }
-}
+} */
