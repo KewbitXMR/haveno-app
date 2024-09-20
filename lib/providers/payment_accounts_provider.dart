@@ -5,10 +5,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:haveno_flutter_app/proto/compiled/grpc.pbgrpc.dart';
-import 'package:haveno_flutter_app/proto/compiled/pb.pb.dart';
-import 'package:haveno_flutter_app/proto/compiled/grpc.pb.dart';
-import 'package:haveno_flutter_app/services/haveno_service.dart';
+import 'package:haveno/proto/compiled/grpc.pbgrpc.dart';
+import 'package:haveno/proto/compiled/pb.pb.dart';
+import 'package:haveno/proto/compiled/grpc.pb.dart';
+import 'package:haveno/services/haveno_service.dart';
 
 class PaymentAccountsProvider with ChangeNotifier {
   final Logger _logger = Logger('PaymentAccountsProvider');

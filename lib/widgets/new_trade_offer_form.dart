@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:haveno_flutter_app/providers/offers_provider.dart';
-import 'package:haveno_flutter_app/proto/compiled/pb.pb.dart';
+import 'package:haveno/providers/offers_provider.dart';
+import 'package:haveno/proto/compiled/pb.pb.dart';
 import 'package:fixnum/fixnum.dart' as fixnum;
 import 'dart:convert'; // Import the dart:convert library
 

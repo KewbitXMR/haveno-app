@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:fixnum/fixnum.dart';
 import 'package:flutter/material.dart';
-import 'package:haveno_flutter_app/utils/payment_utils.dart';
+import 'package:haveno/utils/payment_utils.dart';
 import 'package:provider/provider.dart';
-import 'package:haveno_flutter_app/providers/trades_provider.dart';
-import 'package:haveno_flutter_app/proto/compiled/grpc.pbgrpc.dart';
+import 'package:haveno/providers/trades_provider.dart';
+import 'package:haveno/proto/compiled/grpc.pbgrpc.dart';
 import 'package:flutter/services.dart';
 
 class ActiveBuyerTradeTimelineScreen extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:grpc/grpc.dart';
-import 'package:haveno_flutter_app/proto/compiled/grpc.pbgrpc.dart';
+import 'package:haveno/proto/compiled/grpc.pbgrpc.dart';
 
 class HavenoService {
   final String host;

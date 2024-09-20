@@ -1,4 +1,4 @@
-# Haveno Plus (Mobile)
+# Haveno
 
 **Repository for public pre-release builds of the Haveno mobile app for Android. This is not a mock, though its currently only on stagenet. This is a bounty-funded project.**
 

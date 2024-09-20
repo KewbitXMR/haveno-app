@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:haveno_flutter_app/proto/compiled/pb.pb.dart';
+import 'package:haveno/proto/compiled/pb.pb.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
-import 'package:haveno_flutter_app/utils/salt.dart';
+import 'package:haveno/utils/salt.dart';
 import 'package:provider/provider.dart';
-import 'package:haveno_flutter_app/providers/payment_accounts_provider.dart';
+import 'package:haveno/providers/payment_accounts_provider.dart';
 
 class DynamicPaymentAccountForm extends StatefulWidget {
   final PaymentAccountForm paymentAccountForm;

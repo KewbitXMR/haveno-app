@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:haveno_flutter_app/tabs/trades/trades_active_tab.dart';
-import 'package:haveno_flutter_app/tabs/trades/trades_completed_tab.dart';
+import 'package:haveno/tabs/trades/trades_active_tab.dart';
+import 'package:haveno/tabs/trades/trades_completed_tab.dart';
 import 'package:provider/provider.dart';
-import 'package:haveno_flutter_app/providers/trades_provider.dart';
+import 'package:haveno/providers/trades_provider.dart';
 
 class TradesTab extends StatefulWidget {
   @override

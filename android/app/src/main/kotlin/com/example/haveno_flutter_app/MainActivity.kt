@@ -1,4 +1,4 @@
-package com.example.haveno_flutter_app
+package com.haveno.haveno
 
 import io.flutter.embedding.android.FlutterActivity
 

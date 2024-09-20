@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:haveno_flutter_app/providers/wallets_provider.dart';
-import 'package:haveno_flutter_app/proto/compiled/grpc.pbgrpc.dart';
+import 'package:haveno/providers/wallets_provider.dart';
+import 'package:haveno/proto/compiled/grpc.pbgrpc.dart';
 import 'package:fixnum/fixnum.dart';
 import 'package:intl/intl.dart';
 

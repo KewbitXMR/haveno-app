@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:haveno_flutter_app/providers/trades_provider.dart';
+import 'package:haveno/providers/trades_provider.dart';
 
 class TradesCompletedTab extends StatelessWidget {
   @override

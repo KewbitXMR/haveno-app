@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:haveno_flutter_app/proto/compiled/grpc.pbgrpc.dart';
-import 'package:haveno_flutter_app/services/haveno_service.dart';
+import 'package:haveno/proto/compiled/grpc.pbgrpc.dart';
+import 'package:haveno/services/haveno_service.dart';
 
 class AccountProvider with ChangeNotifier {
   final HavenoService _havenoService;

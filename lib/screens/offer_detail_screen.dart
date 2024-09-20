@@ -1,12 +1,12 @@
 import 'package:fixnum/fixnum.dart' as fixnum;
 import 'package:flutter/material.dart';
-import 'package:haveno_flutter_app/proto/compiled/grpc.pbgrpc.dart';
-import 'package:haveno_flutter_app/proto/compiled/pb.pb.dart';
-import 'package:haveno_flutter_app/utils/xmr_math.dart';
+import 'package:haveno/proto/compiled/grpc.pbgrpc.dart';
+import 'package:haveno/proto/compiled/pb.pb.dart';
+import 'package:haveno/utils/xmr_math.dart';
 import 'package:provider/provider.dart';
-import 'package:haveno_flutter_app/providers/offers_provider.dart';
-import 'package:haveno_flutter_app/providers/trades_provider.dart';
-import 'package:haveno_flutter_app/providers/payment_accounts_provider.dart';
+import 'package:haveno/providers/offers_provider.dart';
+import 'package:haveno/providers/trades_provider.dart';
+import 'package:haveno/providers/payment_accounts_provider.dart';
 
 class OfferDetailScreen extends StatefulWidget {
   final OfferInfo offer;
