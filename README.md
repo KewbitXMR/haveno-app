@@ -46,9 +46,9 @@ To ensure all traffic is securely routed through Tor, you must install and activ
 2. Open the app of your choice and follow the on-screen instructions to activate it. Ensure that Tor is enabled and the VPN is activated.
 3. Configure the VPN relay to route your Haveno Plus app traffic through Tor. The app will not load if a VPN relay is not configured first, by design, for your security.
 
-### Install Haveno Plus
+### Haveno Install Guide
 
-The Haveno Plus app is available as alpha pre-release builds for Android and Windows. Download the app from the [Releases](https://github.com/KewbitXMR/haveno-plus/releases) page. The desktop clients are designed to be user-friendly, with custom installers for quick setup.
+The Haveno Plus app is available as alpha pre-release builds for Android and Windows. Download the app from the [Releases](https://github.com/KewbitXMR/haveno-app/releases) page. The desktop clients are designed to be user-friendly, with custom installers for quick setup.
 
 **Note:** Haveno Plus is currently configured to use the stagenet (a test network) for at least the next 2 months. It is not intended for real-life trading during this time.
 
@@ -58,8 +58,10 @@ The Haveno Plus app is available as alpha pre-release builds for Android and Win
 
 To streamline the installation process Haveno Daemon is automatically downloaded and installed from [this fork](https://github.com/KewbitXMR/haveno.git) of the original Haveno project, and has been created with reliable installers. Supported OS distributions include:
 
-- **Windows:** [Download Here](https://github.com/KewbitXMR/haveno-app/releases)
-- **MacOS:** (Coming soon)
+- **Windows:** [Download Here](https://github.com/KewbitXMR/haveno-app/releases/download/v0.3.2/haveno-v1.3-x86_x86-installer.exe)
+- **MacOS:** [Download Here](https://github.com/KewbitXMR/haveno-app/releases/download/v0.3.2/haveno-v1.3-installer.pkg)
+- **Android** [Download Here](https://github.com/KewbitXMR/haveno-app/releases/download/v0.3.2/haveno-v1.3.apk)
+- **iOS** (Coming soon)
 - **Linux:** (Coming soon)
 - **Docker:** (Coming soon)
 
@@ -83,7 +85,7 @@ The project is currently in a public pre-release stage aimed at gathering feedba
 
 ### Network Endorsements
 
-Haveno Plus does not endorse or denounce any particular network. The choice of network will be available upon official release.
+Haveno does not endorse or denounce any particular network. The choice of network will be available upon official release.
 
 ## Project Activity
 
