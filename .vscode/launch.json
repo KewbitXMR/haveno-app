@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "haveno_flutter_app",
+            "name": "haveno",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "haveno_flutter_app (profile mode)",
+            "name": "haveno (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "haveno_flutter_app (release mode)",
+            "name": "haveno (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

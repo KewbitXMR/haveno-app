@@ -1,8 +1,8 @@
 import 'package:fixnum/fixnum.dart' as fixnum;
 import 'package:flutter/material.dart';
-import 'package:haveno_flutter_app/proto/compiled/grpc.pbgrpc.dart';
-import 'package:haveno_flutter_app/proto/compiled/pb.pb.dart';
-import 'package:haveno_flutter_app/services/haveno_service.dart';
+import 'package:haveno/proto/compiled/grpc.pbgrpc.dart';
+import 'package:haveno/proto/compiled/pb.pb.dart';
+import 'package:haveno/services/haveno_service.dart';
 
 class TradesProvider with ChangeNotifier {
   final HavenoService _havenoService;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:haveno_flutter_app/proto/compiled/grpc.pbgrpc.dart';
+import 'package:haveno/proto/compiled/grpc.pbgrpc.dart';
 import 'package:provider/provider.dart';
-import 'package:haveno_flutter_app/providers/offers_provider.dart';
+import 'package:haveno/providers/offers_provider.dart';
 
 class MyOfferDetailScreen extends StatefulWidget {
   final String offerId;

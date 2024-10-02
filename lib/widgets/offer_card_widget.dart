@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:haveno_flutter_app/utils/payment_utils.dart';
+import 'package:haveno/utils/payment_utils.dart';
 import 'package:provider/provider.dart';
-import 'package:haveno_flutter_app/proto/compiled/grpc.pbgrpc.dart';
-import 'package:haveno_flutter_app/screens/my_offer_detail_screen.dart';
-import 'package:haveno_flutter_app/screens/offer_detail_screen.dart';
-import 'package:haveno_flutter_app/providers/offers_provider.dart';
+import 'package:haveno/proto/compiled/grpc.pbgrpc.dart';
+import 'package:haveno/screens/my_offer_detail_screen.dart';
+import 'package:haveno/screens/offer_detail_screen.dart';
+import 'package:haveno/providers/offers_provider.dart';
 
 class OfferCard extends StatelessWidget {
   final OfferInfo offer;

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:haveno_flutter_app/proto/compiled/pb.pb.dart';
-import 'package:haveno_flutter_app/tabs/sell/sale_market_offers_tab.dart';
-import 'package:haveno_flutter_app/tabs/sell/sale_my_offers_tab.dart';
+import 'package:haveno/proto/compiled/pb.pb.dart';
+import 'package:haveno/tabs/sell/sale_market_offers_tab.dart';
+import 'package:haveno/tabs/sell/sale_my_offers_tab.dart';
 import 'package:provider/provider.dart';
-import 'package:haveno_flutter_app/providers/offers_provider.dart';
-import 'package:haveno_flutter_app/providers/payment_accounts_provider.dart';
-import 'package:haveno_flutter_app/widgets/new_trade_offer_form.dart';
+import 'package:haveno/providers/offers_provider.dart';
+import 'package:haveno/providers/payment_accounts_provider.dart';
+import 'package:haveno/widgets/new_trade_offer_form.dart';
 
 class SellTab extends StatefulWidget {
   @override

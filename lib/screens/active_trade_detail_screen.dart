@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
-import 'package:haveno_flutter_app/proto/compiled/grpc.pb.dart';
+import 'package:haveno/proto/compiled/grpc.pb.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
-import 'package:haveno_flutter_app/providers/trades_provider.dart';
+import 'package:haveno/providers/trades_provider.dart';
 
 class ActiveTradeDetailScreen extends StatefulWidget {
   final TradeInfo trade;

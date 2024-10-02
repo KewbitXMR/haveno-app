@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "haveno_flutter_app" "\0"
+            VALUE "CompanyName", "com.haveno" "\0"
+            VALUE "FileDescription", "haveno" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "haveno_flutter_app" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "haveno_flutter_app.exe" "\0"
-            VALUE "ProductName", "haveno_flutter_app" "\0"
+            VALUE "InternalName", "haveno" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2024 com.haveno. All rights reserved." "\0"
+            VALUE "OriginalFilename", "haveno.exe" "\0"
+            VALUE "ProductName", "haveno" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

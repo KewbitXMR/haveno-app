@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:haveno_flutter_app/widgets/offer_card_widget.dart';
+import 'package:haveno/widgets/offer_card_widget.dart';
 import 'package:provider/provider.dart';
-import 'package:haveno_flutter_app/providers/offers_provider.dart';
+import 'package:haveno/providers/offers_provider.dart';
 
 class BuyMyOffersTab extends StatelessWidget {
   @override

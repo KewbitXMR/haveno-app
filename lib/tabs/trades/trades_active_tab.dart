@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:haveno_flutter_app/providers/account_provider.dart';
-import 'package:haveno_flutter_app/screens/active_buyer_trade_timeline_screen.dart';
-import 'package:haveno_flutter_app/screens/active_seller_trade_timeline_screen.dart';
-import 'package:haveno_flutter_app/utils/payment_utils.dart';
+import 'package:haveno/providers/account_provider.dart';
+import 'package:haveno/screens/active_buyer_trade_timeline_screen.dart';
+import 'package:haveno/screens/active_seller_trade_timeline_screen.dart';
+import 'package:haveno/utils/payment_utils.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:haveno_flutter_app/providers/trades_provider.dart';
+import 'package:haveno/providers/trades_provider.dart';
 import 'package:fixnum/fixnum.dart';
 
 class TradesActiveTab extends StatelessWidget {

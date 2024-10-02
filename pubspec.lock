@@ -456,14 +456,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.0"
-  protoc_plugin:
-    dependency: "direct main"
-    description:
-      name: protoc_plugin
-      sha256: fb0554851c9eca30bd18405fbbfe81e39166d4a2f0e5b770606fd69da3da0b2f
-      url: "https://pub.dev"
-    source: hosted
-    version: "21.1.2"
   provider:
     dependency: "direct main"
     description:
@@ -549,14 +541,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
-  tor:
-    dependency: "direct main"
-    description:
-      name: tor
-      sha256: eeed80e5c912a1806c2f81825c12e84f4dc5a0b50aebedea59e3a8ba53df3142
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.8"
   typed_data:
     dependency: transitive
     description:

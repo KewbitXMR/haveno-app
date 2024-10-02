@@ -1,11 +1,16 @@
-name: haveno_flutter_app
-description: "A new Flutter project."
+name: haveno
+description: "An interface for interacting with the Haveno Network"
 publish_to: 'none' 
 
-version: 0.0.1+2
+version: 0.0.2
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
+
+homepage: https://haveno.com
+repository: https://github.com/KewbitXMR/haveno-plus
+issue_tracker: https://github.com/username/haveno-plus/issues
+license: MIT
 
 dependencies:
   flutter:
@@ -22,19 +27,12 @@ dependencies:
   flutter_chat_ui: ^1.6.14
   flutter_chat_types: ^3.6.2
   uuid: ^3.0.6
-  #  timelines_plus: ^1.0.2
   google_fonts: ^6.2.1
-
   font_awesome_flutter: ^10.7.0
   timeline_tile: ^2.0.0
-  # Add your plugin dependency here
-  #tor_plugin:
-  #  path: "../Flutter Plugins/tor_plugin"
-  protoc_plugin: ^21.1.2
   fixnum: ^1.1.0
   intl: ^0.17.0
   badges: ^3.1.2
-  tor: ^0.0.8
 
 dev_dependencies:
   flutter_test:

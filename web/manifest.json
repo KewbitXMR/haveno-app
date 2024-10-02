@@ -1,6 +1,6 @@
 {
-    "name": "haveno_flutter_app",
-    "short_name": "haveno_flutter_app",
+    "name": "haveno",
+    "short_name": "haveno",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

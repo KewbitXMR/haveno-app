@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:haveno_flutter_app/utils/payment_utils.dart';
-import 'package:haveno_flutter_app/widgets/add_payment_account_form.dart';
+import 'package:haveno/utils/payment_utils.dart';
+import 'package:haveno/widgets/add_payment_account_form.dart';
 import 'package:provider/provider.dart';
-import 'package:haveno_flutter_app/providers/payment_accounts_provider.dart';// Import the utils file
+import 'package:haveno/providers/payment_accounts_provider.dart';// Import the utils file
 
 class PaymentMethodSelectionForm extends StatefulWidget {
   final String accountType;

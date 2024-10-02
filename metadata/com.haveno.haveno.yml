@@ -1,0 +1,57 @@
+Categories: Internet
+License: GPL-3.0-or-later
+SourceCode: https://github.com/KewbitXMR/haveno-plus
+IssueTracker: https://github.com/KewbitXMR/haveno-plus/issues
+Changelog: https://github.com/KewbitXMR/haveno-plus/releases
+AutoName: Haveno
+Summary: A decentralized exchange app for Monero
+Description: |-
+  Haveno is a decentralized peer-to-peer exchange, allowing users to trade privately using Monero and other traditional currencies.
+
+RepoType: git
+Repo: https://github.com/KewbitXMR/haveno-plus.git
+
+Builds:
+  - versionName: '0.2.2'
+    versionCode: 1
+    submodules: true
+    commit: v0.0.1
+    output: build/app/outputs/apk/fdroid/release/app-fdroid-release.apk
+     srclibs:
+      - flutter@stable
+    rm:
+      - ios
+      - linux
+      - macos
+      - web
+      - windows
+    prebuild:
+      - flutterVersion=$(sed -n -E "s/.*flutter-version:\ '(.*)'/\1/p" .github/workflows/release.yml)
+      - '[[ $flutterVersion ]] || exit 1'
+      - git -C $$flutter$$ checkout -f $flutterVersion
+      - export PUB_CACHE=$(pwd)/.pub-cache
+      - .flutter/bin/flutter config --no-analytics
+      - .flutter/bin/flutter pub get
+    scanignore:
+      - .flutter/bin/cache
+    scandelete:
+      - .flutter
+      - .pub-cache
+  
+    build:
+      # Make Flutter use the scanned cache
+      - export PUB_CACHE=$(pwd)/.pub-cache
+      # Split per abi to reduce the apk size.
+      # This is only for one abi. Please added other build blocks accordingly.
+      - .flutter/bin/flutter build apk --release --split-per-abi --target-platform="android-arm64"
+
+AutoUpdateMode: Version
+UpdateCheckMode: Tags
+VercodeOperation:
+  - '%c * 10 + 1'
+  - '%c * 10 + 2'
+  - '%c * 10 + 3'
+UpdateCheckData: pubspec.yaml|version:\s.+\+(\d+)|.|version:\s(.+)\+
+CurrentVersion: '1.0'
+CurrentVersionCode: 11
+

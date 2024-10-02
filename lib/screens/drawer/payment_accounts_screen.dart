@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:haveno_flutter_app/utils/payment_utils.dart';
-import 'package:haveno_flutter_app/widgets/add_payment_method_form.dart';
+import 'package:haveno/utils/payment_utils.dart';
+import 'package:haveno/widgets/add_payment_method_form.dart';
 import 'package:provider/provider.dart';
-import 'package:haveno_flutter_app/providers/payment_accounts_provider.dart';
+import 'package:haveno/providers/payment_accounts_provider.dart';
 import 'package:badges/badges.dart' as badges; // Import the badges package
 
 class PaymentAccountsScreen extends StatefulWidget {
