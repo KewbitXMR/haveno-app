@@ -1,6 +1,4 @@
-# Haveno
-
-**Repository for public pre-release builds of the Haveno mobile app for Android. This is not a mock, though its currently only on stagenet. This is a bounty-funded project.**
+# Haveno App
 
 <img src="https://i.ibb.co/J7J9qV4/Screenshot-20240817-203316.jpg" width=150 /> <img src="https://i.ibb.co/Btt17Vg/Screenshot-20240817-203341.jpg" width=150 /> <img src="https://i.ibb.co/1L09NT6/Screenshot-20240817-203431.jpg" width=150 /> <img src="https://i.ibb.co/QDPyJp9/Screenshot-20240817-203535.jpg" width=150 /> <img src="https://i.ibb.co/L011YGW/Screenshot-20240817-203150.jpg" width=150 /> <img src="https://i.ibb.co/64YQR1S/Screenshot-20240817-204709.jpg" width=150 />
 
@@ -22,7 +20,7 @@
 
 ---
 
-## Prerequisites
+## Prerequisites (For Testing)
 
 Before you begin, you'll need to set up a testing environment:
 
@@ -60,7 +58,7 @@ The Haveno Plus app is available as alpha pre-release builds for Android and Win
 
 To streamline the installation process Haveno Daemon is automatically downloaded and installed from [this fork](https://github.com/KewbitXMR/haveno.git) of the original Haveno project, and has been created with reliable installers. Supported OS distributions include:
 
-- **Windows:** [Download Here](https://github.com/KewbitXMR/haveno-plus/releases)
+- **Windows:** [Download Here](https://github.com/KewbitXMR/haveno-app/releases)
 - **MacOS:** (Coming soon)
 - **Linux:** (Coming soon)
 - **Docker:** (Coming soon)
@@ -81,7 +79,7 @@ The project is currently in a public pre-release stage aimed at gathering feedba
 
 ## Security
 
-**Important:** Pre-release builds are not intended for any financial transactions at this time. Refer to the [LICENSE.md](./LICENSE.md) for more details. It's recommended to install these builds on disposable phones or emulators. Tor routing is enforced, which may be illegal in some jurisdictions. Please verify the laws in your country before using Tor.
+**Important:** Pre-release builds are not intended for any financial transactions. It's recommended to install these builds on disposable phones or emulators. Tor routing is enforced, which may be illegal in some jurisdictions. Please verify the laws in your country before using Tor.
 
 ### Network Endorsements
 
@@ -93,15 +91,16 @@ The project is actively developed full-time for at least the next 2 months. Cont
 
 ## Roadmap
 
-- Beta release
+- Beta release ✅
+- Windows desktop Support ✅
+- MacOS desktop support ✅
+- Android mobile Support ✅
 - Complete full arbitration scope.
 - Improve design consistency.
 - Add client authentication for onion-hosted daemons.
-- iOS support.
-- MacOS desktop support.
+- iOS support. 
 - Linux desktop support.
 - Easy whitelisting and fund transfers to Cake Wallet or similar.
-- Secure integration with Ledger and Trezor hardware wallets.
 - Biometric security for mobile devices, with PIN or password protection for those without biometric options.
 - Standalone version not requiring desktop or server (considerable work; community support may be needed).
 - Support for Monero Atomic Swaps
@@ -110,9 +109,5 @@ The project is actively developed full-time for at least the next 2 months. Cont
 
 Testing on old phones or laptops and providing high-quality feedback is the best way to contribute. A discussion section will be set up for initial feedback and contributions.
 
-## Open Source Plans
-
-The project will be open-sourced once it reaches sufficient maturity and demonstrates practical value on the mainnet. This will depend on community response and approval. If there is significant interest, the project will be made open-source contigent to community CSS completing the merge request officially at the [Monero Proposals Gitlab](https://repo.getmonero.org/monero-project/ccs-proposals/-/merge_requests/489) website.
-
 ## Additional Resources
-I started regularly blogging about the projects I'm working on so I provide guides and instructions over at [Kewbit.org](https://kewbit.org/haveno-is-coming-soon-to-flutter/)
+Kewbit the maintainers blog is at [Kewbit.org](https://kewbit.org/)
