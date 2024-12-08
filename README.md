@@ -19,7 +19,7 @@ Before you begin, you'll need to set up a testing environment:
 - **Android Device or Emulator:** You can test on a physical Android phone or use an Android simulator via [Android Studio](https://studio.android.com) for advanced users. [BlueStacks](https://www.bluestacks.com/download.html) is another option with a gentler learning curve.
 - **Latest Pre-release Builds:** Obtain the latest pre-release builds from the [Releases](https://github.com/KewbitXMR/haveno-app/releases) page. These are typically updated weekly.
 
-**Important:** Follow the instructions in this guide carefully for Haveno Plus to function correctly.
+**Important:** Follow the instructions in this guide carefully for Haveno App to function correctly.
 
 ## Setup Your Mobile Device
 
@@ -36,13 +36,13 @@ To ensure all traffic is securely routed through Tor, you must install and activ
 1. Download [Orbot on Google Play](https://play.google.com/store/apps/details?id=org.torproject.android) or [InviZible on Google Play](https://play.google.com/store/apps/details?id=pan.alexander.tordnscrypt.gp).
    - Alternatively, download [InviZible on F-Droid](https://f-droid.org/packages/pan.alexander.tordnscrypt.stable/).
 2. Open the app of your choice and follow the on-screen instructions to activate it. Ensure that Tor is enabled and the VPN is activated.
-3. Configure the VPN relay to route your Haveno Plus app traffic through Tor. The app will not load if a VPN relay is not configured first, by design, for your security.
+3. Configure the VPN relay to route your Haveno App app traffic through Tor. The app will not load if a VPN relay is not configured first, by design, for your security.
 
 ### Haveno Install Guide
 
-The Haveno Plus app is available as alpha pre-release builds for Android and Windows. Download the app from the [Releases](https://github.com/KewbitXMR/haveno-app/releases) page. The desktop clients are designed to be user-friendly, with custom installers for quick setup.
+The Haveno App app is available as alpha pre-release builds for Android and Windows. Download the app from the [Releases](https://github.com/KewbitXMR/haveno-app/releases) page. The desktop clients are designed to be user-friendly, with custom installers for quick setup.
 
-**Note:** Haveno Plus is currently configured to use the stagenet (a test network) for at least the next 2 months. It is not intended for real-life trading.
+**Note:** Haveno App is currently configured to use the stagenet (a test network) for at least the next 2 months. It is not intended for real-life trading.
 
 ## Setup Your Desktop or Server
 

@@ -1,4 +1,4 @@
-/* // Haveno Plus extends the features of Haveno, supporting mobile devices and more.
+/* // Haveno App extends the features of Haveno, supporting mobile devices and more.
 // Haveno App extends the features of Haveno, supporting mobile devices and more.
 // Copyright (C) 2024 Kewbit (https://kewbit.org)
 // Source Code: https://git.haveno.com/haveno/haveno-app.git

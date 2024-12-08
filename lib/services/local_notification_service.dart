@@ -94,7 +94,7 @@ Future<void> init() async {
     const AndroidNotificationDetails androidPlatformChannelSpecifics =
         AndroidNotificationDetails(
       'haveno',
-      'Haveno Plus Service',
+      'Haveno App Service',
       channelDescription: 'Haveno service running in the background',
       importance: Importance.max,
       priority: Priority.high,
@@ -138,8 +138,8 @@ Future<void> init() async {
     const AndroidNotificationDetails androidPlatformChannelSpecifics =
         AndroidNotificationDetails(
       'haveno_notifications',
-      'Haveno Plus Notifications',
-      channelDescription: 'Notifications for Haveno Plus events',
+      'Haveno App Notifications',
+      channelDescription: 'Notifications for Haveno App events',
       importance: Importance.max,
       priority: Priority.high,
       ticker: 'ticker',
@@ -179,8 +179,8 @@ Future<void> init() async {
     const AndroidNotificationDetails androidPlatformChannelSpecifics =
         AndroidNotificationDetails(
       'haveno_notifications',
-      'Haveno Plus Notifications',
-      channelDescription: 'Notifications for Haveno Plus events',
+      'Haveno App Notifications',
+      channelDescription: 'Notifications for Haveno App events',
       importance: Importance.max,
       priority: Priority.high,
       ticker: 'ticker',
