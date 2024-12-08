@@ -16,7 +16,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import 'package:haveno_app/models/haveno/p2p/haveno_network';
+import 'package:haveno_app/models/haveno/p2p/haveno_network.dart';
 
 class HavenoSeedNode {
   final String onionHost;
