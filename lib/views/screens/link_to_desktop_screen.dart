@@ -274,7 +274,7 @@ class _LinkToDesktopScreenState extends State<LinkToDesktopScreen> {
   }
 }
 
-
+/* 
 class ScannerOverlay extends CustomPainter {
   ScannerOverlay(this.scanWindow);
 
@@ -375,3 +375,4 @@ class BarcodeOverlay extends CustomPainter {
     return false;
   }
 }
+ */
