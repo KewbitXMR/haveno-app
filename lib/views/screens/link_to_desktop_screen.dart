@@ -27,7 +27,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:haveno_app/services/mobile_manager_service.dart';
 import 'package:haveno_app/services/secure_storage_service.dart';
-import 'package:mobile_scanner/mobile_scanner.dart';
+//import 'package:mobile_scanner/mobile_scanner.dart';
 import 'establish_connection_screen.dart';
 
 class LinkToDesktopScreen extends StatefulWidget {
@@ -38,7 +38,7 @@ class LinkToDesktopScreen extends StatefulWidget {
 }
 
 class _LinkToDesktopScreenState extends State<LinkToDesktopScreen> {
-  final MobileScannerController controller = MobileScannerController();
+//  final MobileScannerController controller = MobileScannerController();
   DateTime? _lastScanTime; // Track the last scan time
   final TextEditingController pasteController = TextEditingController();
   bool isProcessing = false;
@@ -52,7 +52,7 @@ class _LinkToDesktopScreenState extends State<LinkToDesktopScreen> {
 
   @override
   void dispose() {
-    controller.dispose();
+  //  controller.dispose();
     pasteController.dispose();
     super.dispose();
   }
@@ -146,7 +146,7 @@ class _LinkToDesktopScreenState extends State<LinkToDesktopScreen> {
     );
   }
 
-  /// Build barcode overlay for scanner
+/*   /// Build barcode overlay for scanner
   Widget _buildBarcodeOverlay() {
     return ValueListenableBuilder(
       valueListenable: controller,
@@ -205,7 +205,7 @@ class _LinkToDesktopScreenState extends State<LinkToDesktopScreen> {
         );
       },
     );
-  }
+  } */
 
   @override
   Widget build(BuildContext context) {
@@ -221,13 +221,9 @@ class _LinkToDesktopScreenState extends State<LinkToDesktopScreen> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          MobileScanner(
-            fit: BoxFit.contain,
-            scanWindow: scanWindow,
-            controller: controller,
-          ),
-          _buildBarcodeOverlay(),
-          _buildScanWindow(scanWindow),
+          Text('Scan windows removed for devicve security, use linkage key instead'),
+//;          _buildBarcodeOverlay(),
+//         _buildScanWindow(scanWindow),
           Positioned(
             bottom: 20,
             left: 20,
