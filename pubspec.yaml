@@ -55,7 +55,7 @@ dependencies:
   http2: ^2.3.0
   flutter_launcher_icons: ^0.13.1
   qr_flutter: ^4.1.0
-#  mobile_scanner: ^5.1.1
+  mobile_scanner: ^5.1.1
   url_launcher: ^6.3.0
   archive: ^3.6.1
   connectivity_plus: ^6.0.5
@@ -76,7 +76,6 @@ dependencies:
   collection: ^1.18.0
   dropdown_search: ^5.0.5
   http: ^1.2.2
-  sentry_flutter: ^8.8.0
   shared_preferences: ^2.3.2
   sqlite3_flutter_libs: ^0.5.24
   tray_manager: ^0.2.4
