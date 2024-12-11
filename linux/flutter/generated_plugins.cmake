@@ -5,7 +5,6 @@
 list(APPEND FLUTTER_PLUGIN_LIST
   emoji_picker_flutter
   file_selector_linux
-  sentry_flutter
   sqlite3_flutter_libs
   tray_manager
   url_launcher_linux

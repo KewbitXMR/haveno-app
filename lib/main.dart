@@ -46,7 +46,7 @@ import 'package:provider/provider.dart';
 import 'package:haveno_app/providers/haveno_client_providers/version_provider.dart';
 import 'package:haveno_app/providers/haveno_client_providers/account_provider.dart';
 import 'dart:async';
-import 'package:sentry_flutter/sentry_flutter.dart';
+//import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:flutter_socks_proxy/socks_proxy.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
