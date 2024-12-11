@@ -53,7 +53,7 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   await Versions().load();
 
   // Initialize event dispatcher
@@ -81,7 +81,6 @@ void main() async {
   //  await OrbotApi().startOrbot();
   //}
 
-
   if (Platform.isLinux || Platform.isMacOS || Platform.isWindows) {
     intializeSystemTray();
   }
@@ -92,7 +91,8 @@ void main() async {
     mobileBackgroundService = FlutterBackgroundService();
 
     // Start the background service listener
-    final backgroundServiceListener = BackgroundServiceListener(eventDispatcher);
+    final backgroundServiceListener =
+        BackgroundServiceListener(eventDispatcher);
     backgroundServiceListener.startListening();
 
     await mobileBackgroundService.configure(
@@ -113,71 +113,59 @@ void main() async {
   final secureStorageService = SecureStorageService();
   final havenoChannel = HavenoChannel();
 
-  await SentryFlutter.init((options) {
-    options.dsn =
-        'https://ddf883d1a885ae8d619a923d1c80350f@o4507901830299648.ingest.us.sentry.io/4507901840457728';
-    options.tracesSampleRate = 1.0;
-    options.profilesSampleRate = 1.0;
-    if (Platform.isAndroid || Platform.isIOS) {
-    options.proxy = SentryProxy(type: SentryProxyType.socks, host: '127.0.0.1', port: 9050);
-    } else {
-    options.proxy = SentryProxy(type: SentryProxyType.socks, host: '127.0.0.1', port: 9066); 
-    }
-  },
-      appRunner: () => runApp(
-            MultiProvider(
-              providers: [
-                Provider(create: (_) => havenoChannel),
-                //ChangeNotifierProvider(
-                //  create: (context) => TorStatusProvider(torStatusService),
-                //),
-                //ChangeNotifierProvider(
-                //  create: (context) => TorLogProvider(torLogService),
-                //),
-                ChangeNotifierProvider(
-                  create: (context) =>
-                      HavenoDaemonProvider(secureStorageService),
-                ),
-                ChangeNotifierProvider(
-                  create: (context) => SettingsProvider(secureStorageService),
-                ),
-                ChangeNotifierProvider(
-                  create: (context) => GetVersionProvider(havenoChannel),
-                ),
-                ChangeNotifierProvider(
-                  create: (context) => AccountProvider(),
-                ),
-                ChangeNotifierProvider(
-                  create: (context) => WalletsProvider(havenoChannel),
-                ),
-                ChangeNotifierProvider(
-                  create: (context) => OffersProvider(havenoChannel),
-                ),
-                ChangeNotifierProvider(
-                  create: (context) => TradesProvider(havenoChannel),
-                ),
-                ChangeNotifierProvider(
-                  create: (context) => PaymentAccountsProvider(havenoChannel),
-                ),
-                ChangeNotifierProvider(
-                  create: (context) => PricesProvider(havenoChannel),
-                ),
-                ChangeNotifierProvider(
-                  create: (context) => TradeStatisticsProvider(havenoChannel),
-                ),
-                ChangeNotifierProvider(
-                  create: (context) => DisputesProvider(),
-                ),
-                ChangeNotifierProvider(
-                  create: (context) => DisputeAgentsProvider(),
-                ),
-                ChangeNotifierProvider(
-                  create: (context) => XmrConnectionsProvider(),
-                ),
-              ],
-              child: HavenoApp(),
-            ),
-          ));
+  runApp(
+    MultiProvider(
+      providers: [
+        Provider(create: (_) => havenoChannel),
+        //ChangeNotifierProvider(
+        //  create: (context) => TorStatusProvider(torStatusService),
+        //),
+        //ChangeNotifierProvider(
+        //  create: (context) => TorLogProvider(torLogService),
+        //),
+        ChangeNotifierProvider(
+          create: (context) => HavenoDaemonProvider(secureStorageService),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => SettingsProvider(secureStorageService),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => GetVersionProvider(havenoChannel),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => AccountProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => WalletsProvider(havenoChannel),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => OffersProvider(havenoChannel),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => TradesProvider(havenoChannel),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => PaymentAccountsProvider(havenoChannel),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => PricesProvider(havenoChannel),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => TradeStatisticsProvider(havenoChannel),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => DisputesProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => DisputeAgentsProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => XmrConnectionsProvider(),
+        ),
+      ],
+      child: HavenoApp(),
+    ),
+  );
 }
 
 @pragma('vm:entry-point')
