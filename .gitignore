@@ -47,3 +47,4 @@ app.*.map.json
 /assets/installer/
 /assets/helper_scripts/
 /assets/binaries/
+/release/installers/*
