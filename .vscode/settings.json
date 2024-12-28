@@ -1,4 +1,5 @@
 {
     "java.configuration.updateBuildConfiguration": "interactive",
-    "cmake.sourceDirectory": "/Users/admin/Development/GITLAB/haveno-app/linux"
+    "cmake.sourceDirectory": "/Users/admin/Development/GITLAB/haveno-app/linux",
+    "java.search.scope": "all"
 }

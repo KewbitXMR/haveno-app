@@ -28,6 +28,16 @@ import 'package:haveno_app/versions.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 
+String getPlatformString() {
+  if (Platform.isLinux) {
+    return 'linux';
+  } else if (Platform.isMacOS) {
+    return 'macos';
+  } else {
+    throw UnsupportedError('Unsupported platform');
+  }
+}
+
 Future<void> checkShouldDownloadMonero(
   String downloadTo, {
   Function(double)? onProgress,
@@ -190,7 +200,10 @@ Future<void> checkShouldDownloadTor(
   onStatus?.call("Checking Tor...");
   final applicationSupportDir = await getApplicationSupportDirectory();
   final version = Versions().getVersion('tor');
-  final url = 'https://dist.torproject.org/torbrowser/$version/tor-expert-bundle-linux-x86_64-$version.tar.gz';
+  final platform = getPlatformString();
+  Architecture arch = getArchitecture();
+  String archString = arch == Architecture.arm64 ? 'aarch64' : 'x86_64';
+  final url = 'https://dist.torproject.org/torbrowser/$version/tor-expert-bundle-$platform-$archString-$version.tar.gz';
   final torDir = path.join(applicationSupportDir.path, downloadTo, version);
   final targetDir = Directory(torDir);
   final targetBin = File(path.join(torDir, 'tor'));
@@ -382,7 +395,5 @@ Future<void> checkShouldDownloadJava(
     // For demonstration, we'll just return false to force downloads.
     return false;
   }
-
-
 
 }

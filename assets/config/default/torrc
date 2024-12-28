@@ -18,5 +18,7 @@ ContactInfo uuidv4@something.com
 UseEntryGuards 1
 NumEntryGuards 3
 
-### EXPERIMENTAL FUTURE STUFF DONT ENABLE THESE YET IT COULD BE DISASTEROUS
-#HiddenServiceSingleHopMode 1
+# It's nto nessesary for the lag for your private node to have an # anonymous IP, however you can comment these out for extra 
+# security at the expense of connection speed if you require there be no tracability to your dekstop / server.
+HiddenServiceSingleHopMode 1
+HiddenServiceNonAnonymousMode 1

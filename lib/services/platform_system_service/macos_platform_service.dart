@@ -24,6 +24,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:haveno_app/services/platform_system_service/schema.dart';
 import 'package:haveno_app/services/secure_storage_service.dart';
+import 'package:haveno_app/utils/dependancy_helper.dart';
 import 'package:haveno_app/utils/kill.dart';
 import 'package:haveno_app/utils/launchctl_manager.dart';
 import 'package:path_provider/path_provider.dart';
@@ -58,6 +59,7 @@ class MacOSPlatformService implements PlatformService {
   Future<void> init() async {
     applicationSupportDirectory = await getApplicationSupportDirectory();
     //daemonPassword = await secureStorageService.readHavenoDaemonPassword();
+    await checkShouldDownloadTor('Tor');
     torBinaryFile = await _getTorBinaryFile();
     javaBinaryFile = await _getJavaBinaryFile();
     havenoJarFile = await _getHavenoDaemonJarFile();

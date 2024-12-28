@@ -22,7 +22,7 @@
 import 'package:haveno/haveno_client.dart';
 import 'package:haveno_app/services/secure_storage_service.dart';
 import 'package:haveno_app/services/tor_interface.dart';
-import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
+//import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
 class ConnectionCheckerService {
   // Private named constructor
@@ -80,5 +80,5 @@ class ConnectionCheckerService {
     return havenoService.isConnected;
   }
 
-  Future<bool> isInternetConnected() async => await InternetConnection().hasInternetAccess;
+  //Future<bool> isInternetConnected() async => await InternetConnection().hasInternetAccess;
 }
