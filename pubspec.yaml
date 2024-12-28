@@ -24,11 +24,9 @@ description: "Haveno Multi-Platform Application"
 license: AGPL-3
 repository: https://git.haveno.com/haveno/haveno-app
 
-authors:
-  - Kewbit
 publish_to: 'none'
 
-version: 0.4.0
+version: 0.4.1
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
