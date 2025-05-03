@@ -79,9 +79,11 @@ Haveno does not endorse or denounce any particular network. The choice of networ
 
 ## Roadmap
 
-- Dart SDK API ✅ [Haveno Dart SDK](https://pub.dev/packages/haveno)
+- Dart SDK API ✅ [Haveno Dart SDK Client](https://pub.dev/packages/haveno)
 - Complete UI ✅ (tweaks needed)
 - Linux desktop support ✅
+- Python SDK API [Haveno Python SDK Client](https://pypi.org/project/haveno-client/) **(WIP)**
+- Rust SDK API [Haveno Rust SDK Client](https://crates.io/crates/haveno) **(WIP)**
 - Windows desktop Support 
 - MacOS desktop support 
 - Android mobile Support 
@@ -92,12 +94,13 @@ Haveno does not endorse or denounce any particular network. The choice of networ
 - Biometric security for mobile devices, with PIN or password protection for those without biometric options.
 - Standalone version not requiring desktop or server (considerable work; community support may be needed).
 - Support for Monero Atomic Swaps
+- Implementation of a local Monero wallet (to prevent unessesarily excessively amount of funds on the daemon aka hot-wallet)
 
 ## Contributing
 
 Testing on old phones or laptops and providing high-quality feedback is the best way to contribute. A discussion section will be set up for initial feedback and contributions.
 
 ## Disclaimer
-Kewbit the maintainers blog is at [Kewbit.org](https://kewbit.org/) official sources for this are located at [Haveno.com's Gitlab](https://git.haveno.com/haveno/). **HAVENO.COM represents the official haveno app website and services as a client to a Haveno Daemon only**,  and **HAVENO.EXCHANGE represents everything else, including not not limited to the p2p server network protocol, daemon nodes and pricenodes**, there are now also lots of app-specific guides located at [haveno documentation](https://haveno.com/documentation/) section of the site, which are atuned towards the new app.
+Kewbit the maintainers blog is at [Kewbit.org](https://kewbit.org/) official sources for this are located here only. **HAVENO.COM represents the official haveno app website and services as a client to a Haveno Daemon only**,  and **HAVENO.EXCHANGE represents everything else, including not not limited to the P2P server network protocol, daemon nodes and price nodes**, there are now also lots of app-specific guides located at [haveno documentation](https://haveno.com/documentation/) section of the site, which are atuned towards the new app.
 
 None of the code in this repository (haveno-app) is intrinically holding custody of philosophy in what may be considered 'crypto-assets' OR transmitting any such 'crypto-assets' or other financial services across the the wire, network or the general internet.
