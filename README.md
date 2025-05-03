@@ -1,7 +1,8 @@
-# Haveno v2 Multi-Platform App
+# Haveno Multi-Platform App <sub>v2</sub>
 
+<p align="center">
 [<img src="https://github.com/KewbitXMR/haveno-app/blob/main/assets/android-chrome-512x512.png?raw=true" width=150 />](https://haveno.com)
-
+</p>
 
 ## Table of Contents
 1. [Prerequisites](#prerequisites)
