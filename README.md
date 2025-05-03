@@ -1,7 +1,7 @@
 # Haveno Multi-Platform App <sub>v2</sub>
 
 <p align="center">
-[<img src="https://github.com/KewbitXMR/haveno-app/blob/main/assets/android-chrome-512x512.png?raw=true" width=150 />](https://haveno.com)
+<a href="https://haveno.com"><img src="https://github.com/KewbitXMR/haveno-app/blob/main/assets/android-chrome-512x512.png?raw=true" width=150 /></a>
 </p>
 
 ## Table of Contents
