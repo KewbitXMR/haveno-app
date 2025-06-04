@@ -1,0 +1,8 @@
+output: dist/
+releases:
+  - name: mac
+    jobs:
+      - name: build-dmg
+        package:
+          platform: macos
+          target: dmg
