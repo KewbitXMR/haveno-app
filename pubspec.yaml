@@ -24,8 +24,6 @@ description: "Haveno Multi-Platform Application"
 license: AGPL-3
 repository: https://git.haveno.com/haveno/haveno-app
 
-publish_to: 'none'
-
 version: 0.4.1
 
 environment:
@@ -35,8 +33,8 @@ dependencies:
   flutter:
     sdk: flutter
   git: ^2.3.0 
-  haveno: ^3.0.1
-  socks5_proxy: ^1.0.6
+  haveno: ^3.0.4
+  socks5_proxy: ^2.1.0
   flutter_socks_proxy: ^0.0.3
   provider: ^6.0.0
   path_provider: ^2.1.4
@@ -51,11 +49,10 @@ dependencies:
   file: ^7.0.0
   path: ^1.9.0
   http2: ^2.3.0
-  flutter_launcher_icons: ^0.13.1
   qr_flutter: ^4.1.0
-  mobile_scanner: 5.1.1
+  mobile_scanner: ^7.0.0
 #  url_launcher: ^6.3.0
-  archive: ^3.6.1
+  archive: ^4.0.7
 #  connectivity_plus: ^6.0.5
 #  internet_connection_checker_plus: ^2.5.1
   interactive_chart: ^0.3.5
@@ -63,43 +60,68 @@ dependencies:
   #local_auth: ^2.3.0 ## To do faceid etc
   package_info_plus: ^8.0.2
   #workmanager: ^0.5.2  ## Probably needed for ios to check for messafes every 15 mins
-  flutter_background_service: ^5.0.7
-  flutter_local_notifications: ^18.0.1
+  flutter_background_service: ^5.1.0
+  flutter_local_notifications: ^19.2.1
   sqflite: ^2.3.3+1
   sqflite_common_ffi: ^2.3.3
-  timezone: ^0.9.4
+  timezone: ^0.10.1
   crypto: ^3.0.5
-  pointycastle: ^3.9.1
+  pointycastle: ^4.0.0
   onboarding: ^4.0.2
   collection: ^1.18.0
-  dropdown_search: ^5.0.5
+  dropdown_search: ^5.0.6
   http: ^1.2.2
   shared_preferences: ^2.3.2
-  sqlite3_flutter_libs: ^0.5.24
-  tray_manager: ^0.2.4
-  background_downloader: ^8.7.1
-  #window_manager: ^0.4.2
+  sqlite3_flutter_libs: ^0.5.32
+  tray_manager: ^0.5.0
+  window_manager: ^0.5.0
+  background_downloader: ^9.2.2
+  flutter_launcher_icons: ^0.14.3
+  flutter_native_splash: ^2.4.6
+  permission_handler: ^12.0.0
+  teledart: ^0.6.1
+  #cs_monero: ^1.0.0-pre.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
-  change_app_package_name: ^1.4.0
 
-flutter_icons:
-  android: true
-  ios:
+flutter_launcher_icons:
+  min_sdk_android: 21
+  adaptive_icon_background: "#303030"
+  adaptive_icon_foreground: "assets/icon/app_icon.png"
+  android:
     generate: true
-    image_path: "assets/icon/app_icon_smaller.png"
-  remove_alpha_ios: true
-  image_path: "assets/icon/app_icon.png"
+    image_path: "assets/icon/app_icon.png"
+    adaptive_icon_background: "#303030"
+    adaptive_icon_foreground: "assets/icon/app_icon.png"
+  macos:
+    generate: true
+    image_path: "assets/icon/app_icon.png"
   windows:
     generate: true
     image_path: "assets/icon/app_icon.png"
     icon_size: 48
-  macos:
-    generate: true
-    image_path: "assets/icon/app_icon.png"
+  ios: false
+  remove_alpha_ios: true
+  image_path: "assets/icon/app_icon.png"
+
+flutter_native_splash:
+  color: "#303030"
+  image: assets/icon/app_icon.png
+  branding: assets/icon/app_icon.png
+  branding_bottom_padding: 24
+  color_dark: "#303030"
+  image_dark: assets/icon/app_icon.png
+  branding_dark: assets/icon/app_icon.png
+
+  android_12:
+    image: assets/icon/app_icon.png
+    icon_background_color: "#303030"
+    image_dark: assets/icon/app_icon.png
+    icon_background_color_dark: "#303030"
+
+  web: false
 
 flutter:
   uses-material-design: true
@@ -110,6 +132,9 @@ flutter:
     - assets/arbitration-logo.png
     - assets/haveno-logo.png
     - assets/tor-logo.png
+    - assets/monero_logo.png
+    - assets/tether_logo.png
+    - assets/bitcoin_logo.png
     - assets/icon/app_icon.png
     - assets/icon/app_icon.ico
     - assets/icon/app_icon_smaller.png
