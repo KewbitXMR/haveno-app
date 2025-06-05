@@ -49,7 +49,7 @@ The Haveno App app is available as alpha pre-release builds for Android and Wind
 ## Setup Your Desktop or Server
 
 - **Windows:** (Coming soon)
-- **MacOS:** (Coming soon)
+- **MacOS:** [Download Intel](https://haveno/dowloads/), [Download aarch64]
 - **Android** Alpha (testing)
 - **iOS** (Coming soon)
 - **Linux:** Alpha (testing)
@@ -61,12 +61,13 @@ The Haveno App app is available as alpha pre-release builds for Android and Wind
 2. [How to Install Haveno on Mobile](https://haveno.com/documentation/install-haveno-on-a-mobile-device/)
 3. [How to Install Haveno on Server with Docker](https://haveno.com/documentation/installing-the-haveno-daemon-with-docker-securely/)
 4. [How to Setup your own Haveno Network](https://haveno.com/documentation/setup-a-custom-haveno-network-seednode-with-docker/)
+5. [How to connect Haveno with Telegram to Receive Notifications & more.](https://haveno.com/documentation/using-telegram-to-manage-your-haveno-account/) in real-time.
 
 
 ## Project Status
 
 Milestone 1: Protocol Interface ✅
-Milestone 2: Complete UI + Providers + lots more ✅
+Milestone 2: Complete UI + Providers + lots more ✅ (Warning: it was as this stage the monero core team had scammed the remaining funds from the CCS raised for Haveno and started to cause drama, I cover this in my blog but continued to work in the projeft nonetheless.)
 Extras not in CCS: 
   - Caching system to ease the load on the daemon SQLite
   - AES encryption on shared shared preferences and DB (not tested, will including on wallet too if nessesary)
@@ -85,8 +86,8 @@ Haveno does not endorse or denounce any particular network. The choice of networ
 - Python SDK API [Haveno Python SDK Client](https://pypi.org/project/haveno-client/) **(WIP)**
 - Rust SDK API [Haveno Rust SDK Client](https://crates.io/crates/haveno) **(WIP)**
 - Windows desktop Support 
-- MacOS desktop support 
-- Android mobile Support 
+- MacOS desktop support ✅
+- Android mobile Support ✅
 - Complete full arbitration scope.
 - Add client authentication for onion-hosted daemons.
 - iOS support. 
@@ -101,6 +102,6 @@ Haveno does not endorse or denounce any particular network. The choice of networ
 Testing on old phones or laptops and providing high-quality feedback is the best way to contribute. A discussion section will be set up for initial feedback and contributions.
 
 ## Disclaimer
-Kewbit the maintainers blog is at [Kewbit.org](https://kewbit.org/) official sources for this are located here only. **HAVENO.COM represents the official haveno app website and services as a client to a Haveno Daemon only**,  and **HAVENO.EXCHANGE represents everything else, including not not limited to the P2P server network protocol, daemon nodes and price nodes**, there are now also lots of app-specific guides located at [haveno documentation](https://haveno.com/documentation/) section of the site, which are atuned towards the new app.
+Kewbit the maintainers blog is at [Kewbit.org](https://kewbit.org/) official sources for this are located here only. **[HAVENO.COM](https://haveno.com) represents the official haveno app website and services as a client to a Haveno Daemon only**,  and **HAVENO.EXCHANGE represents everything else, including not not limited to the P2P server network protocol, daemon nodes and price nodes**, there are now also lots of app-specific guides located at [haveno documentation and setup](https://haveno.com/documentation/) section of the site, which are atuned towards the new app.
 
 None of the code in this repository (haveno-app) is intrinically holding custody of philosophy in what may be considered 'crypto-assets' OR transmitting any such 'crypto-assets' or other financial services across the the wire, network or the general internet.
