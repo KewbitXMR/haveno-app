@@ -49,8 +49,8 @@ The Haveno App app is available as alpha pre-release builds for Android and Wind
 ## Setup Your Desktop or Server
 
 - **Windows:** (Coming soon)
-- **MacOS:** [Download Intel](https://haveno/dowloads/), [Download aarch64]
-- **Android** Alpha (testing)
+- **MacOS:** [Download Intel](https://haveno/dowloads/), [Download Silicon](https://haveno.com/downloads/) or [Install via Homebrew](https://haveno/downloads/)(https://haveno.com/downloads#macOAarch64
+- **Android** [Download Universal APK](https://haveno.com/downloads/
 - **iOS** (Coming soon)
 - **Linux:** Alpha (testing)
 - **Docker:** (Coming soon)
@@ -62,7 +62,6 @@ The Haveno App app is available as alpha pre-release builds for Android and Wind
 3. [How to Install Haveno on Server with Docker](https://haveno.com/documentation/installing-the-haveno-daemon-with-docker-securely/)
 4. [How to Setup your own Haveno Network](https://haveno.com/documentation/setup-a-custom-haveno-network-seednode-with-docker/)
 5. [How to connect Haveno with Telegram to Receive Notifications & more.](https://haveno.com/documentation/using-telegram-to-manage-your-haveno-account/) in real-time.
-
 
 ## Project Status
 
