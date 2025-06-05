@@ -49,8 +49,8 @@ The Haveno App app is available as alpha pre-release builds for Android and Wind
 ## Setup Your Desktop or Server
 
 - **Windows:** (Coming soon)
-- **MacOS:** [Download Intel](https://haveno/dowloads/), [Download Silicon](https://haveno.com/downloads/) or [Install via Homebrew](https://haveno/downloads/)(https://haveno.com/downloads#macOAarch64
-- **Android** [Download Universal APK](https://haveno.com/downloads/
+- **MacOS:** [Download Intel](https://haveno/dowloads/), [Download Silicon](https://haveno.com/downloads/) or [Install via Homebrew](https://haveno/downloads/)
+- **Android** [Download Universal APK](https://haveno.com/downloads/)
 - **iOS** (Coming soon)
 - **Linux:** Alpha (testing)
 - **Docker:** (Coming soon)
