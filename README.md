@@ -101,6 +101,6 @@ Haveno does not endorse or denounce any particular network. The choice of networ
 Testing on old phones or laptops and providing high-quality feedback is the best way to contribute. A discussion section will be set up for initial feedback and contributions.
 
 ## Disclaimer
-Kewbit the maintainers blog is at [Kewbit.org](https://kewbit.org/) official sources for this are located here only. **[HAVENO.COM](https://haveno.com) represents the official haveno app website and services as a client to a Haveno Daemon only**,  and **HAVENO.EXCHANGE represents everything else, including not not limited to the P2P server network protocol, daemon nodes and price nodes**, there are now also lots of app-specific guides located at [haveno documentation and setup](https://haveno.com/documentation/) section of the site, which are atuned towards the new app.
+**[HAVENO.COM](https://haveno.com) represents the official haveno app website and services as a client to a Haveno Daemon only**,  and **HAVENO.EXCHANGE represents everything else, including not not limited to the P2P server network protocol, daemon nodes and price nodes**, there are now also lots of app-specific guides located at [haveno documentation and setup](https://haveno.com/documentation/) section of the site, which are atuned towards the new app.
 
 None of the code in this repository (haveno-app) is intrinically holding custody of philosophy in what may be considered 'crypto-assets' OR transmitting any such 'crypto-assets' or other financial services across the the wire, network or the general internet.
