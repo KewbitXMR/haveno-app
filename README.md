@@ -53,7 +53,7 @@ The Haveno App app is available as alpha pre-release builds for Android and Wind
 - **Android** [Download Universal APK](https://haveno.com/downloads/)
 - **iOS** (Coming soon)
 - **Linux:** Alpha (testing)
-- **Docker:** [Haveno Docker Hub](https://hub.docker.com/havenodex/)
+- **Docker:** [Haveno Docker Hub](https://hub.docker.com/u/havenodex)
 
 
 ### Step-by-Step Guides
