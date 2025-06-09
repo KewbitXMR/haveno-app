@@ -18,7 +18,7 @@
 
 ---
 
-## Prerequisites (For Testing)
+## Setting up your testing & development environment
 
 Before you begin, you'll need to set up a testing environment:
 
@@ -28,10 +28,11 @@ Before you begin, you'll need to set up a testing environment:
 **Important:** Follow the instructions in this guide carefully for Haveno App to function correctly.
 
 ## Setup Your Mobile Device
+> Note Android is better in generally for remaining live in the background for notifications, for now it's recommended you woh with that until the Telegram bot is completed.
 
-### Install Tor VPN Relay
+### Install Tor Socks on the Mobible Device
 
-To ensure all traffic is securely routed through Tor, you must install and activate a Tor VPN relay on your mobile device. The recommended apps are:
+To ensure all traffic is securely routed through Tor, you must install and activate a Tor VPN relay on your mobile device. The recommended two apps are:
 
 - **[Orbot](https://play.google.com/store/apps/details?id=org.torproject.android):** Officially supported by The Tor Project.
   - [Sourcecode & Releases](https://github.com/guardianproject/orbot/releases/tag/17.3.2-RC-1-tor-0.4.8.12)
@@ -44,11 +45,13 @@ To ensure all traffic is securely routed through Tor, you must install and activ
 2. Open the app of your choice and follow the on-screen instructions to activate it. Ensure that Tor is enabled and the VPN is activated.
 3. Configure the VPN relay to route your Haveno App app traffic through Tor. The app will not load if a VPN relay is not configured first, by design, for your security.
 
-### Haveno Install Guide
+### Haveno Installion Guide
 
 The Haveno App app is available as alpha pre-release builds for Android and Windows. Download the app from the [Releases](https://github.com/KewbitXMR/haveno-app/releases) page. The desktop clients are designed to be user-friendly, with custom installers for quick setup.
 
-**Note:** Haveno App is currently configured to use the stagenet (a test network) for at least the next 2 months. It is not intended for real-life trading.
+> The app currently works best on macOS which is available in a cask, which has been documented on the [haveno installation wiki page](https://haveno.wiki/en/install-guide), the most reliable way to install is using the cask, please report any bugs if you find them on the issues section of this repo.
+
+**Note:** Haveno App is currently configured to use the stagenet (a test network) for at least the next 1 more months. It is not intended for real-life trading. **DO NOT DESOSIT REAL XMR YET**, you can use a stagenet faucet, you can find a few of them just on google.
 
 ## Setup Your Desktop or Server
 
@@ -57,7 +60,7 @@ The Haveno App app is available as alpha pre-release builds for Android and Wind
 - **Android** [Download Universal APK](https://haveno.com/downloads/)
 - **iOS** (Coming soon)
 - **Linux:** Alpha (testing)
-- **Docker:** [Haveno Docker Hub](https://hub.docker.com/u/havenodex)
+- **Docker:** [Haveno Docker Hub](https://hub.docker.com/u/havenodex) (For advanced users, limited documentation thus far)
 
 
 ### Step-by-Step Guides
@@ -71,6 +74,7 @@ The Haveno App app is available as alpha pre-release builds for Android and Wind
 
 Milestone 1: Protocol Interface ✅
 Milestone 2: Complete UI + Providers + lots more ✅ (Warning: it was as this stage the monero core team had scammed the remaining funds from the CCS raised for Haveno and started to cause drama, I cover this in my blog but continued to work in the projeft nonetheless.)
+
 Extras not in CCS: 
   - Caching system to ease the load on the daemon SQLite
   - AES encryption on shared shared preferences and DB (not tested, will including on wallet too if nessesary)
@@ -79,7 +83,7 @@ The project is currently currently in the testing peroid of Milestone 2 having c
 
 ### Network Endorsements
 
-Haveno does not endorse or denounce any particular network. The choice of network will be available upon official release.
+Haveno does not endorse or denounce any particular network. The choice of network will be available upon official release, we do however have the philosophy that there should be more than one network in existance to support the efforts made for decentralization and federation benfits to anti-censorship & anti-monopoly manifestations.
 
 ## Roadmap
 
