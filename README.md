@@ -9,7 +9,7 @@
 </p>
 
 ## Table of Contents
-1. [Prerequisites](#prerequisites)
+1. [Setting up your testing & development environment](#Setting up your testing & development environment)
 4. [Project Status](#project-status)
    - [Network Endorsements](#network-endorsements)
 6. [Project Activity](#project-activity)
