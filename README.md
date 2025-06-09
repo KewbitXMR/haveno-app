@@ -1,7 +1,7 @@
 # Haveno Multi-Platform App
 
 <p align="center">
-<a href="https://haveno.com"><img src="https://github.com/KewbitXMR/haveno-app/blob/main/assets/android-chrome-512x512.png?raw=true" width=150 /></a>  <sup>v2</sup>
+<a href="https://haveno.com"><img src="https://github.com/KewbitXMR/haveno-app/blob/main/assets/android-chrome-512x512.png?raw=true" width=150 /></a>
 <br>
 <a href="https://haveno.com"><img src="https://raw.githubusercontent.com/KewbitXMR/haveno-app/refs/heads/main/assets/icon/side1.webp" width=100 /></a>
 <a href="https://haveno.com"><img src="https://raw.githubusercontent.com/KewbitXMR/haveno-app/refs/heads/main/assets/icon/270a7bad400e6824b8ea9f238f66b61a.webp" width=275 /></a>
