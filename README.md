@@ -8,14 +8,6 @@
 <a href="https://haveno.com"><img src="https://raw.githubusercontent.com/KewbitXMR/haveno-app/refs/heads/main/assets/icon/side2.webp" width=100 /></a>
 </p>
 
-## Table of Contents
-1. [Setting up a testing environment](#)
-4. [Project Status](#project-status)
-   - [Network Endorsements](#network-endorsements)
-6. [Project Activity](#project-activity)
-7. [Roadmap](#roadmap)
-8. [Contributing](#contributing)
-
 ---
 
 ## Setting up a testing environment
