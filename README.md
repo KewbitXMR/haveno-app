@@ -2,6 +2,10 @@
 
 <p align="center">
 <a href="https://haveno.com"><img src="https://github.com/KewbitXMR/haveno-app/blob/main/assets/android-chrome-512x512.png?raw=true" width=150 /></a>  <sup>v2</sup>
+<br>
+<a href="https://haveno.com"><img src="https://raw.githubusercontent.com/KewbitXMR/haveno-app/refs/heads/main/assets/icon/side1.webp" width=75 />></a>
+<a href="https://haveno.com"><img src="https://raw.githubusercontent.com/KewbitXMR/haveno-app/refs/heads/main/assets/icon/side1.webp" width=250 />></a>
+<a href="https://haveno.com"><img src="https://raw.githubusercontent.com/KewbitXMR/haveno-app/refs/heads/main/assets/icon/side1.webp" width=75 />></a>
 </p>
 
 ## Table of Contents
