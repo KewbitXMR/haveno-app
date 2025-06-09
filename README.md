@@ -9,7 +9,7 @@
 </p>
 
 ## Table of Contents
-1. [Setting up your testing & development environment](#Setting up your testing & development environment)
+1. [Setting up a testing environment](#)
 4. [Project Status](#project-status)
    - [Network Endorsements](#network-endorsements)
 6. [Project Activity](#project-activity)
@@ -18,7 +18,7 @@
 
 ---
 
-## Setting up your testing & development environment
+## Setting up a testing environment
 
 Before you begin, you'll need to set up a testing environment:
 
