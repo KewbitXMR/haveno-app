@@ -12,10 +12,13 @@
 
 ## Setting up a testing environment
 
-Before you begin, you'll need to set up a testing environment:
+Before you begin, you'll need to set up a testing environmentg:
 
-- **Android Device or Emulator:** You can test on a physical Android phone or use an Android simulator via [Android Studio](https://studio.android.com) for advanced users. [BlueStacks](https://www.bluestacks.com/download.html) is another option with a gentler learning curve.
-- **Latest Pre-release Builds:** Obtain the latest pre-release builds from the [Releases](https://github.com/KewbitXMR/haveno-app/releases) page. These are typically updated weekly.
+- **Begin by choosing Android Device or an Emulator:** You can test on a;
+  - physical Android phone
+  - Use an Android simulator via [Android Studio](https://studio.android.com) for advanced users.
+  - Or use [BlueStacks](https://www.bluestacks.com/download.html) is another option with a gentler learning curve, for the more non-technical.
+- **Download Latest Pre-release Builds:** Obtain the latest pre-release builds from the [Releases](https://github.com/KewbitXMR/haveno-app/releases) page. These are typically updated weekly, they are connected to stagenet, so do not send real XMR funds to these addresses, we are in the testing period while I audit the code in full.
 
 **Important:** Follow the instructions in this guide carefully for Haveno App to function correctly.
 
@@ -26,16 +29,17 @@ Before you begin, you'll need to set up a testing environment:
 
 To ensure all traffic is securely routed through Tor, you must install and activate a Tor VPN relay on your mobile device. The recommended two apps are:
 
-- **[Orbot](https://play.google.com/store/apps/details?id=org.torproject.android):** Officially supported by The Tor Project.
+- **[Orbot](https://play.google.com/store/apps/details?id=org.torproject.android)** Officially supported by The Tor Project.
   - [Sourcecode & Releases](https://github.com/guardianproject/orbot/releases/tag/17.3.2-RC-1-tor-0.4.8.12)
-- **[InviZible](https://play.google.com/store/apps/details?id=pan.alexander.tordnscrypt.gp):** A popular community alternative.
+- **[InviZible](https://play.google.com/store/apps/details?id=pan.alexander.tordnscrypt.gp)** A popular community approved alternative.
   - [Sourcecode & Releases](https://github.com/Gedsh/InviZible/releases/tag/v2.3.0-beta)
 
-**Steps:**
-1. Download [Orbot on Google Play](https://play.google.com/store/apps/details?id=org.torproject.android) or [InviZible on Google Play](https://play.google.com/store/apps/details?id=pan.alexander.tordnscrypt.gp).
-   - Alternatively, download [InviZible on F-Droid](https://f-droid.org/packages/pan.alexander.tordnscrypt.stable/).
-2. Open the app of your choice and follow the on-screen instructions to activate it. Ensure that Tor is enabled and the VPN is activated.
-3. Configure the VPN relay to route your Haveno App app traffic through Tor. The app will not load if a VPN relay is not configured first, by design, for your security.
+**Step by Step Guide**
+1. Download Orbot;
+  a. [Orbot on Google Play](https://play.google.com/store/apps/details?id=org.torproject.android) or if you trust the community project also, you can find [InviZible on Google Play](https://play.google.com/store/apps/details?id=pan.alexander.tordnscrypt.gp).
+  b. Alternatively, download [InviZible on F-Droid](https://f-droid.org/packages/pan.alexander.tordnscrypt.stable/), I may decide to release this soon, it's up to the Monero core teams decision.
+3. Open the app of your choice and follow the on-screen instructions to activate it. Ensure that Tor is enabled and the VPN is activated.
+4. Configure the VPN relay to route your Haveno App app traffic through Tor. The app will not load if a VPN relay is not configured first, by design, for your security.
 
 ### Haveno Installion Guide
 
@@ -48,11 +52,11 @@ The Haveno App app is available as alpha pre-release builds for Android and Wind
 ## Setup Your Desktop or Server
 
 - **Windows:** (Coming soon)
-- **MacOS:** [Download Intel](https://haveno.com/downloads/), [Download Silicon](https://haveno.com/downloads/) or [Install via Homebrew](https://haveno.com/downloads/)
+- **MacOS:** [Download Intel](https://haveno.com/downloads/), [Download Silicon](https://haveno.com/downloads/) or [Install via Homebrew Cask](https://haveno.com/downloads/)
 - **Android** [Download Universal APK](https://haveno.com/downloads/)
-- **iOS** (Coming soon)
 - **Linux:** Alpha (testing)
-- **Docker:** [Haveno Docker Hub](https://hub.docker.com/u/havenodex) (For advanced users, limited documentation thus far)
+- **Docker:** [Haveno Docker Hub](https://hub.docker.com/u/havenodex) (For advanced users, limited documentation thus far but useful deployment based on simple configuration options)
+- **iOS** (Coming lastly)
 
 
 ### Step-by-Step Guides
@@ -65,13 +69,15 @@ The Haveno App app is available as alpha pre-release builds for Android and Wind
 ## Project Status
 
 Milestone 1: Protocol Interface ✅
-Milestone 2: Complete UI + Providers + lots more ✅ (Warning: it was as this stage the monero core team had scammed the remaining funds from the CCS raised for Haveno and started to cause drama, I cover this in my blog but continued to work in the projeft nonetheless.)
+Milestone 2: Complete UI + Providers + lots more ✅
+]
+> **Warning**: it was as this stage the monero core team had scammed the remaining funds from the CCS raised for Haveno and started to cause drama, I cover this in my blog but continued to work in the projeft nonetheless.)
 
-Extras not in CCS: 
+Extras I included were not expected to covered or to be paid for in the CSS, but tie in nicely: 
   - Caching system to ease the load on the daemon SQLite
   - AES encryption on shared shared preferences and DB (not tested, will including on wallet too if nessesary)
 
-The project is currently currently in the testing peroid of Milestone 2 having completed it.
+> The project is currently in the testing peroid of Milestone 2 having completed it, but not also on fully completion peroid of milestonen 3 and 4, I am currently waiting for milestone 2 to be paid ideally before I push milestone 3 & 4, as I've read many issues about payment on these on the monero workgrounp chat. (Sorry to be a pain to the community, but I've been spending months on this and we hoping that people would be happy with it to not cause problems, I've writen more about this on my blog in a lot of detail but I wont touch on this too much here)
 
 ### Network Endorsements
 
@@ -79,22 +85,24 @@ Haveno does not endorse or denounce any particular network. The choice of networ
 
 ## Roadmap
 
-- Dart SDK API ✅ [Haveno Dart SDK Client](https://pub.dev/packages/haveno)
-- Complete UI ✅ (tweaks needed)
-- Linux desktop support ✅
+- [Haveno Dart SDK API](https://pub.dev/packages/haveno) ✅
+- [Haveno Complete UI](https://github.com/KewbitXMR/haveno-app/tree/main/lib/views) ✅
+- [Linux desktop Support](https://github.com/KewbitXMR/haveno-app/tree/main/linux) ✅
+- [macOS Desktop Support](https://github.com/KewbitXMR/haveno-app/tree/main/macos) ✅
+- [Android Mobile Support](https://github.com/KewbitXMR/haveno-app/android/)
 - Python SDK API [Haveno Python SDK Client](https://pypi.org/project/haveno-client/) **(WIP)**
 - Rust SDK API [Haveno Rust SDK Client](https://crates.io/crates/haveno) **(WIP)**
-- Windows desktop Support 
-- MacOS desktop support ✅
-- Android mobile Support ✅
-- Complete full arbitration scope.
-- Add client authentication for onion-hosted daemons.
-- iOS support. 
-- Easy whitelisting and fund transfers to Cake Wallet or similar.
-- Biometric security for mobile devices, with PIN or password protection for those without biometric options.
-- Standalone version not requiring desktop or server (considerable work; community support may be needed).
-- Support for Monero Atomic Swaps
-- Implementation of a local Monero wallet (to prevent unessesarily excessively amount of funds on the daemon aka hot-wallet)
+- Complete `(Haveno) Tor Tunnels` project to smoothly [run gRPC over SOCKS5 to an onion service in rust via tunnels] **MOSTLY DONE**
+- Complete Full Arbitration Scope on Payment Dispite **TODO**
+- Add client authentication for onion-hosted daemons. **TODO**
+- iOS support. **TODO**
+- Easy whitelisting and fund transfers to Cake Wallet or similar. **TODO**
+- Biometric security for mobile devices, with PIN or password protection for those without biometric options. **TODO**
+- Standalone version not requiring desktop or server (considerable work; community support may be needed). **TODO**
+- Enable FIDO2 protected transactions using FIDO2 App on Trezor / Ledger hardware wallets. **TODO**
+- Support for Monero Atomic Swaps **TODO**
+- Implementation of a local Monero wallet (to prevent unessesarily excessively amount of funds on the daemon aka hot-wallet) **TODO**
+- Spend about tripple the time it took me to do this project just trying to actually get Monero CCS to pay their debts for my time and effort to produce this (don't worry I am only expecting the market value at the time it was promised which is like half the amount in USD at this point...) **TODO**
 
 ## Contributing
 
