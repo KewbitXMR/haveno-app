@@ -52,11 +52,13 @@ The Haveno App app is available as alpha pre-release builds for Android and Wind
 ## Setup Your Desktop or Server
 
 - **Windows:** (Coming soon)
-- **MacOS:** [Download Intel](https://haveno.com/downloads/), [Download Silicon](https://haveno.com/downloads/) or [Install via Homebrew Cask](https://haveno.com/downloads/)
+- **MacOS:** [Download Intel](https://haveno.com/downloads/), [Download Silicon](https://haveno.com/downloads/) or [Install via Homebrew Cask](https://haveno.com/downloads/](https://haveno.wiki/en/install-guide)
 - **Android** [Download Universal APK](https://haveno.com/downloads/)
 - **Linux:** Alpha (testing)
 - **Docker:** [Haveno Docker Hub](https://hub.docker.com/u/havenodex) (For advanced users, limited documentation thus far but useful deployment based on simple configuration options)
 - **iOS** (Coming lastly)
+
+You can check out the wiki ran by our community members which gives more specific information of you're not sure about whether your installation is working, or you can always
 
 
 ### Step-by-Step Guides
@@ -64,45 +66,44 @@ The Haveno App app is available as alpha pre-release builds for Android and Wind
 2. [How to Install Haveno on Mobile](https://haveno.com/documentation/install-haveno-on-a-mobile-device/)
 3. [How to Install Haveno on Server with Docker](https://haveno.com/documentation/installing-the-haveno-daemon-with-docker-securely/)
 4. [How to Setup your own Haveno Network](https://haveno.com/documentation/setup-a-custom-haveno-network-seednode-with-docker/)
-5. [How to connect Haveno with Telegram to Receive Notifications & more.](https://haveno.com/documentation/using-telegram-to-manage-your-haveno-account/) in real-time.
+5. [How to connect Haveno with Telegram to Receive Notifications](https://haveno.com/documentation/using-telegram-to-manage-your-haveno-account/) in real-time.
 
-## Project Status
+### Monero CSS Project Status
 
-Milestone 1: Protocol Interface ✅
-Milestone 2: Complete UI + Providers + lots more ✅
-]
-> **Warning**: it was as this stage the monero core team had scammed the remaining funds from the CCS raised for Haveno and started to cause drama, I cover this in my blog but continued to work in the projeft nonetheless.)
+- Milestone 1: Protocol Interface (✅) - **Paid by CCS**
+- Milestone 2: Complete UI + Providers + lots more - (✅) **Kindly requesting paymenet from CCS**
 
-Extras I included were not expected to covered or to be paid for in the CSS, but tie in nicely: 
+The extras I included were not expected to covered or to be paid for in the CSS, but tie in nicely: 
   - Caching system to ease the load on the daemon SQLite
   - AES encryption on shared shared preferences and DB (not tested, will including on wallet too if nessesary)
 
 > The project is currently in the testing peroid of Milestone 2 having completed it, but not also on fully completion peroid of milestonen 3 and 4, I am currently waiting for milestone 2 to be paid ideally before I push milestone 3 & 4, as I've read many issues about payment on these on the monero workgrounp chat. (Sorry to be a pain to the community, but I've been spending months on this and we hoping that people would be happy with it to not cause problems, I've writen more about this on my blog in a lot of detail but I wont touch on this too much here)
 
-### Network Endorsements
+### Networks
 
-Haveno does not endorse or denounce any particular network. The choice of network will be available upon official release, we do however have the philosophy that there should be more than one network in existance to support the efforts made for decentralization and federation benfits to anti-censorship & anti-monopoly manifestations.
+Haveno runs as a large decentralized network, it works quite quite well, much like Bisq, but it's flawed in that it's quite easy to monopolize with one large network, which has some benefits but definetely goes against the principle of why the software was decided to be devloped in the first place, the Haveno App UI which currently Haveno.com is responsible for developing in full. The aim is to ensure running a federated network on Haveno is easy enough for anyone to do, and to ensure that it's also just as easy to choose whatever network you wish to use by changing the configuration in the settings, all current networks that exist lock you in to their ecosystem generally in order to capture more of the trade volume, we should encourage legal use of decentralized and federated finance where it is legal to do so, if you want to learn more about [how to change your haveno network](#) or [how to setup your own haveno network]() in order to to earn a fee for each trade in return for your time in arbitrating issues. Always make sure you check your local laws as privacy coins and systems are becoming more scrutinized by governments while being praised by others, so check the reason based on your own circumstances.
 
 ## Roadmap
 
-- [Haveno Dart SDK API](https://pub.dev/packages/haveno) ✅
-- [Haveno Complete UI](https://github.com/KewbitXMR/haveno-app/tree/main/lib/views) ✅
-- [Linux desktop Support](https://github.com/KewbitXMR/haveno-app/tree/main/linux) ✅
-- [macOS Desktop Support](https://github.com/KewbitXMR/haveno-app/tree/main/macos) ✅
-- [Android Mobile Support](https://github.com/KewbitXMR/haveno-app/android/)
-- Python SDK API [Haveno Python SDK Client](https://pypi.org/project/haveno-client/) **(WIP)**
-- Rust SDK API [Haveno Rust SDK Client](https://crates.io/crates/haveno) **(WIP)**
-- Complete `(Haveno) Tor Tunnels` project to smoothly [run gRPC over SOCKS5 to an onion service in rust via tunnels] **MOSTLY DONE**
-- Complete Full Arbitration Scope on Payment Dispite **TODO**
-- Add client authentication for onion-hosted daemons. **TODO**
-- iOS support. **TODO**
-- Easy whitelisting and fund transfers to Cake Wallet or similar. **TODO**
-- Biometric security for mobile devices, with PIN or password protection for those without biometric options. **TODO**
-- Standalone version not requiring desktop or server (considerable work; community support may be needed). **TODO**
-- Enable FIDO2 protected transactions using FIDO2 App on Trezor / Ledger hardware wallets. **TODO**
-- Support for Monero Atomic Swaps **TODO**
-- Implementation of a local Monero wallet (to prevent unessesarily excessively amount of funds on the daemon aka hot-wallet) **TODO**
-- Spend about tripple the time it took me to do this project just trying to actually get Monero CCS to pay their debts for my time and effort to produce this (don't worry I am only expecting the market value at the time it was promised which is like half the amount in USD at this point...) **TODO**
+- [Haveno Dart SDK API](https://pub.dev/packages/haveno) - (✅)
+- [Haveno Dark SDK Documentation](https://pub.dev/documentation/haveno/latest) - (✅)
+- [Haveno Complete UI](https://github.com/KewbitXMR/haveno-app/tree/main/lib/views) - (✅)
+- [Linux desktop Support](https://github.com/KewbitXMR/haveno-app/tree/main/linux) with Haveno.AppImage Donwload - (✅)
+- [macOS Desktop Support](https://github.com/KewbitXMR/haveno-app/tree/main/macos) with [Haveno.app Download] & [Homebrew Installer] - (✅)
+- [Android Mobile Support](https://github.com/KewbitXMR/haveno-app/android/) with Haveno.apk Donwload - (✅)
+- [Haveno Python SDK Client](https://pypi.org/project/haveno-client/) **(WIP)**
+- [Haveno Rust SDK Client](https://crates.io/crates/haveno) **(WIP)**
+- Complete `(Haveno) Tor Tunnels` project to smoothly [run gRPC over SOCKS5 to an onion service in rust via tunnels](https://haveno.com) **(MOSTLY DONE)**
+- Complete Full Arbitration Scope on Payment Dispite **(TODO)**
+- Add client authentication for onion-hosted daemons. **(TODO)**
+- iOS support. **(TODO)**
+- Easy whitelisting and fund transfers to Cake Wallet or similar. **(TODO)**
+- Biometric security for mobile devices, with PIN or password protection for those without biometric options. **(TODO)**
+- Standalone version not requiring desktop or server (considerable work; community support may be needed). **(TODO)**
+- Enable FIDO2 protected transactions using FIDO2 App on Trezor / Ledger hardware wallets. **(TODO)**
+- Support for Monero Atomic Swaps **(TODO)**
+- Implementation of a local Monero wallet (to prevent unessesarily excessively amount of funds on the daemon aka hot-wallet) **(TODO)**
+- Spend about tripple the time it took me to do this project just trying to actually get Monero CCS to pay their debts for my time and effort to produce this (don't worry I am only expecting the market value at the time it was promised which is like half the amount in USD at this point...) **(TODO)**
 
 ## Contributing
 
