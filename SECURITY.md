@@ -1,7 +1,7 @@
 # Security Policy
 
 ## Project: Haveno App  
-[https://github.com/haveno-dex/haveno-app](https://github.com/KewbitXMR/haveno-app)
+[https://github.com/KewbitXMR/haveno-app](https://github.com/KewbitXMR/haveno-app)
 
 ---
 
