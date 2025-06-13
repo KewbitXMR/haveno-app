@@ -54,13 +54,13 @@ The Haveno App is a **client-side** interface that communicates with the Haveno 
 ❌ Arbitrator misbehavior (handled by market mechanisms)  
 ❌ Issues caused by tampering with local app data or rooted devices  
 ❌ Attacks requiring physical access to the user's device  
-❌ Monero protocol vulnerabilities (report upstream to [getmonero.org](https://www.getmonero.org/))
+❌ Monero protocol vulnerabilities (report upstream to Monero development team channels on Matrix)
 
 ---
 
 ## Coordinated Disclosure Policy
 
-We strongly encourage **coordinated disclosure**. If you follow responsible practices, we will give you credit in any advisory or release notes (unless you prefer to remain anonymous). Severe issues may be eligible for a bug bounty (see [Haveno Bounty Program](https://github.com/haveno-dex/haveno/wiki/Bounties)).
+We strongly encourage **coordinated disclosure**. If you follow responsible practices, we will give you credit in any advisory or release notes (unless you prefer to remain anonymous). Severe issues may be eligible for a bug bounty from the core haveno team.
 
 ---
 
