@@ -1,11 +1,11 @@
 # Haveno Multi-Platform App
 
 <p align="center">
-<a href="https://haveno.com"><img src="https://github.com/KewbitXMR/haveno-app/blob/main/assets/android-chrome-512x512.png?raw=true" width=150 /></a>
+<a href="https://haveno.app"><img src="https://github.com/KewbitXMR/haveno-app/blob/main/assets/android-chrome-512x512.png?raw=true" width=150 /></a>
 <br>
-<a href="https://haveno.com"><img src="https://raw.githubusercontent.com/KewbitXMR/haveno-app/refs/heads/main/assets/icon/side1.webp" width=100 /></a>
-<a href="https://haveno.com"><img src="https://raw.githubusercontent.com/KewbitXMR/haveno-app/refs/heads/main/assets/icon/270a7bad400e6824b8ea9f238f66b61a.webp" width=275 /></a>
-<a href="https://haveno.com"><img src="https://raw.githubusercontent.com/KewbitXMR/haveno-app/refs/heads/main/assets/icon/side2.webp" width=100 /></a>
+<a href="https://haveno.app"><img src="https://raw.githubusercontent.com/KewbitXMR/haveno-app/refs/heads/main/assets/icon/side1.webp" width=100 /></a>
+<a href="https://haveno.app"><img src="https://raw.githubusercontent.com/KewbitXMR/haveno-app/refs/heads/main/assets/icon/270a7bad400e6824b8ea9f238f66b61a.webp" width=275 /></a>
+<a href="https://haveno.app"><img src="https://raw.githubusercontent.com/KewbitXMR/haveno-app/refs/heads/main/assets/icon/side2.webp" width=100 /></a>
 </p>
 
 ---
@@ -52,8 +52,8 @@ The Haveno App app is available as alpha pre-release builds for Android and Wind
 ## Setup Your Desktop or Server
 
 - **Windows:** (Coming soon)
-- **MacOS:** [Download Intel](https://haveno.com/downloads/), [Download Silicon](https://haveno.com/downloads/) or [Install via Homebrew Cask](https://haveno.com/downloads/](https://haveno.wiki/en/install-guide)
-- **Android** [Download Universal APK](https://haveno.com/downloads/)
+- **MacOS:** [Download Intel](https://haveno.app/downloads/), [Download Silicon](https://haveno.app/downloads/) or [Install via Homebrew Cask](https://haveno.wiki/en/install-guide)
+- **Android** [Download Universal APK](https://haveno.app/downloads/)
 - **Linux:** Alpha (testing)
 - **Docker:** [Haveno Docker Hub](https://hub.docker.com/u/havenodex) (For advanced users, limited documentation thus far but useful deployment based on simple configuration options)
 - **iOS** (Coming lastly)
@@ -62,11 +62,11 @@ You can check out the wiki ran by our community members which gives more specifi
 
 
 ### Step-by-Step Guides
-1. [How to Install Haveno on Desktop](https://haveno.com/documentation/installing-haveno-on-desktop/)
-2. [How to Install Haveno on Mobile](https://haveno.com/documentation/install-haveno-on-a-mobile-device/)
-3. [How to Install Haveno on Server with Docker](https://haveno.com/documentation/installing-the-haveno-daemon-with-docker-securely/)
-4. [How to Setup your own Haveno Network](https://haveno.com/documentation/setup-a-custom-haveno-network-seednode-with-docker/)
-5. [How to connect Haveno with Telegram to Receive Notifications](https://haveno.com/documentation/using-telegram-to-manage-your-haveno-account/) in real-time.
+1. [How to Install Haveno on Desktop](https://haveno.app/documentation/installing-haveno-on-desktop/)
+2. [How to Install Haveno on Mobile](https://haveno.app/documentation/install-haveno-on-a-mobile-device/)
+3. [How to Install Haveno on Server with Docker](https://haveno.app/documentation/installing-the-haveno-daemon-with-docker-securely/)
+4. [How to Setup your own Haveno Network](https://haveno.app/documentation/setup-a-custom-haveno-network-seednode-with-docker/)
+5. [How to connect Haveno with Telegram to Receive Notifications](https://haveno.app/documentation/using-telegram-to-manage-your-haveno-account/) in real-time.
 
 ### Monero CSS Project Status
 
@@ -93,7 +93,7 @@ Haveno runs as a large decentralized network, it works quite quite well, much li
 - [Android Mobile Support](https://github.com/KewbitXMR/haveno-app/android/) with Haveno.apk Donwload - (✅)
 - [Haveno Python SDK Client](https://pypi.org/project/haveno-client/) **(WIP)**
 - [Haveno Rust SDK Client](https://crates.io/crates/haveno) **(WIP)**
-- Complete `(Haveno) Tor Tunnels` project to smoothly [run gRPC over SOCKS5 to an onion service in rust via tunnels](https://haveno.com) **(MOSTLY DONE)**
+- Complete `(Haveno) Tor Tunnels` project to smoothly [run gRPC over SOCKS5 to an onion service in rust via tunnels](https://haveno.app) **(MOSTLY DONE)**
 - Complete Full Arbitration Scope on Payment Dispite **(TODO)**
 - Add client authentication for onion-hosted daemons. **(TODO)**
 - iOS support. **(TODO)**
@@ -110,6 +110,6 @@ Haveno runs as a large decentralized network, it works quite quite well, much li
 Testing on old phones or laptops and providing high-quality feedback is the best way to contribute. A discussion section will be set up for initial feedback and contributions.
 
 ## Disclaimer
-**[HAVENO.COM](https://haveno.com) represents the official haveno app website and services as a client to a Haveno Daemon only**,  and **HAVENO.EXCHANGE represents everything else, including not not limited to the P2P server network protocol, daemon nodes and price nodes**, there are now also lots of app-specific guides located at [haveno documentation and setup](https://haveno.com/documentation/) section of the site, which are atuned towards the new app.
+**[HAVENO.APP](https://haveno.app) represents the official haveno app website and services as a client to a Haveno Daemon only**,  and **HAVENO.EXCHANGE represents everything else, including not not limited to the P2P server network protocol, daemon nodes and price nodes**, there are now also lots of app-specific guides located at [haveno documentation and setup](https://haveno.app/documentation/) section of the site, which are atuned towards the new app.
 
 None of the code in this repository (haveno-app) is intrinically holding custody of philosophy in what may be considered 'crypto-assets' OR transmitting any such 'crypto-assets' or other financial services across the the wire, network or the general internet.
